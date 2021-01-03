@@ -1,0 +1,9 @@
+# This is Git's per-user configuration file.
+[user]
+	name = Fabian Gunzinger
+	email = fa.gunzinger@gmail.com
+[credential]
+	helper = osxkeychain
+[alias]
+	adco = !git add -A && git commit
+	sta = !git status
