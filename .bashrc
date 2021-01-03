@@ -5,7 +5,7 @@
 
 
 # aliases
-##############################################################################
+############################################################################
 
 # commandas
 alias la='ls -a'
@@ -21,12 +21,12 @@ alias sdo='StataSE -e do'
 # folders
 alias dde='cd ~/dev'
 alias dpr='cd ~/dev/projects'
+alias drp='cd ~/dev/remote_projects'
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
 alias dla='cd /Users/fgu/Library/texmf/tex/latex/styfiles/'
 alias dju='cd /Users/fgu/Library/Jupyter/snippets'
 alias dte='cd /Users/fgu/tmp'
-alias drp='cd ~/dev/remote_projects'
 
 # files
 alias fbash='vim ~/.bashrc'
@@ -41,6 +41,7 @@ alias dle='cd ~/dev/projects/learning/'
 alias dbl='cd ~/dev/projects/blog'
 alias dfo='cd ~/dev/projects/food-tracker'
 alias dtr='cd ~/dev/projects/uk-tracker'
+alias ddo='cd ~/dev/projects/dotfiles'
 
 # git
 alias gs='git status'
@@ -63,7 +64,7 @@ alias cl='conda list'
 
 
 # aws
-##############################################################################
+############################################################################
 
 # commands with a prefix are for my personal account and instance; those with
 # at prefix, for uk-tracker account and instance.
