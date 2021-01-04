@@ -14,6 +14,7 @@ alias copy='pwd | pbcopy'
 
 alias t='tmux'
 alias tks='tmux kill-session'
+function tas() { tmux attach-session -t "$1"; }
 
 # navigation
 alias dde='cd ~/dev'

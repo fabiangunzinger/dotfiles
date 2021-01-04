@@ -50,7 +50,11 @@ set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " user interface {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 set colorcolumn=80                      " color 80th column
+" set textwidth=80                        " break long lines
+set wrap                            	" wrap long lines
+
 set hidden                              " hide unloaded buffers
 set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
@@ -60,7 +64,6 @@ set mouse=a
 " set relativenumber                      " relative line numers
 set ruler                           	" show curser position
 set showcmd			                    " show partial command
-set wrap                            	" wrap long lines
 set wildmenu                        	" turn wild menu on
 
 
