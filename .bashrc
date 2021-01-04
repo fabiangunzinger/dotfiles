@@ -27,6 +27,7 @@ alias dbl='cd ~/dev/projects/blog'
 alias dblp='cd ~/dev/projects/blog/_posts'
 alias dfo='cd ~/dev/projects/food-tracker'
 alias dtr='cd ~/dev/projects/uk-tracker'
+alias dtrc='cd ~/dev/projects/uk-tracker/code'
 alias ddf='cd ~/dev/projects/dotfiles'
 
 alias dsu='cd ~/setup/SublimeProjects'
