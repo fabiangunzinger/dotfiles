@@ -14,7 +14,7 @@ alias copy='pwd | pbcopy'
 
 alias t='tmux'
 alias tks='tmux kill-session'
-function tas() { tmux attach-session -t "$1"; }
+function ts() { tmux attach-session -t "$1"; }
 
 # navigation
 alias dde='cd ~/dev'
@@ -38,11 +38,10 @@ alias dju='cd /Users/fgu/Library/Jupyter/snippets'
 alias dte='cd /Users/fgu/tmp'
 
 # dotfiles
-alias fbash='vim ~/.bashrc'
-alias sbash='source ~/.bashrc'
+alias fb='vim ~/.bashrc'
+alias sb='source ~/.bashrc'
 alias ftm='vim ~/.tmux.conf'
-alias stm='source ~/.tmux.conf'
-alias fvim='vim ~/.vim/vimrc'
+alias fv='vim ~/.vim/vimrc'
 
 alias juno='jupyter notebook'
 alias jula='jupyter lab'
