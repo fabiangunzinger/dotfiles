@@ -55,6 +55,7 @@ set colorcolumn=80                      " color 80th column
 " set textwidth=80                        " break long lines
 set wrap                            	" wrap long lines
 
+set clipboard=unnamed                   " allow copy/paste from system
 set hidden                              " hide unloaded buffers
 set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
