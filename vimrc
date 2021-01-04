@@ -168,6 +168,7 @@ map <leader><space> :nohlsearch<cr>
 " colors and fonts {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                           " syntax highlighting
+set background=dark
 colorscheme solarized                   " custom colorscheme
 " colorscheme one
 
