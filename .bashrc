@@ -6,12 +6,16 @@
 # aliases
 ############################################################################
 
-# navigation
+# commands
 alias la='ls -a'
 alias ll='ls -o'
 alias lla='ls -ao'
 alias copy='pwd | pbcopy'
 
+alias t='tmux'
+alias tks='tmux kill-session'
+
+# navigation
 alias dde='cd ~/dev'
 alias dpr='cd ~/dev/projects'
 alias drp='cd ~/dev/remote_projects'
@@ -23,7 +27,7 @@ alias dbl='cd ~/dev/projects/blog'
 alias dblp='cd ~/dev/projects/blog/_posts'
 alias dfo='cd ~/dev/projects/food-tracker'
 alias dtr='cd ~/dev/projects/uk-tracker'
-alias ddo='cd ~/dev/projects/dotfiles'
+alias ddf='cd ~/dev/projects/dotfiles'
 
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
@@ -34,6 +38,8 @@ alias dte='cd /Users/fgu/tmp'
 # dotfiles
 alias fbash='vim ~/.bashrc'
 alias sbash='source ~/.bashrc'
+alias ftm='vim ~/.tmux.conf'
+alias stm='source ~/.tmux.conf'
 alias fvim='vim ~/.vim/vimrc'
 
 alias juno='jupyter notebook'
