@@ -165,9 +165,9 @@ map <leader><space> :nohlsearch<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                           " syntax highlighting
 set background=dark
-colorscheme solarized                   " custom colorscheme
+" colorscheme solarized                   " custom colorscheme
 " colorscheme one
-
+colorscheme delek
 
 " status bar colorscheme
 let g:lightline = {'colorscheme': 'solarized'}

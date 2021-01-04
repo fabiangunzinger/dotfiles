@@ -18,7 +18,7 @@ alias tks='tmux kill-session'
 # navigation
 alias dde='cd ~/dev'
 alias dpr='cd ~/dev/projects'
-alias drp='cd ~/dev/remote_projects'
+alias dre='cd ~/dev/remote_projects'
 alias dli='cd ~/dev/projects/limo'
 alias dap='cd ~/dev/projects/applications'
 alias dha='cd ~/dev/projects/habits/'
