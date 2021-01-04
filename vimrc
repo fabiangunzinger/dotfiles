@@ -121,10 +121,6 @@ map <leader>vs :w<cr>:source $MYVIMRC<cr>
 " more accessible escape
 inoremap jk <esc>
 
-" move to beginning and end of line
-nnoremap B ^
-nnoremap E $
-
 " move down and up by visual line
 nnoremap j gj
 nnoremap k gk
