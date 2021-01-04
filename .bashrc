@@ -1,47 +1,45 @@
 #
-# File: ~/.bashrc
-# Author: Fabian Gunzinger
+# fabian gunzinger's .bashrc
 #
 
 
 # aliases
 ############################################################################
 
-# commandas
+# navigation
 alias la='ls -a'
 alias ll='ls -o'
 alias lla='ls -ao'
-alias sbash='source ~/.bashrc'
 alias copy='pwd | pbcopy'
-alias juno='jupyter notebook'
-alias jula='jupyter lab'
-alias clh='open -a safari https://localhost:9999'
-alias sdo='StataSE -e do'
 
-# folders
 alias dde='cd ~/dev'
 alias dpr='cd ~/dev/projects'
 alias drp='cd ~/dev/remote_projects'
+alias dli='cd ~/dev/projects/limo'
+alias dap='cd ~/dev/projects/applications'
+alias dha='cd ~/dev/projects/habits/'
+alias dle='cd ~/dev/projects/learning/'
+alias dbl='cd ~/dev/projects/blog'
+alias dblp='cd ~/dev/projects/blog/_posts'
+alias dfo='cd ~/dev/projects/food-tracker'
+alias dtr='cd ~/dev/projects/uk-tracker'
+alias ddo='cd ~/dev/projects/dotfiles'
+
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
 alias dla='cd /Users/fgu/Library/texmf/tex/latex/styfiles/'
 alias dju='cd /Users/fgu/Library/Jupyter/snippets'
 alias dte='cd /Users/fgu/tmp'
 
-# files
+# dotfiles
 alias fbash='vim ~/.bashrc'
+alias sbash='source ~/.bashrc'
 alias fvim='vim ~/.vim/vimrc'
-alias fas='atom ~/.atom/snippets.cson'
 
-# projects
-alias dli='cd ~/dev/projects/limo'
-alias dap='cd ~/dev/projects/applications'
-alias dha='cd ~/dev/projects/habits/'
-alias dle='cd ~/dev/projects/learning/'
-alias dbl='cd ~/dev/projects/blog'
-alias dfo='cd ~/dev/projects/food-tracker'
-alias dtr='cd ~/dev/projects/uk-tracker'
-alias ddo='cd ~/dev/projects/dotfiles'
+alias juno='jupyter notebook'
+alias jula='jupyter lab'
+alias clh='open -a safari https://localhost:9999'
+alias sdo='StataSE -e do'
 
 # git
 alias gs='git status'
@@ -57,13 +55,7 @@ function ce() { conda deactivate; }
 alias cl='conda list'
 
 
-# ## Python QT console and Jupyter notebook command
-# export PYTHONPATH=/usr/local/lib/python:$PYTHONPATH
-# alias pycon='ipython qtconsole --pylab=inline'
-# alias jup='jupyter notebook'
-
-
-# aws
+# aws (on Macbook)
 ############################################################################
 
 # commands with a prefix are for my personal account and instance; those with
