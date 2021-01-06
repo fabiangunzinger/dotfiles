@@ -18,6 +18,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'ivanov/vim-ipython'
 Plug 'rakr/vim-one'
 Plug 'jpalardy/vim-slime'
+Plug 'hashivim/vim-terraform'
 
 " Plug 'garbas/vim-snipmate'
 Plug 'mg979/vim-visual-multi'

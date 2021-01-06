@@ -12,9 +12,11 @@ alias ll='ls -o'
 alias lla='ls -ao'
 alias copy='pwd | pbcopy'
 
-alias t='tmux'
-alias tks='tmux kill-session'
-function ta() { tmux attach-session -t "$1"; }
+alias tm='tmux'
+alias tmkss='tmux kill-session'
+function tma() { tmux attach-session -t "$1"; }
+
+alias tf='terraform'
 
 # navigation
 alias dde='cd ~/dev'
