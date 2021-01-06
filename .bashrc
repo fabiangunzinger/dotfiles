@@ -108,8 +108,8 @@ function asy() { aws s3 sync $1 $2; }
 # list running processes with keyword
 function lrp() { ps aux | grep $1; }
 
-
-
+# pull latest fable data
+alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://raw-fable'
 # alias atjc='ssh -i ~/.aws/fgu-tracker-key.pem -N -f -L 9999:localhost:9999 ec2-user@ec2-3-8-141-132.eu-west-2.compute.amazonaws.com'
 
 
