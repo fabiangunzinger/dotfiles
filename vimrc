@@ -52,9 +52,14 @@ set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 " user interface {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" text wrapping
+set wrap                            	" wrap long lines
+set linebreak                           " don't break word
+set nolist                              " list breaks linebreak
+
+
 set colorcolumn=80                      " color 80th column
 " set textwidth=80                        " break long lines
-set wrap                            	" wrap long lines
 
 set clipboard=unnamed                   " allow copy/paste from system
 set hidden                              " hide unloaded buffers
