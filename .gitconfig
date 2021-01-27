@@ -7,3 +7,5 @@
 [alias]
 	adco = !git add -A && git commit
 	sta = !git status
+[core]
+	excludefiles = /Users/fgu/.gitignore
