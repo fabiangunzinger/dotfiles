@@ -12,6 +12,8 @@ alias ll='ls -o'
 alias lla='ls -ao'
 alias copy='pwd | pbcopy'
 
+alias iot='itermocil tracker'
+
 alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
@@ -33,6 +35,7 @@ alias dtr='cd ~/dev/projects/uk-tracker'
 alias dtrc='cd ~/dev/projects/uk-tracker/code'
 alias ddf='cd ~/dev/projects/dotfiles'
 
+alias dfa='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab'
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
 alias dla='cd /Users/fgu/Library/texmf/tex/latex/styfiles/'
@@ -105,7 +108,7 @@ alias aum='umount -f /Users/fgu/dev/remote_projects'
 alias atrs='open -a safari http://ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:8787'
 
 # download file from ec2 to Mac
-function atdl() { scp -i ~/.aws/ec2-tracker-fgu.pem fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:$1 ~/Downloads/; }
+function atdl() { scp -i ~/.aws/ec2-tracker-fgu.pem fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:$1 $2; }
 
 function atul() { scp -i ~/.aws/ec2-tracker-fgu.pem $1 fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:/data; }
 
