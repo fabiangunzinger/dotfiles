@@ -55,6 +55,14 @@ alias gs='git status'
 alias ga='git add --all'
 function gc() { git commit -m "$1"; }
 function gg() { git add --all; git commit -m "$1"; git push; }
+function gb() { git branch; }
+function gco() { git checkout "$1"; }
+function gcm() { git checkout master; }
+function gcd() { git checkout dev; }
+function gm() { git merge "$1"; }
+function gmd() { git merge dev; }
+function gcb() { git checkout -b "$1"; }
+function gbd() { git branch -d "$1"; }
 alias gp='git push'
 alias gl='git log'
 
@@ -109,7 +117,7 @@ function asy() { aws s3 sync $1 $2; }
 function lrp() { ps aux | grep $1; }
 
 # pull latest fable data
-alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://raw-fable'
+alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://raw-fable'
 # alias atjc='ssh -i ~/.aws/fgu-tracker-key.pem -N -f -L 9999:localhost:9999 ec2-user@ec2-3-8-141-132.eu-west-2.compute.amazonaws.com'
 
 
