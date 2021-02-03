@@ -5,6 +5,7 @@ windows:
     panes:
       - commands:
         - atco
+        - sleep 3
         - dtr
         - gs
         name: vm
