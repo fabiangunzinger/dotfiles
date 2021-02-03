@@ -1,7 +1,8 @@
 " fabian gunzinger's vimrc.
 
-" plugins (using vim-plug) {{{1
+" plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" i'm using vim-plug for plugin management
 call plug#begin()
 Plug 'mileszs/ack.vim'
 Plug 'ctrlpvim/ctrlp.vim'              
@@ -15,16 +16,20 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'tpope/vim-commentary'
 Plug 'nvie/vim-flake8'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'
+Plug 'sheerun/vim-polyglot'
 Plug 'ivanov/vim-ipython'
 Plug 'rakr/vim-one'
 Plug 'jpalardy/vim-slime'
+" Plug 'mhinz/vim-startify'
 Plug 'hashivim/vim-terraform'
-
 " Plug 'garbas/vim-snipmate'
 Plug 'mg979/vim-visual-multi'
 " Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
+nnoremap <leader>pi :PlugInstall<cr>
+nnoremap <leader>pc :PlugClean<cr>
 
 " vim-slime  {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -57,9 +62,8 @@ set wrap                            	" wrap long lines
 set linebreak                           " don't break word
 set nolist                              " list breaks linebreak
 
-
 set colorcolumn=80                      " color 80th column
-" set textwidth=80                        " break long lines
+" set textwidth=80                      " break long lines
 
 set clipboard=unnamed                   " allow copy/paste from system
 set hidden                              " hide unloaded buffers
@@ -68,10 +72,20 @@ set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
 set number				                " show line numers
 set mouse=a
-" set relativenumber                      " relative line numers
+" set relativenumber                    " relative line numers
 set ruler                           	" show curser position
 set showcmd			                    " show partial command
 set wildmenu                        	" turn wild menu on
+
+" panes
+set splitright                          " new vertical split on the right
+set splitbelow                          " new horizontal split below
+
+
+" buffers {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" delete current buffer wihtout closing window (by moving to previous)
+command Bd bp\|bd \#
 
 
 " mappings {{{1
@@ -91,6 +105,13 @@ set wildmenu                        	" turn wild menu on
 " set leader
 let mapleader=','
 
+" " switch tabs
+" map <D-S-]> gt
+" map <D-S-[> gT
+" map <D-1> 1gt
+" map <D-2> 2gt
+
+
 " distraction free writing
 nnoremap <leader>d :Goyo<cr>
 
@@ -98,15 +119,10 @@ nnoremap <leader>d :Goyo<cr>
 nnoremap <leader>gs :Git status<cr>
 nnoremap <leader>gg :call GitLazyPush()<cr>
 
-
 " nerdtree
 nnoremap <leader>nn :NERDTreeToggle<cr>
 nnoremap <leader>nv :NERDTreeToggleVCS<cr>
 nnoremap <leader>nf :NERDTreeFocus<cr>
-
-" plugins
-nnoremap <leader>pi :PlugInstall<cr>
-nnoremap <leader>pc :PlugClean<cr>
 
 " tabs
 map <leader>tn :tabnew<cr>
@@ -158,8 +174,6 @@ function! GitLazyPush()
     :Git push   
 endfunction
 
-
-
 " search {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ignorecase                          " case insensitive search
@@ -174,13 +188,23 @@ map <leader><space> :nohlsearch<cr>
 " colors and fonts {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                           " syntax highlighting
+let python_highlight_all=1
 set background=dark
 colorscheme solarized                   " custom colorscheme
 " colorscheme one
 
 " status bar colorscheme
 let g:lightline = {'colorscheme': 'solarized'}
-" tabs {{{1
+
+
+"" sessions
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"let g:sessions_dir = '~/.vim/vim-sessions'
+"exec 'nnoremap <Leader>ss :mksession! ' . g:session_dir . '/'
+"exec 'nnoremap <Leader>sr :source ' . g:session_dir . '/'
+
+
+" tab stops {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab                           " tabs are spaces
 set shiftwidth=4                        " spaces for autoindent
@@ -232,6 +256,9 @@ endfunction
 
 autocmd! User GoyoEnter :call GoyoEnterSettings()
 autocmd! User GoyoLeave :call GoyoLeaveSettings()
+
+" nerdtree {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " file settings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

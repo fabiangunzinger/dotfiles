@@ -11,14 +11,18 @@ alias la='ls -a'
 alias ll='ls -o'
 alias lla='ls -ao'
 alias copy='pwd | pbcopy'
-
-alias iot='itermocil tracker'
-
+alias tf='terraform'
 alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
 
-alias tf='terraform'
+# projects
+alias dit='cd ~/dev/projects/dotfiles/.itermocil'
+alias itt='itermocil tracker'
+alias itb='itermocil blog'
+complete -W "$(itermocil --list)" itermocil
+
+alias ptr='atmo; dre; vim'
 
 # navigation
 alias dde='cd ~/dev'
@@ -109,6 +113,7 @@ function atul() { scp -i ~/.aws/ec2-tracker-fgu.pem $1 fgu@ec2-18-135-13-11.eu-w
 function asy() { aws s3 sync $1 $2; }
 
 # list running processes with keyword
+alias larp='ps aux'
 function lrp() { ps aux | grep $1; }
 
 # pull latest fable data
