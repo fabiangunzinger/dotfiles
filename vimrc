@@ -76,7 +76,6 @@ set wildmenu                        	" turn wild menu on
 set splitright                          " new vertical split on the right
 set splitbelow                          " new horizontal split below
 
-
 " buffers {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " delete current buffer wihtout closing window (by moving to previous)
@@ -91,7 +90,6 @@ command Bd bp\|bd \#
 " g git
 " n nerdtree
 " p plugins
-" s saving session
 " t tabs
 " u gundo tree
 " v vimrc
@@ -102,6 +100,9 @@ let mapleader=','
 
 " distraction free writing
 nnoremap <leader>df :Goyo<cr>
+
+" toggle spell checker
+map <leader>sc :setlocal spell!<cr>
 
 " git
 nnoremap <leader>gs :Git status<cr>
@@ -129,15 +130,12 @@ map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
 " save file
 nmap <leader>w :w!<cr>
 
-" save session
-nnoremap <leader>s :mksession<cr>
-
 " toggle gundo
 nnoremap <leader>u :GundoToggle<cr>
 
 " edit and source vimrc
 map <leader>ve :vsp $MYVIMRC<cr>
-map <leader>vs :w<cr>:source $MYVIMRC<cr>
+map <leader>vs :source $MYVIMRC<cr>
 
 " more accessible escape
 inoremap jk <esc>
@@ -157,6 +155,18 @@ cnoremap <C-A> <home>
 cnoremap <C-E> <End>
 cnoremap <C-K> <C-U>
 
+
+" sessions {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:session_dir = '~/.vim/vim-sessions/'
+" list *.vim files and then delete pattern so i can starty typing
+let g:files_list = '*.vim<c-d><bs><bs><bs><bs><bs>'
+
+" save session (override existing)
+exec 'nnoremap <leader>ss :Obsession' . g:session_dir . g:files_list
+
+" restore session (auto tracks changes if exited with !qa)
+exec 'nnoremap <leader>sr :source' . g:session_dir . g:files_list
 
 " git {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -192,13 +202,6 @@ colorscheme solarized                   " custom colorscheme
 let g:lightline = {'colorscheme': 'solarized'}
 
 
-"" sessions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:sessions_dir = '~/.vim/vim-sessions'
-"exec 'nnoremap <Leader>ss :mksession! ' . g:session_dir . '/'
-"exec 'nnoremap <Leader>sr :source ' . g:session_dir . '/'
-
-
 " tab stops {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set expandtab                           " tabs are spaces
@@ -215,24 +218,6 @@ set foldlevelstart=99                   " open file with all folds open
 
 " toggle fold under cursor
 nnoremap <space> za
-
-
-" spelling {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" toggle spell checker
-map <leader>ss :setlocal spell!<cr>
-
-" move to next word
-map <leader>sn ]s                  
-
-" move to previous word
-map <leader>sp [s                  
-
-" add word as good
-map <leader>sa zg                  
-
-" show suggestions for word
-map <leader>ss z=                  
 
 
 " writing mode {{{1
