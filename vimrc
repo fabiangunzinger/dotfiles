@@ -1,5 +1,4 @@
 " fabian gunzinger's vimrc.
-
 " plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " i'm using vim-plug for plugin management
@@ -13,10 +12,11 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/seoul256.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-commentary'
 Plug 'nvie/vim-flake8'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
 Plug 'ivanov/vim-ipython'
 Plug 'rakr/vim-one'
@@ -30,11 +30,6 @@ call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pc :PlugClean<cr>
-
-" vim-slime  {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:slime_target = "tmux"
 
 
 " general {{{1
@@ -77,7 +72,7 @@ set ruler                           	" show curser position
 set showcmd			                    " show partial command
 set wildmenu                        	" turn wild menu on
 
-" panes
+" splits
 set splitright                          " new vertical split on the right
 set splitbelow                          " new horizontal split below
 
@@ -105,15 +100,8 @@ command Bd bp\|bd \#
 " set leader
 let mapleader=','
 
-" " switch tabs
-" map <D-S-]> gt
-" map <D-S-[> gT
-" map <D-1> 1gt
-" map <D-2> 2gt
-
-
 " distraction free writing
-nnoremap <leader>d :Goyo<cr>
+nnoremap <leader>df :Goyo<cr>
 
 " git
 nnoremap <leader>gs :Git status<cr>
@@ -130,6 +118,13 @@ map <leader>tc :tabclose<cr>
 map <leader>t<leader> :tabnext<cr>
 " Open new tab with current buffer's path
 map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
+
+" " switch tabs
+" map <D-S-]> gt
+" map <D-S-[> gT
+" map <D-1> 1gt
+" map <D-2> 2gt
+
 
 " save file
 nmap <leader>w :w!<cr>
