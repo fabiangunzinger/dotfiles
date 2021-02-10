@@ -51,12 +51,10 @@ set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " user interface {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " text wrapping
 set wrap                            	" wrap long lines
 set linebreak                           " don't break word
 set nolist                              " list breaks linebreak
-
 set colorcolumn=80                      " color 80th column
 " set textwidth=80                      " break long lines
 
@@ -76,6 +74,7 @@ set wildmenu                        	" turn wild menu on
 set splitright                          " new vertical split on the right
 set splitbelow                          " new horizontal split below
 
+
 " buffers {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " delete current buffer wihtout closing window (by moving to previous)
@@ -84,7 +83,6 @@ command Bd bp\|bd \#
 
 " mappings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " leader mappings
 " d distraction free writing
 " g git
@@ -116,16 +114,8 @@ nnoremap <leader>nf :NERDTreeFocus<cr>
 " tabs
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
-map <leader>t<leader> :tabnext<cr>
 " Open new tab with current buffer's path
 map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
-
-" " switch tabs
-" map <D-S-]> gt
-" map <D-S-[> gT
-" map <D-1> 1gt
-" map <D-2> 2gt
-
 
 " save file
 nmap <leader>w :w!<cr>
@@ -168,6 +158,7 @@ exec 'nnoremap <leader>ss :Obsession' . g:session_dir . g:files_list
 " restore session (auto tracks changes if exited with !qa)
 exec 'nnoremap <leader>sr :source' . g:session_dir . g:files_list
 
+
 " git {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! GitLazyPush()
@@ -178,6 +169,7 @@ function! GitLazyPush()
     :execute ":Git commit -m ".'"'.msg.'"'
     :Git push   
 endfunction
+
 
 " search {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -201,6 +193,9 @@ colorscheme solarized                   " custom colorscheme
 " status bar colorscheme
 let g:lightline = {'colorscheme': 'solarized'}
 
+" vertical split color
+highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
+
 
 " tab stops {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -222,7 +217,6 @@ nnoremap <space> za
 
 " writing mode {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " custom settings for writing mode
 function! GoyoEnterSettings()
     set background=light
@@ -237,10 +231,13 @@ endfunction
 autocmd! User GoyoEnter :call GoyoEnterSettings()
 autocmd! User GoyoLeave :call GoyoLeaveSettings()
 
+
 " nerdtree {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+
 
 " file settings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set modelines=1
-" vim:foldmethod=marker foldlevel=0
+" vim:foldmethod=marker:foldlevel=0
