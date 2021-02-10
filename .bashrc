@@ -16,7 +16,9 @@ alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
 
-np() { $(date +'%Y-%m-%d-') "$1"; }
+# blog shortcuts
+np() { vim $(date +'%Y-%m-%d-')"$1"; }
+ep() { vim $(find . -name *$1*); }
 
 # projects
 alias dit='cd ~/dev/projects/dotfiles/.itermocil'

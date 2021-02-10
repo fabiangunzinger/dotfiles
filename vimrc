@@ -1,4 +1,5 @@
 " fabian gunzinger's vimrc.
+
 " plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " i'm using vim-plug for plugin management
@@ -18,6 +19,8 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'ivanov/vim-ipython'
 Plug 'rakr/vim-one'
 Plug 'jpalardy/vim-slime'
@@ -30,6 +33,13 @@ call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pc :PlugClean<cr>
+
+" snippets {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" open editor in vertical split
+let g:UltiSnipsEditSplit="vertical"
+nnoremap <leader>use :UltiSnipsEdit<cr>
 
 
 " general {{{1
@@ -96,6 +106,9 @@ command Bd bp\|bd \#
 " set leader
 let mapleader=','
 
+" cycle through numbering options
+nnoremap <silent> <leader>r : call CycleNumbering()<cr>
+
 " distraction free writing
 nnoremap <leader>df :Goyo<cr>
 
@@ -121,7 +134,7 @@ map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
 nmap <leader>w :w!<cr>
 
 " toggle gundo
-nnoremap <leader>u :GundoToggle<cr>
+nnoremap <leader>gu :GundoToggle<cr>
 
 " edit and source vimrc
 map <leader>ve :vsp $MYVIMRC<cr>
@@ -234,6 +247,23 @@ autocmd! User GoyoLeave :call GoyoLeaveSettings()
 
 " nerdtree {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" helpers {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CycleNumbering()
+    if exists('+relativenumber')
+        execute {
+                    \ '00': 'set relativenumber   | set number',
+                    \ '01': 'set norelativenumber | set number',
+                    \ '10': 'set norelativenumber | set nonumber',
+                    \ '11': 'set norelativenumber | set number'}[&number . &relativenumber]
+    else
+        " No relative numbering, toggle numbers on and off
+        set number!<cr>
+    endif
+endfunction
+
+
 
 
 

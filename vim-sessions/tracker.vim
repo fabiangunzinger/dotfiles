@@ -100,11 +100,11 @@ setlocal fdn=20
 setlocal fen
 66
 normal! zo
-let s:l = 146 - ((55 * winheight(0) + 28) / 56)
+let s:l = 142 - ((51 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 146
+keepjumps 142
 normal! 05|
 wincmd w
 argglobal
@@ -174,12 +174,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 17 - ((0 * winheight(0) + 28) / 56)
+let s:l = 87 - ((20 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 17
-normal! 045|
+keepjumps 87
+normal! 08|
 wincmd w
 argglobal
 if bufexists("docs/notes/aws.md") | buffer docs/notes/aws.md | else | edit docs/notes/aws.md | endif
@@ -202,7 +202,7 @@ normal! 0
 wincmd w
 exe 'vert 1resize ' . ((&columns * 83 + 83) / 167)
 exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
-tabnext 2
+tabnext 3
 set stal=1
 badd +1 infra/tte-vm.tf
 badd +16 tracker/data/fable/fable.py
