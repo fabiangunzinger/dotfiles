@@ -74,8 +74,7 @@ set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
 set number				                " show line numers
-set mouse=a
-" set relativenumber                    " relative line numers
+set mouse=a                             " enable mouse in all modes
 set ruler                           	" show curser position
 set showcmd			                    " show partial command
 set wildmenu                        	" turn wild menu on
@@ -83,7 +82,6 @@ set wildmenu                        	" turn wild menu on
 " splits
 set splitright                          " new vertical split on the right
 set splitbelow                          " new horizontal split below
-
 
 " buffers {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -208,6 +206,9 @@ let g:lightline = {'colorscheme': 'solarized'}
 
 " vertical split color
 highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
+
+" remove split separator fill characters
+set fillchars=""
 
 
 " tab stops {{{1

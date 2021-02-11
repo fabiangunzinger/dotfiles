@@ -17,8 +17,8 @@ alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
 
 # blog shortcuts
-np() { vim $(date +'%Y-%m-%d-')"$1"; }
-ep() { vim $(find . -name *$1*); }
+pn() { vim $(date +'%Y-%m-%d-')"$1"; }
+pe() { vim $(find . -name *$1*); }
 
 # projects
 alias dit='cd ~/dev/projects/dotfiles/.itermocil'
@@ -26,6 +26,7 @@ alias itt='itermocil tracker'
 alias itb='itermocil blog'
 complete -W "$(itermocil --list)" itermocil
 
+# projects
 alias ptr='atmo; dre; vim'
 
 # navigation
