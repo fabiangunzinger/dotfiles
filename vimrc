@@ -71,8 +71,8 @@ set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
 set number				                " show line numers
+set relativenumber                    " relative line numers
 set mouse=a
-" set relativenumber                    " relative line numers
 set ruler                           	" show curser position
 set showcmd			                    " show partial command
 set wildmenu                        	" turn wild menu on
@@ -114,6 +114,10 @@ let mapleader=','
 
 " distraction free writing
 nnoremap <leader>d :Goyo<cr>
+
+" cycle through line-number options
+nnoremap <silent> <leader>r :call cycle_numbring()<cr>
+
 
 " git
 nnoremap <leader>gs :Git status<cr>
@@ -259,6 +263,7 @@ autocmd! User GoyoLeave :call GoyoLeaveSettings()
 
 " nerdtree {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " file settings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
