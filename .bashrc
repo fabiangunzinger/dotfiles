@@ -8,13 +8,17 @@
 
 # commands
 alias la='ls -a'
-alias ll='ls -o'
-alias lla='ls -ao'
+alias ll='ls -oh'
+alias lla='ls -aho'
 alias copy='pwd | pbcopy'
 alias tf='terraform'
 alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
+
+# blog shortcuts
+pn() { vim $(date +'%Y-%m-%d-')"$1"; }
+pe() { vim $(find . -name *$1*); }
 
 # projects
 alias dit='cd ~/dev/projects/dotfiles/.itermocil'
@@ -22,6 +26,7 @@ alias itt='itermocil tracker'
 alias itb='itermocil blog'
 complete -W "$(itermocil --list)" itermocil
 
+# projects
 alias ptr='atmo; dre; vim'
 
 # navigation
@@ -140,6 +145,13 @@ alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://raw-fable'
 # alias atum='umount -f /Users/fgu/dev/remote_projects'
 # alias atsa='aws ec2 start-instances --instance-ids i-035ee6232fc6eb131'
 # alias atso='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
+
+
+# aws tracker ubuntu instance
+# 3.8.201.147
+
+alias ate='ssh -i ~/.aws/ec2-tracker-fgu.pem -L 9999:localhost:9999 ubuntu@ec2-52-56-193-5.eu-west-2.compute.amazonaws.com'
+
 
 
 

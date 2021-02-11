@@ -13,11 +13,14 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/seoul256.vim'
 Plug 'tmhedberg/SimpylFold'
 Plug 'altercation/vim-colors-solarized'
-Plug 'tpope/vim-commentary'
 Plug 'nvie/vim-flake8'
+Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-surround'
 Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'ivanov/vim-ipython'
 Plug 'rakr/vim-one'
 Plug 'jpalardy/vim-slime'
@@ -31,10 +34,12 @@ call plug#end()
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pc :PlugClean<cr>
 
-" vim-slime  {{{1
+" snippets {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let g:slime_target = "tmux"
+" open editor in vertical split
+let g:UltiSnipsEditSplit="vertical"
+nnoremap <leader>use :UltiSnipsEdit<cr>
 
 
 " general {{{1
@@ -56,12 +61,10 @@ set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " user interface {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " text wrapping
 set wrap                            	" wrap long lines
 set linebreak                           " don't break word
 set nolist                              " list breaks linebreak
-
 set colorcolumn=80                      " color 80th column
 " set textwidth=80                      " break long lines
 
@@ -77,10 +80,9 @@ set ruler                           	" show curser position
 set showcmd			                    " show partial command
 set wildmenu                        	" turn wild menu on
 
-" panes
+" splits
 set splitright                          " new vertical split on the right
 set splitbelow                          " new horizontal split below
-
 
 " buffers {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -90,13 +92,11 @@ command Bd bp\|bd \#
 
 " mappings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " leader mappings
 " d distraction free writing
 " g git
 " n nerdtree
 " p plugins
-" s saving session
 " t tabs
 " u gundo tree
 " v vimrc
@@ -105,15 +105,14 @@ command Bd bp\|bd \#
 " set leader
 let mapleader=','
 
-" " switch tabs
-" map <D-S-]> gt
-" map <D-S-[> gT
-" map <D-1> 1gt
-" map <D-2> 2gt
-
+" cycle through numbering options
+nnoremap <silent> <leader>r : call CycleNumbering()<cr>
 
 " distraction free writing
-nnoremap <leader>d :Goyo<cr>
+nnoremap <leader>df :Goyo<cr>
+
+" toggle spell checker
+map <leader>sc :setlocal spell!<cr>
 
 " cycle through line-number options
 nnoremap <silent> <leader>r :call cycle_numbring()<cr>
@@ -131,22 +130,18 @@ nnoremap <leader>nf :NERDTreeFocus<cr>
 " tabs
 map <leader>tn :tabnew<cr>
 map <leader>tc :tabclose<cr>
-map <leader>t<leader> :tabnext<cr>
 " Open new tab with current buffer's path
 map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
 
 " save file
 nmap <leader>w :w!<cr>
 
-" save session
-nnoremap <leader>s :mksession<cr>
-
 " toggle gundo
-nnoremap <leader>u :GundoToggle<cr>
+nnoremap <leader>gu :GundoToggle<cr>
 
 " edit and source vimrc
 map <leader>ve :vsp $MYVIMRC<cr>
-map <leader>vs :w<cr>:source $MYVIMRC<cr>
+map <leader>vs :source $MYVIMRC<cr>
 
 " more accessible escape
 inoremap jk <esc>
@@ -167,6 +162,19 @@ cnoremap <C-E> <End>
 cnoremap <C-K> <C-U>
 
 
+" sessions {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:session_dir = '~/.vim/vim-sessions/'
+" list *.vim files and then delete pattern so i can starty typing
+let g:files_list = '*.vim<c-d><bs><bs><bs><bs><bs>'
+
+" save session (override existing)
+exec 'nnoremap <leader>ss :Obsession' . g:session_dir . g:files_list
+
+" restore session (auto tracks changes if exited with !qa)
+exec 'nnoremap <leader>sr :source' . g:session_dir . g:files_list
+
+
 " git {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! GitLazyPush()
@@ -177,6 +185,7 @@ function! GitLazyPush()
     :execute ":Git commit -m ".'"'.msg.'"'
     :Git push   
 endfunction
+
 
 " search {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -200,12 +209,11 @@ colorscheme solarized                   " custom colorscheme
 " status bar colorscheme
 let g:lightline = {'colorscheme': 'solarized'}
 
+" vertical split color
+highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
 
-"" sessions
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"let g:sessions_dir = '~/.vim/vim-sessions'
-"exec 'nnoremap <Leader>ss :mksession! ' . g:session_dir . '/'
-"exec 'nnoremap <Leader>sr :source ' . g:session_dir . '/'
+" remove split separator fill characters
+set fillchars=""
 
 
 " tab stops {{{1
@@ -226,27 +234,8 @@ set foldlevelstart=99                   " open file with all folds open
 nnoremap <space> za
 
 
-" spelling {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" toggle spell checker
-map <leader>ss :setlocal spell!<cr>
-
-" move to next word
-map <leader>sn ]s                  
-
-" move to previous word
-map <leader>sp [s                  
-
-" add word as good
-map <leader>sa zg                  
-
-" show suggestions for word
-map <leader>ss z=                  
-
-
 " writing mode {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " custom settings for writing mode
 function! GoyoEnterSettings()
     set background=light
@@ -261,11 +250,26 @@ endfunction
 autocmd! User GoyoEnter :call GoyoEnterSettings()
 autocmd! User GoyoLeave :call GoyoLeaveSettings()
 
+
 " nerdtree {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" helpers {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! CycleNumbering()
+    if exists('+relativenumber')
+        execute {
+                    \ '00': 'set relativenumber   | set number',
+                    \ '01': 'set norelativenumber | set number',
+                    \ '10': 'set norelativenumber | set nonumber',
+                    \ '11': 'set norelativenumber | set number'}[&number . &relativenumber]
+    else
+        " No relative numbering, toggle numbers on and off
+        set number!<cr>
+    endif
+endfunction
 
 " file settings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set modelines=1
-" vim:foldmethod=marker foldlevel=0
+" vim:foldmethod=marker:foldlevel=0
