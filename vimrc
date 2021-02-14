@@ -28,7 +28,7 @@ Plug 'jpalardy/vim-slime'
 Plug 'hashivim/vim-terraform'
 " Plug 'garbas/vim-snipmate'
 Plug 'mg979/vim-visual-multi'
-" Plug 'ycm-core/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
@@ -37,10 +37,16 @@ nnoremap <leader>pc :PlugClean<cr>
 " snippets {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" open editor in vertical split
-let g:UltiSnipsEditSplit="vertical"
-nnoremap <leader>use :UltiSnipsEdit<cr>
+" open editor in vertical split 
+let g:UltiSnipsEditSplit = "vertical"   
 
+" " use tab for expansion and movement
+" let g:UltiSnipsExpandTrigger = '<tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<tab>'
+" let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
+
+" edit snippets
+nnoremap <leader>use :UltiSnipsEdit<cr>
 
 " general {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -113,10 +119,6 @@ nnoremap <leader>df :Goyo<cr>
 
 " toggle spell checker
 map <leader>sc :setlocal spell!<cr>
-
-" cycle through line-number options
-nnoremap <silent> <leader>r :call cycle_numbring()<cr>
-
 
 " git
 nnoremap <leader>gs :Git status<cr>

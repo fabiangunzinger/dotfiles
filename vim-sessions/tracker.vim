@@ -15,39 +15,14 @@ set stal=2
 tabnew
 tabnew
 tabrewind
-edit infra/tte-vm.tf
+edit vm-setup.sh
 set splitbelow splitright
-wincmd _ | wincmd |
-vsplit
-1wincmd h
-wincmd w
 wincmd t
 set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 82 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 84 + 83) / 167)
 argglobal
-balt vm-setup.sh
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=99
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let s:l = 29 - ((27 * winheight(0) + 28) / 56)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 29
-normal! 033|
-wincmd w
-argglobal
-if bufexists("vm-setup.sh") | buffer vm-setup.sh | else | edit vm-setup.sh | endif
 balt docs/notes/aws.md
 setlocal fdm=manual
 setlocal fde=0
@@ -58,17 +33,14 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 19 - ((18 * winheight(0) + 28) / 56)
+let s:l = 12 - ((11 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 19
-normal! 0
-wincmd w
-exe 'vert 1resize ' . ((&columns * 82 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 84 + 83) / 167)
+keepjumps 12
+normal! 013|
 tabnext
-edit tracker/data/fable/fable.py
+edit tracker/data/fable/merchant_hierarchy.py
 set splitbelow splitright
 wincmd _ | wincmd |
 vsplit
@@ -83,11 +55,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 83 + 83) / 167)
-exe '2resize ' . ((&lines * 27 + 29) / 59)
-exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
-exe '3resize ' . ((&lines * 28 + 29) / 59)
-exe 'vert 3resize ' . ((&columns * 83 + 83) / 167)
+exe 'vert 1resize ' . ((&columns * 80 + 68) / 136)
+exe '2resize ' . ((&lines * 28 + 29) / 59)
+exe 'vert 2resize ' . ((&columns * 55 + 68) / 136)
+exe '3resize ' . ((&lines * 27 + 29) / 59)
+exe 'vert 3resize ' . ((&columns * 55 + 68) / 136)
 argglobal
 balt tracker/data/fable/fable.py
 setlocal fdm=expr
@@ -98,14 +70,12 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-66
-normal! zo
-let s:l = 142 - ((51 * winheight(0) + 28) / 56)
+let s:l = 26 - ((25 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 142
-normal! 05|
+keepjumps 26
+normal! 027|
 wincmd w
 argglobal
 if bufexists("tracker/data/fable/tests/test_fable.py") | buffer tracker/data/fable/tests/test_fable.py | else | edit tracker/data/fable/tests/test_fable.py | endif
@@ -118,12 +88,12 @@ setlocal fdl=99
 setlocal fml=1
 setlocal fdn=20
 setlocal fen
-let s:l = 11 - ((10 * winheight(0) + 13) / 27)
+let s:l = 27 - ((26 * winheight(0) + 14) / 28)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 11
-normal! 0
+keepjumps 27
+normal! 025|
 wincmd w
 argglobal
 if bufexists("Makefile") | buffer Makefile | else | edit Makefile | endif
@@ -137,18 +107,18 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 16 - ((7 * winheight(0) + 14) / 28)
+let s:l = 46 - ((22 * winheight(0) + 13) / 27)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 16
-normal! 031|
+keepjumps 46
+normal! 04|
 wincmd w
-exe 'vert 1resize ' . ((&columns * 83 + 83) / 167)
-exe '2resize ' . ((&lines * 27 + 29) / 59)
-exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
-exe '3resize ' . ((&lines * 28 + 29) / 59)
-exe 'vert 3resize ' . ((&columns * 83 + 83) / 167)
+exe 'vert 1resize ' . ((&columns * 80 + 68) / 136)
+exe '2resize ' . ((&lines * 28 + 29) / 59)
+exe 'vert 2resize ' . ((&columns * 55 + 68) / 136)
+exe '3resize ' . ((&lines * 27 + 29) / 59)
+exe 'vert 3resize ' . ((&columns * 55 + 68) / 136)
 tabnext
 edit docs/notes/meeting_notes.md
 set splitbelow splitright
@@ -161,8 +131,8 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 83 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
+exe 'vert 1resize ' . ((&columns * 80 + 68) / 136)
+exe 'vert 2resize ' . ((&columns * 55 + 68) / 136)
 argglobal
 balt docs/notes/meeting_notes.md
 setlocal fdm=manual
@@ -174,12 +144,12 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 87 - ((20 * winheight(0) + 28) / 56)
+let s:l = 3 - ((2 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 87
-normal! 08|
+keepjumps 3
+normal! 0215|
 wincmd w
 argglobal
 if bufexists("docs/notes/aws.md") | buffer docs/notes/aws.md | else | edit docs/notes/aws.md | endif
@@ -193,31 +163,31 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-let s:l = 211 - ((35 * winheight(0) + 28) / 56)
+let s:l = 1 - ((0 * winheight(0) + 29) / 58)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 211
+keepjumps 1
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 83 + 83) / 167)
-exe 'vert 2resize ' . ((&columns * 83 + 83) / 167)
-tabnext 3
+exe 'vert 1resize ' . ((&columns * 80 + 68) / 136)
+exe 'vert 2resize ' . ((&columns * 55 + 68) / 136)
+tabnext 2
 set stal=1
-badd +1 infra/tte-vm.tf
-badd +16 tracker/data/fable/fable.py
-badd +17 docs/notes/meeting_notes.md
-badd +13 vm-setup.sh
+badd +1 vm-setup.sh
+badd +25 tracker/data/fable/fable.py
+badd +1 docs/notes/meeting_notes.md
 badd +1 docs/notes/aws.md
+badd +1 tracker/data/fable/tests/test_fable.py
 badd +16 Makefile
+badd +29 infra/tte-vm.tf
 badd +1 tracker/data/fable/client_main.py
 badd +1 tracker/data/config.py
 badd +1 tracker/data/ons/ons.py
 badd +17 tracker/data/ons/tests/test_ons.py
-badd +1 tracker/data/fable/merchant_hierarchy.py
+badd +26 tracker/data/fable/merchant_hierarchy.py
 badd +56 tracker/data/helpers.py
 badd +1 infra/terraform.tfstate.backup
-badd +0 tracker/data/fable/tests/test_fable.py
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
