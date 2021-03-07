@@ -4,31 +4,35 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " i'm using vim-plug for plugin management
 call plug#begin()
-Plug 'mileszs/ack.vim'
-Plug 'ctrlpvim/ctrlp.vim'              
-Plug 'junegunn/goyo.vim'
-Plug 'sjl/gundo.vim'
-Plug 'itchyny/lightline.vim'
-Plug 'preservim/nerdtree'
-Plug 'junegunn/seoul256.vim'
-Plug 'tmhedberg/SimpylFold'
 Plug 'altercation/vim-colors-solarized'
+Plug 'ctrlpvim/ctrlp.vim'              
+" Plug 'garbas/vim-snipmate'
+Plug 'hashivim/vim-terraform'
+Plug 'honza/vim-snippets'
+Plug 'itchyny/lightline.vim'
+Plug 'ivanov/vim-ipython'
+Plug 'jpalardy/vim-slime'
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/seoul256.vim'
+Plug 'mg979/vim-visual-multi'
+" Plug 'mhinz/vim-startify'
+Plug 'mileszs/ack.vim'
 Plug 'nvie/vim-flake8'
+
+Plug 'ncm2/ncm2'    " code completion
+Plug 'roxma/nvim-yarp'      " dependency of above
+
+Plug 'preservim/nerdtree'
+Plug 'rakr/vim-one'
+Plug 'sheerun/vim-polyglot'
+Plug 'SirVer/ultisnips'
+Plug 'sjl/gundo.vim'
+Plug 'tmhedberg/SimpylFold'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-surround'
-Plug 'sheerun/vim-polyglot'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'ivanov/vim-ipython'
-Plug 'rakr/vim-one'
-Plug 'jpalardy/vim-slime'
-" Plug 'mhinz/vim-startify'
-Plug 'hashivim/vim-terraform'
-" Plug 'garbas/vim-snipmate'
-Plug 'mg979/vim-visual-multi'
-Plug 'ycm-core/YouCompleteMe'
+" Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
@@ -70,9 +74,9 @@ set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 " text wrapping
 set wrap                            	" wrap long lines
 set linebreak                           " don't break word
-set nolist                              " list breaks linebreak
+set nolist                              " list option interferes with linebreak
 set colorcolumn=80                      " color 80th column
-" set textwidth=80                      " break long lines
+set textwidth=80                        " wrap at 80th colomn
 
 set clipboard=unnamed                   " allow copy/paste from system
 set hidden                              " hide unloaded buffers
