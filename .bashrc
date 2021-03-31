@@ -1,10 +1,12 @@
-#
 # fabian gunzinger's .bashrc
-#
 
 
 # aliases
 ############################################################################
+
+# temp
+alias dto='cd ~/dev/projects/applications/assignments/tesco'
+
 
 # commands
 alias la='ls -a'
@@ -17,8 +19,8 @@ alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
 
 # blog shortcuts
-pn() { vim $(date +'%Y-%m-%d-')"$1"; }
-pe() { vim $(find . -name *$1*); }
+pn() { nvim $(date +'%Y-%m-%d-')"$1"; }
+pe() { nvim $(find . -name *$1*); }
 
 # projects
 alias dit='cd ~/dev/projects/dotfiles/.itermocil'
@@ -27,21 +29,23 @@ alias itb='itermocil blog'
 complete -W "$(itermocil --list)" itermocil
 
 # projects
-alias ptr='atmo; dre; vim'
+alias ptr='atmo; dre; nvim'
 
 # navigation
 alias dde='cd ~/dev'
 alias dpr='cd ~/dev/projects'
 alias dre='cd ~/dev/remote_projects'
 alias dli='cd ~/dev/projects/limo'
+alias dcl='cd ~/dev/projects/clean-cleaning'
 alias dap='cd ~/dev/projects/applications'
 alias dha='cd ~/dev/projects/habits/'
 alias dle='cd ~/dev/projects/learning/'
 alias dbl='cd ~/dev/projects/blog'
 alias dblp='cd ~/dev/projects/blog/_posts'
+alias dbln='cd ~/dev/projects/blog/_notebooks'
 alias dfo='cd ~/dev/projects/food-tracker'
-alias dtr='cd ~/dev/projects/uk-tracker'
-alias dtrc='cd ~/dev/projects/uk-tracker/code'
+alias dtr='cd ~/dev/projects/te/tracker'
+alias dtra='cd ~/dev/projects/te/admin'
 alias ddf='cd ~/dev/projects/dotfiles'
 
 alias dfa='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab'
@@ -52,10 +56,10 @@ alias dju='cd /Users/fgu/Library/Jupyter/snippets'
 alias dte='cd /Users/fgu/tmp'
 
 # dotfiles
-alias fb='vim ~/.bashrc'
+alias fb='nvim ~/.bashrc'
 alias sb='source ~/.bashrc'
-alias ftm='vim ~/.tmux.conf'
-alias fv='vim ~/.vim/vimrc'
+alias ftm='nvim ~/.tmux.conf'
+alias fv='nvim ~/.config/nvim/init.vim'
 
 alias juno='jupyter notebook'
 alias jula='jupyter lab'
@@ -63,30 +67,37 @@ alias clh='open -a safari https://localhost:9999'
 alias sdo='StataSE -e do'
 
 # git
-alias gs='git status'
+alias gs='git status -u'
 alias ga='git add --all'
+function gac() { git add --all; git commit -m "$1"; }
 function gc() { git commit -m "$1"; }
 function gg() { git add --all; git commit -m "$1"; git push; }
 function gb() { git branch; }
 function gco() { git checkout "$1"; }
-function gcm() { git checkout master; }
+function gcm() { git checkout main; }
+function gcmm() { git checkout master; }
 function gcd() { git checkout dev; }
 function gm() { git merge "$1"; }
 function gmd() { git merge dev; }
 function gcb() { git checkout -b "$1"; }
 function gbd() { git branch -d "$1"; }
 alias gp='git push'
-alias gl='git log'
+alias gl='git log --oneline'
 
 # conda
 function ca() { conda activate "$1"; }
 function ce() { conda deactivate; }
 alias cl='conda list'
+function cik() { python -m ipykernel install --user --name="$1"; }
+
+# pandoc
+function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
 
 
 # aws (on Macbook)
-############################################################################
+# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# 
 # commands with a prefix are for my personal account and instance; those with
 # at prefix, for uk-tracker account and instance.
 
@@ -108,10 +119,21 @@ alias atis='aws ec2 describe-instance-status --instance-ids i-07803e23266a1d0fd'
 alias asta='aws ec2 start-instances --instance-ids i-035ee6232fc6eb131'
 alias asto='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
 
-# mount and unmount project dir, so I can access and edit ec2 files locally
+# mount and unmount project dir
+
+mac_ip=80.43.66.208/32
+te_ip=fgu@18.135.13.11
+
+
+alias mmat='sshfs fgu@$mac_ip:/Users/fgu/dev/projects/te/tracker
+/home/fgu/dev/remote -o IdentityFile=/Users/fgu/.aws/ec2-tracker-fgu.pem'
+
 alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
+
 alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/ec2-tracker-fgu.pem'
+
 alias aum='umount -f /Users/fgu/dev/remote_projects'
+
 
 # open RStudio server
 alias atrs='open -a safari http://ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:8787'
