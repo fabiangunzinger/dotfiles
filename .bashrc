@@ -121,16 +121,15 @@ alias asto='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
 
 # mount and unmount project dir
 
-mac_ip=80.43.66.208/32
+mac_ip=80.43.66.208
 te_ip=fgu@18.135.13.11
 
 
-alias mmat='sshfs mac_ip:/Users/fgu/dev/projects/te/tracker
-/home/fgu/dev/remote -o IdentityFile=/Users/fgu/.aws/ec2-tracker-fgu.pem'
+alias mmat='sshfs fgu@$mac_ip:/Users/fgu/dev/projects/te/tracker /home/fgu/dev/remote'
 
 alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
 
-alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/ec2-tracker-fgu.pem'
+alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote_projects/ -o identityfile=/users/fgu/.aws/ec2-tracker-fgu.pem'
 
 alias aum='umount -f /Users/fgu/dev/remote_projects'
 
