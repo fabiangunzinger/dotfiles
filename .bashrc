@@ -125,7 +125,7 @@ mac_ip=80.43.66.208/32
 te_ip=fgu@18.135.13.11
 
 
-alias mmat='sshfs fgu@$mac_ip:/Users/fgu/dev/projects/te/tracker
+alias mmat='sshfs mac_ip:/Users/fgu/dev/projects/te/tracker
 /home/fgu/dev/remote -o IdentityFile=/Users/fgu/.aws/ec2-tracker-fgu.pem'
 
 alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
