@@ -22,11 +22,11 @@ function tma() { tmux attach-session -t "$1"; }
 pn() { nvim $(date +'%Y-%m-%d-')"$1"; }
 pe() { nvim $(find . -name *$1*); }
 
-# projects
-alias dit='cd ~/dev/projects/dotfiles/.itermocil'
-alias itt='itermocil tracker'
-alias itb='itermocil blog'
-complete -W "$(itermocil --list)" itermocil
+# # projects
+# alias dit='cd ~/dev/projects/dotfiles/.itermocil'
+# alias itt='itermocil tracker'
+# alias itb='itermocil blog'
+# complete -W "$(itermocil --list)" itermocil
 
 # projects
 alias ptr='atmo; dre; nvim'
