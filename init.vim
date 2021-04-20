@@ -2,21 +2,28 @@
 
 " plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" i'm using vim-plug for plugin management
+" activate vim-plug
 call plug#begin()
-
 Plug 'ctrlpvim/ctrlp.vim'              
-" Plug 'garbas/vim-snipmate'
-Plug 'hashivim/vim-terraform'
 Plug 'itchyny/lightline.vim'   " statusbar
-Plug 'ivanov/vim-ipython'
-Plug 'jpalardy/vim-slime'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/seoul256.vim'
-Plug 'mg979/vim-visual-multi'
+Plug 'altercation/vim-colors-solarized'   " colorscheme
+Plug 'preservim/nerdtree'   " explore filetree
+Plug 'tpope/vim-commentary'   " commenting
+Plug 'tpope/vim-eunuch'   " unix shell commands
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-obsession'   " session management
+Plug 'tpope/vim-surround'   " surround shortcuts
+
+" Plug 'garbas/vim-snipmate'
+" Plug 'hashivim/vim-terraform'
+" Plug 'ivanov/vim-ipython'
+" Plug 'jpalardy/vim-slime'
+" Plug 'junegunn/goyo.vim'
+" Plug 'junegunn/seoul256.vim'
+" Plug 'mg979/vim-visual-multi'
 " Plug 'mhinz/vim-startify'
-Plug 'mileszs/ack.vim'
-Plug 'nvie/vim-flake8'
+" Plug 'mileszs/ack.vim'
+" Plug 'nvie/vim-flake8'
 " Plug 'ycm-core/YouCompleteMe'
 " Plug 'ncm2/ncm2'   " code autocomplete
 " Plug 'roxma/nvim-yarp'   " ncm dependency
@@ -27,71 +34,21 @@ Plug 'nvie/vim-flake8'
 " Plug 'ncm2/ncm2-ultisnips'   " ncm completion source
 " Plug 'gaalcaras/ncm-R'   " ncm completion source
 " Plug 'oncomouse/ncm2-biblatex'   " ncm completion source
-
-Plug 'lervag/vimtex'   " latex support
-Plug 'altercation/vim-colors-solarized'   " colorscheme
-Plug 'preservim/nerdtree'   " explore filetree
-
+" Plug 'lervag/vimtex'   " latex support
 " Plug 'eslint/eslint' " js linter
-Plug 'pangloss/vim-javascript'   " better js indenting
-
-Plug 'rakr/vim-one'   " colorscheme
-Plug 'sheerun/vim-polyglot'
-
-Plug 'SirVer/ultisnips'   " snippets engine
-Plug 'honza/vim-snippets'   " snippets for engine
+" Plug 'pangloss/vim-javascript'   " better js indenting
+" Plug 'rakr/vim-one'   " colorscheme
+" Plug 'sheerun/vim-polyglot'
+" Plug 'SirVer/ultisnips'   " snippets engine
+" Plug 'honza/vim-snippets'   " snippets for engine
 " Plug 'ervandew/supertab'   " make ultisnip and ycm compatible
-Plug 'sjl/gundo.vim'
-Plug 'tmhedberg/SimpylFold'
-Plug 'tpope/vim-commentary'   " commenting
-Plug 'tpope/vim-eunuch'   " unix shell commands
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-obsession'   " session management
-Plug 'tpope/vim-surround'   " surround shortcuts
+" Plug 'sjl/gundo.vim'
+" Plug 'tmhedberg/SimpylFold'
 " Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
 nnoremap <leader>pc :PlugClean<cr>
-
-" status bar {{{1
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:lightline = {
-    \ 'colorscheme': 'solarized',
-    \ 'active': {
-    \   'left': [ ['mode', 'paste'],
-    \             ['gitbranch', 'readonly', 'filename', 'modified'] ] 
-    \ },
-    \ 'component_function': {
-    \   'gitbranch': 'FugitiveHead'
-    \ },
-    \ }
-
-" code completion {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" enable ncm2 for all buffers
-" autocmd BufEnter * call ncm2#enable_for_buffer()
-
-" set completeopt=noinsert,menuone,noselect   " completion behaviour
-" set shortmess+=c                        " suppress warning messages
-
-
-
-" snippets {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" open editor in vertical split 
-let g:UltiSnipsEditSplit = "vertical"   
-
-" use tab for expansion and movement
-let g:UltiSnipsExpandTrigger = '<S-tab>'
-let g:UltiSnipsJumpForwardTrigger = '<c-b>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
-
-" edit snippets
-nnoremap <leader>se :UltiSnipsEdit<cr>
-
 
 " general {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -100,26 +57,6 @@ set encoding=utf8                       " standard encoding
 filetype plugin on			            " enable filetype plugins
 filetype indent on                      " enable filetype indent
 set backspace=indent,eol,start          " more powerful backspace
-let g:gundo_prefer_python3 = 1          " make gundo use python3
-
-" Enable persistent undo (can undo changes from previous sessions)
-set undodir=~/.vim_runtime/temp_dirs/undodir
-set undofile
-
-" Ignore compiled files for filcard expansion and search
-set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-
-" Python settings
-let g:python3_host_prog='/Users/fgu/miniconda3/bin/python'
-
-" user interface {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" text wrapping
-set wrap                            	" wrap long lines
-set linebreak                           " don't break word
-set nolist                              " list option breaks linebreak
-set colorcolumn=80                      " color 80th column
-set textwidth=80                        " wrap at 80th colomn
 
 set clipboard=unnamed                   " allow copy/paste from system
 set hidden                              " hide unloaded buffers
@@ -133,14 +70,50 @@ set ruler                           	" show curser position
 set showcmd			                    " show partial command
 set wildmenu                        	" turn wild menu on
 
+" text wrapping
+set wrap                            	" wrap long lines
+set linebreak                           " don't break word
+set nolist                              " list option breaks linebreak
+set colorcolumn=80                      " color 80th column
+set textwidth=80                        " wrap at 80th colomn
+
+" tab stops
+set expandtab                           " tabs are spaces
+set shiftwidth=4                        " spaces for autoindent
+set tabstop=4                           " spaces per <tab> in file
+set softtabstop=4                       " spaces per <tab> while editing
+
 " splits
 set splitright                          " new vertical split on the right
 set splitbelow                          " new horizontal split below
 
-" buffers {{{1
+" Ignore compiled files for filcard expansion and search
+set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+
+
+" search {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" delete current buffer wihtout closing window (by moving to previous)
-" command Bd bp\|bd \#
+set ignorecase                          " case insensitive search...
+set smartcase                           " ... except when capitals used
+set hlsearch                            " highlight search results
+set incsearch                           " incremental result highlight
+
+" turn off highlighting
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
+
+" colors and fonts {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax enable                           " syntax highlighting
+let python_highlight_all=1
+set background=dark
+colorscheme solarized                   " custom colorscheme
+
+" vertical split color
+highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
+
+" remove split separator fill characters
+set fillchars=""
 
 
 " mappings {{{1
@@ -236,40 +209,6 @@ function! GitLazyPush()
 endfunction
 
 
-" search {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set ignorecase                          " case insensitive search
-set smartcase                           " ... except when capitals used
-set hlsearch                            " highlight search results
-set incsearch                           " incremental result highlight
-
-" turn off highlighting
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
-
-" colors and fonts {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable                           " syntax highlighting
-let python_highlight_all=1
-set background=dark
-colorscheme solarized                   " custom colorscheme
-" colorscheme one
-
-" vertical split color
-highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
-
-" remove split separator fill characters
-set fillchars=""
-
-
-" tab stops {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set expandtab                           " tabs are spaces
-set shiftwidth=4                        " spaces for autoindent
-set tabstop=4                           " spaces per <tab> in file
-set softtabstop=4                       " spaces per <tab> while editing
-
-
 " folding {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set foldenable                          " enable folding
@@ -280,25 +219,20 @@ set foldlevelstart=99                   " open file with all folds open
 nnoremap <space> za
 
 
-" writing mode {{{1
+" snippets {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" custom settings for writing mode
-function! GoyoEnterSettings()
-    set background=light
-    colorscheme seoul256-light
-endfunction
 
-function! GoyoLeaveSettings()
-    set background=dark
-    colorscheme solarized
-endfunction
+" open editor in vertical split 
+let g:UltiSnipsEditSplit = "vertical"   
 
-autocmd! User GoyoEnter :call GoyoEnterSettings()
-autocmd! User GoyoLeave :call GoyoLeaveSettings()
+" use tab for expansion and movement
+let g:UltiSnipsExpandTrigger = '<S-tab>'
+let g:UltiSnipsJumpForwardTrigger = '<c-b>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
 
+" edit snippets
+nnoremap <leader>se :UltiSnipsEdit<cr>
 
-" nerdtree {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " helpers {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -314,6 +248,47 @@ function! CycleNumbering()
         set number!<cr>
     endif
 endfunction
+
+" status bar {{{1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:lightline = {
+    \ 'colorscheme': 'solarized',
+    \ 'active': {
+    \   'left': [ ['mode', 'paste'],
+    \             ['gitbranch', 'readonly', 'filename', 'modified'] ] 
+    \ },
+    \ 'component_function': {
+    \   'gitbranch': 'FugitiveHead'
+    \ },
+    \ }
+
+
+
+" archive {{{1
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" let g:python3_host_prog='/Users/fgu/miniconda3/bin/python'
+
+" gundo
+" let g:gundo_prefer_python3 = 1          " make gundo use python3
+" " Enable persistent undo (can undo changes from previous sessions)
+" set undodir=~/.vim_runtime/temp_dirs/undodir
+" set undofile
+
+" writing mode
+" custom settings for writing mode
+" function! GoyoEnterSettings()
+"     set background=light
+"     colorscheme seoul256-light
+" endfunction
+" function! GoyoLeaveSettings()
+"     set background=dark
+"     colorscheme solarized
+" endfunction
+" autocmd! User GoyoEnter :call GoyoEnterSettings()
+" autocmd! User GoyoLeave :call GoyoLeaveSettings()
+
 
 " file settings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

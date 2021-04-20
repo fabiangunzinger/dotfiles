@@ -8,17 +8,22 @@
 alias dto='cd ~/dev/projects/applications/assignments/tesco'
 
 
-# commands
+# bash
 alias la='ls -a'
 alias ll='ls -oh'
 alias lla='ls -aho'
+alias lg='lla | grep $1'
 alias copy='pwd | pbcopy'
+
+
 alias tf='terraform'
 alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
+alias vim='nvim'
 
 # blog shortcuts
+alias nb='open https://fabiangunzinger.github.io/blog/'
 pn() { nvim $(date +'%Y-%m-%d-')"$1"; }
 pe() { nvim $(find . -name *$1*); }
 
@@ -29,17 +34,18 @@ pe() { nvim $(find . -name *$1*); }
 # complete -W "$(itermocil --list)" itermocil
 
 # projects
-alias ptr='atmo; dre; nvim'
+alias ptr='dtr; nvim'
 
 # navigation
 alias dde='cd ~/dev'
 alias dpr='cd ~/dev/projects'
-alias dre='cd ~/dev/remote_projects'
+alias dre='cd ~/dev/remote'
 alias dli='cd ~/dev/projects/limo'
 alias dcl='cd ~/dev/projects/clean-cleaning'
 alias dap='cd ~/dev/projects/applications'
 alias dha='cd ~/dev/projects/habits/'
 alias dle='cd ~/dev/projects/learning/'
+alias dml='cd ~/dev/projects/mlbt/'
 alias dbl='cd ~/dev/projects/blog'
 alias dblp='cd ~/dev/projects/blog/_posts'
 alias dbln='cd ~/dev/projects/blog/_notebooks'
@@ -79,8 +85,10 @@ function gcmm() { git checkout master; }
 function gcd() { git checkout dev; }
 function gm() { git merge "$1"; }
 function gmd() { git merge dev; }
+function gmm() { gcm; gmd; gp; gcd; }
 function gcb() { git checkout -b "$1"; }
 function gbd() { git branch -d "$1"; }
+function gbn() { git config branch.$( git branch --show-current ).note "$1"; }
 alias gp='git push'
 alias gl='git log --oneline'
 
@@ -92,6 +100,9 @@ function cik() { python -m ipykernel install --user --name="$1"; }
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
+
+# GitHub cli autocomplete
+# eval "$(gh completion -s bash)"
 
 
 # aws (on Macbook)
@@ -122,16 +133,19 @@ alias asto='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
 # mount and unmount project dir
 
 mac_ip=80.43.66.208
-te_ip=fgu@18.135.13.11
+mac_remote=/Users/fgu/dev/remote
+mac_pem=/Users/fgu/.aws/ec2-tracker-fgu.pem
+te_ip=18.135.13.11
+te_remote=/home/fgu/dev/remote
 
 
-alias mmat='sshfs fgu@$mac_ip:/Users/fgu/dev/projects/te/tracker /home/fgu/dev/remote'
+alias mmat='sshfs fgu@$te_ip:$te_remote $mac_remote -o identityfile=$mac_pem; echo $te_remote mounted'
 
 alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
 
-alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote_projects/ -o identityfile=/users/fgu/.aws/ec2-tracker-fgu.pem'
+alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote/ -o identityfile=/users/fgu/.aws/ec2-tracker-fgu.pem'
 
-alias aum='umount -f /Users/fgu/dev/remote_projects'
+alias um='umount -f ~/dev/remote; echo "Unmounted"'
 
 
 # open RStudio server
