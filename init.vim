@@ -13,8 +13,8 @@ Plug 'tpope/vim-eunuch'   " unix shell commands
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-obsession'   " session management
 Plug 'tpope/vim-surround'   " surround shortcuts
+Plug 'SirVer/ultisnips'   " snippets engine
 
-" Plug 'garbas/vim-snipmate'
 " Plug 'hashivim/vim-terraform'
 " Plug 'ivanov/vim-ipython'
 " Plug 'jpalardy/vim-slime'
@@ -39,12 +39,10 @@ Plug 'tpope/vim-surround'   " surround shortcuts
 " Plug 'pangloss/vim-javascript'   " better js indenting
 " Plug 'rakr/vim-one'   " colorscheme
 " Plug 'sheerun/vim-polyglot'
-" Plug 'SirVer/ultisnips'   " snippets engine
-" Plug 'honza/vim-snippets'   " snippets for engine
-" Plug 'ervandew/supertab'   " make ultisnip and ycm compatible
 " Plug 'sjl/gundo.vim'
 " Plug 'tmhedberg/SimpylFold'
 " Plug 'ycm-core/YouCompleteMe'
+" Plug 'ervandew/supertab'   " make ultisnip and ycm compatible
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
@@ -222,13 +220,13 @@ nnoremap <space> za
 " snippets {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" open editor in vertical split 
-let g:UltiSnipsEditSplit = "vertical"   
-
 " use tab for expansion and movement
-let g:UltiSnipsExpandTrigger = '<S-tab>'
+let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsJumpForwardTrigger = '<c-b>'
 let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
+
+" open editor in vertical split 
+let g:UltiSnipsEditSplit = "vertical"   
 
 " edit snippets
 nnoremap <leader>se :UltiSnipsEdit<cr>
@@ -265,11 +263,15 @@ let g:lightline = {
 
 
 
+
+" python {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" specify python3 interpreter (see help: python3_host_prog) 
+let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+
 " archive {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" let g:python3_host_prog='/Users/fgu/miniconda3/bin/python'
-
 " gundo
 " let g:gundo_prefer_python3 = 1          " make gundo use python3
 " " Enable persistent undo (can undo changes from previous sessions)
