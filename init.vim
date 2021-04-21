@@ -15,6 +15,8 @@ Plug 'tpope/vim-obsession'   " session management
 Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'SirVer/ultisnips'   " snippets engine
 
+Plug 'lervag/vimtex'   " LaTeX support
+
 " Plug 'hashivim/vim-terraform'
 " Plug 'ivanov/vim-ipython'
 " Plug 'jpalardy/vim-slime'
@@ -88,6 +90,11 @@ set splitbelow                          " new horizontal split below
 " Ignore compiled files for filcard expansion and search
 set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
+" python interpreter
+" following recommendation in h: python3_host_prog, I 
+" created a separate virtual env for nvim and explicitly
+" use that python version as nvim's interpreter.
+let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 
 " search {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -222,8 +229,8 @@ nnoremap <space> za
 
 " use tab for expansion and movement
 let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<c-b>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-z>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
 " open editor in vertical split 
 let g:UltiSnipsEditSplit = "vertical"   
@@ -264,11 +271,6 @@ let g:lightline = {
 
 
 
-" python {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" specify python3 interpreter (see help: python3_host_prog) 
-let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 
 " archive {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
