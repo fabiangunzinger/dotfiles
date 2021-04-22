@@ -4,18 +4,17 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " activate vim-plug
 call plug#begin()
-Plug 'ctrlpvim/ctrlp.vim'              
+Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
 Plug 'itchyny/lightline.vim'   " statusbar
 Plug 'altercation/vim-colors-solarized'   " colorscheme
 Plug 'preservim/nerdtree'   " explore filetree
 Plug 'tpope/vim-commentary'   " commenting
 Plug 'tpope/vim-eunuch'   " unix shell commands
-Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'   " git integration
 Plug 'tpope/vim-obsession'   " session management
 Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'SirVer/ultisnips'   " snippets engine
-
-Plug 'lervag/vimtex'   " LaTeX support
+Plug 'lervag/vimtex'   " latex support
 
 " Plug 'hashivim/vim-terraform'
 " Plug 'ivanov/vim-ipython'
@@ -238,6 +237,12 @@ let g:UltiSnipsEditSplit = "vertical"
 " edit snippets
 nnoremap <leader>se :UltiSnipsEdit<cr>
 
+
+" latex {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" vimtex configuration
+let g:vimtex_view_method = 'skim'
 
 " helpers {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
