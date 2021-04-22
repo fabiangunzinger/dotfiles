@@ -97,7 +97,7 @@ alias gl='git log --oneline'
 function ca() { conda activate "$1"; }
 function ce() { conda deactivate; }
 alias cl='conda list'
-function cik() { python -m ipykernel install --user --name="$1"; }
+function cik() { python -m ipykernel install --user --name "$1"; }
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
