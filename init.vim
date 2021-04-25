@@ -12,7 +12,9 @@ Plug 'tpope/vim-commentary'   " commenting
 Plug 'tpope/vim-eunuch'   " unix shell commands
 Plug 'tpope/vim-fugitive'   " git integration
 Plug 'tpope/vim-obsession'   " session management
+Plug 'tpope/vim-repeat'   " use . after plugin map
 Plug 'tpope/vim-surround'   " surround shortcuts
+Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'SirVer/ultisnips'   " snippets engine
 Plug 'lervag/vimtex'   " latex support
 
@@ -58,7 +60,7 @@ filetype indent on                      " enable filetype indent
 set backspace=indent,eol,start          " more powerful backspace
 
 set clipboard=unnamed                   " allow copy/paste from system
-set hidden                              " hide unloaded buffers
+set hidden                              " switch away from edited buffers
 set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
@@ -135,9 +137,6 @@ set fillchars=""
 " set leader
 let mapleader=','
 
-" cycle through numbering options
-nnoremap <silent> <leader>r : call CycleNumbering()<cr>
-
 " distraction free writing
 nnoremap <leader>df :Goyo<cr>
 
@@ -159,9 +158,6 @@ map <leader>tc :tabclose<cr>
 " Open new tab with current buffer's path
 map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
 
-" save file
-nmap <leader>w :w!<cr>
-
 " toggle gundo
 nnoremap <leader>gu :GundoToggle<cr>
 
@@ -181,12 +177,6 @@ map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
-
-" bash-like commandline shortcuts
-cnoremap <C-A> <home>
-cnoremap <C-E> <End>
-cnoremap <C-K> <C-U>
-
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -243,21 +233,6 @@ nnoremap <leader>se :UltiSnipsEdit<cr>
 
 " vimtex configuration
 let g:vimtex_view_method = 'skim'
-
-" helpers {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-function! CycleNumbering()
-    if exists('+relativenumber')
-        execute {
-                    \ '00': 'set relativenumber   | set number',
-                    \ '01': 'set norelativenumber | set number',
-                    \ '10': 'set norelativenumber | set nonumber',
-                    \ '11': 'set norelativenumber | set number'}[&number . &relativenumber]
-    else
-        " No relative numbering, toggle numbers on and off
-        set number!<cr>
-    endif
-endfunction
 
 " status bar {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
