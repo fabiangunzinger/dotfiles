@@ -1,17 +1,15 @@
-% ============================================================================
-%
-%   packages 2.sty, Fabian Gunzinger
-%
-%   This file loads all basic packages required to compile latex.
-%
-% ============================================================================
+%   paper.sty, fabian gunzinger
+%   setup for academic paper
 
 
 % Basic packages
 \usepackage{
+    amsmath,   % math notation
+    booktabs,   % nice tables
+    graphicx,   % graphics/figures support
+    setspace,   % linespacing
     % amssymb,
     % amsfonts,
-    % amsmath,
     % bbm,
     % calc,
     % lscape,
@@ -19,10 +17,8 @@
     % enumerate,
     % enumitem,
     % endnotes,
-    % graphicx,
     % latexsym,
     % morefloats,
-    setspace,
     % fancyhdr,
     % url,
     % float,
@@ -31,16 +27,19 @@
     % tabularx,
     % threeparttable,
     % dcolumn,
-    % booktabs,
     % tikz,
     % xfrac,
     % xcolor
 }
 
+
+\usepackage[margin=2.5cm]{geometry}   % page margins
+
 \usepackage[utf8, ansinew]{inputenc}    % required for umlaute
 \usepackage{csquotes}
 \usepackage[ngerman, english]{babel}    % required for umlaute
 \usepackage[T1]{fontenc}                % required for umlaute
+
 % \usepackage[section]{placeins}
 % \usepackage{placeins}
 % \usepackage{adjustbox}
@@ -94,12 +93,12 @@
 \newcommand{\citet}[1]{\textcite{#1}}
 \newcommand{\citep}[1]{\parencite{#1}}
 \newcommand{\citef}[1]{\footcite{#1}}
+\newcommand{\paper}[1]{\citet{#1}: \citetitle{#1}}
 \newcommand{\edit}[1]{{\noindent\color{red}{#1}}}
 \newcommand{\gap}{{\color{red}...\#...}}
-% \newcommand{\note}[1]{\center\scriptsize Note: #1}
+\newcommand{\note}[1]{\center\scriptsize Note: #1}
 \newcommand{\source}[1]{\center\scriptsize Source: #1}
 \newcommand{\what}[1]{{\noindent\textit{\color{blue}{#1}}}}
-\newcommand{\paper}[1]{\citet{#1}: \citetitle{#1}}
 
 % Title case format
 % \captionsetup{labelfont=bf, font=bf}

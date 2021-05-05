@@ -56,6 +56,7 @@ alias dtra='cd ~/dev/projects/te/admin'
 alias ddf='cd ~/dev/projects/dotfiles'
 
 alias dfa='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab'
+alias drev='dfa; cd edu/wbs/reviews'
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
 alias dla='cd /Users/fgu/Library/texmf/tex/latex/styfiles/'
@@ -76,6 +77,8 @@ alias sdo='StataSE -e do'
 # git
 alias gs='git status -u'
 alias ga='git add --all'
+alias gp='git push'
+alias gl='git log --oneline'
 function gac() { git add --all; git commit -m "$1"; }
 function gc() { git commit -m "$1"; }
 function gg() { git add --all; git commit -m "$1"; git push; }
@@ -90,8 +93,7 @@ function gmm() { gcm; gmd; gp; gcd; }
 function gcb() { git checkout -b "$1"; }
 function gbd() { git branch -d "$1"; }
 function gbn() { git config branch.$( git branch --show-current ).note "$1"; }
-alias gp='git push'
-alias gl='git log --oneline'
+function grc() { git rm --cached $1; }
 
 # conda
 function ca() { conda activate "$1"; }
@@ -188,6 +190,10 @@ alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://raw-fable'
 
 alias ate='ssh -i ~/.aws/ec2-tracker-fgu.pem -L 9999:localhost:9999 ubuntu@ec2-52-56-193-5.eu-west-2.compute.amazonaws.com'
 
+
+# upload latest experian data 
+alias atue='aws s3 mv ~/Downloads/ s3://3di-data-experian/raw --recursive
+--exclude "*" --include "uofn_*" --profile "tracker-fgu'
 
 
 

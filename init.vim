@@ -1,4 +1,4 @@
-" fabian gunzinger's vimrc.
+" .vimrc, fabian gunzinger
 
 " plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -7,7 +7,6 @@ call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
 Plug 'itchyny/lightline.vim'   " statusbar
 Plug 'altercation/vim-colors-solarized'   " colorscheme
-Plug 'preservim/nerdtree'   " explore filetree
 Plug 'tpope/vim-commentary'   " commenting
 Plug 'tpope/vim-eunuch'   " unix shell commands
 Plug 'tpope/vim-fugitive'   " git integration
@@ -15,6 +14,7 @@ Plug 'tpope/vim-obsession'   " session management
 Plug 'tpope/vim-repeat'   " use . after plugin map
 Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
+Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
 Plug 'SirVer/ultisnips'   " snippets engine
 Plug 'lervag/vimtex'   " latex support
 
@@ -42,7 +42,6 @@ Plug 'lervag/vimtex'   " latex support
 " Plug 'pangloss/vim-javascript'   " better js indenting
 " Plug 'rakr/vim-one'   " colorscheme
 " Plug 'sheerun/vim-polyglot'
-" Plug 'sjl/gundo.vim'
 " Plug 'tmhedberg/SimpylFold'
 " Plug 'ycm-core/YouCompleteMe'
 " Plug 'ervandew/supertab'   " make ultisnip and ycm compatible
@@ -59,15 +58,12 @@ filetype plugin on			            " enable filetype plugins
 filetype indent on                      " enable filetype indent
 set backspace=indent,eol,start          " more powerful backspace
 
-set clipboard=unnamed                   " allow copy/paste from system
 set hidden                              " switch away from edited buffers
 set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
 set number				                " show line numers
-set relativenumber                    " relative line numers
-set mouse=a
-set ruler                           	" show curser position
+set mouse=a                             " mouse support in all modes
 set showcmd			                    " show partial command
 set wildmenu                        	" turn wild menu on
 
@@ -124,18 +120,29 @@ set fillchars=""
 
 " mappings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" leader mappings
-" d distraction free writing
-" g git
-" n nerdtree
-" p plugins
-" t tabs
-" u gundo tree
-" v vimrc
-" w writing file
 
-" set leader
-let mapleader=','
+" make Y behave like C and D (see `h: Y`)
+map Y y$
+
+" change windows 
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" tabs
+map <leader>tn :tabnew<cr>
+map <leader>tc :tabclose<cr>
+" Open new tab with current buffer's path
+map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
+
+" open files from same directory as current buffer
+" ew is for open (edit) new file in window
+cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
+map <leader>ew :edit %%
+map <leader>es :split %%
+map <leader>ev :vsplit %%
+map <leader>et :tabedit %%
 
 " distraction free writing
 nnoremap <leader>df :Goyo<cr>
@@ -147,36 +154,12 @@ map <leader>sc :setlocal spell!<cr>
 nnoremap <leader>gs :Git status<cr>
 nnoremap <leader>gg :call GitLazyPush()<cr>
 
-" nerdtree
-nnoremap <leader>nn :NERDTreeToggle<cr>
-nnoremap <leader>nv :NERDTreeToggleVCS<cr>
-nnoremap <leader>nf :NERDTreeFocus<cr>
-
-" tabs
-map <leader>tn :tabnew<cr>
-map <leader>tc :tabclose<cr>
-" Open new tab with current buffer's path
-map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
-
-" toggle gundo
-nnoremap <leader>gu :GundoToggle<cr>
-
 " edit and source vimrc
 map <silent> <leader>ve :vsp $MYVIMRC<cr>
 map <leader>vs :source $MYVIMRC<cr>
 
 " more accessible escape
 inoremap jk <esc>
-
-" move down and up by visual line
-nnoremap j gj
-nnoremap k gk
-
-" change windows 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -254,11 +237,6 @@ let g:lightline = {
 
 " archive {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gundo
-" let g:gundo_prefer_python3 = 1          " make gundo use python3
-" " Enable persistent undo (can undo changes from previous sessions)
-" set undodir=~/.vim_runtime/temp_dirs/undodir
-" set undofile
 
 " writing mode
 " custom settings for writing mode
