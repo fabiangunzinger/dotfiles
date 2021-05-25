@@ -4,9 +4,20 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " activate vim-plug
 call plug#begin()
+
+" general
 Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
+Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'itchyny/lightline.vim'   " statusbar
-Plug 'altercation/vim-colors-solarized'   " colorscheme
+Plug 'machakann/vim-highlightedyank'   " highlight yanked region
+Plug 'mileszs/ack.vim'   " faster grep alternative
+Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
+Plug 'SirVer/ultisnips'   " snippets engine
+    let g:UltiSnipsExpandTrigger = '<tab>'
+    let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+Plug 'honza/vim-snippets'   " snippets
+Plug 'tpope/vim-abolish'   " powerful substitution and case conversions
 Plug 'tpope/vim-commentary'   " commenting
 Plug 'tpope/vim-eunuch'   " unix shell commands
 Plug 'tpope/vim-fugitive'   " git integration
@@ -15,8 +26,19 @@ Plug 'tpope/vim-repeat'   " use . after plugin map
 Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
-Plug 'SirVer/ultisnips'   " snippets engine
+
+" colorschemes
+Plug 'altercation/vim-colors-solarized'   " colorscheme
+
+" python
+Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
+Plug 'jeetsukumaran/vim-pythonsense'   " text objects
+Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
+
+" latex
 Plug 'lervag/vimtex'   " latex support
+    let g:vimtex_quickfix_mode=1   " open quickfix and make active
+    let g:vimtex_view_method = 'skim'   " use skim as editor
 
 " Plug 'hashivim/vim-terraform'
 " Plug 'ivanov/vim-ipython'
@@ -25,7 +47,6 @@ Plug 'lervag/vimtex'   " latex support
 " Plug 'junegunn/seoul256.vim'
 " Plug 'mg979/vim-visual-multi'
 " Plug 'mhinz/vim-startify'
-" Plug 'mileszs/ack.vim'
 " Plug 'nvie/vim-flake8'
 " Plug 'ycm-core/YouCompleteMe'
 " Plug 'ncm2/ncm2'   " code autocomplete
@@ -37,35 +58,33 @@ Plug 'lervag/vimtex'   " latex support
 " Plug 'ncm2/ncm2-ultisnips'   " ncm completion source
 " Plug 'gaalcaras/ncm-R'   " ncm completion source
 " Plug 'oncomouse/ncm2-biblatex'   " ncm completion source
-" Plug 'lervag/vimtex'   " latex support
-" Plug 'eslint/eslint' " js linter
-" Plug 'pangloss/vim-javascript'   " better js indenting
 " Plug 'rakr/vim-one'   " colorscheme
 " Plug 'sheerun/vim-polyglot'
 " Plug 'tmhedberg/SimpylFold'
-" Plug 'ycm-core/YouCompleteMe'
 " Plug 'ervandew/supertab'   " make ultisnip and ycm compatible
 call plug#end()
 
-nnoremap <leader>pi :PlugInstall<cr>
-nnoremap <leader>pc :PlugClean<cr>
+nnoremap <leader>pi :write<cr>:source $MYVIMRC<cr>:PlugInstall<cr>
+nnoremap <leader>pc :write<cr>:source $MYVIMRC<cr>:PlugClean<cr>
+
+
 
 " general {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set history=500                         " lines to remember
+set history=5000                        " lines to remember
 set encoding=utf8                       " standard encoding
 filetype plugin on			            " enable filetype plugins
 filetype indent on                      " enable filetype indent
-set backspace=indent,eol,start          " more powerful backspace
+set backspace=indent,eol,start          " powerful backspace in insert mode
+set spelllang=en_gb                     " spell checker uses british english
 
 set hidden                              " switch away from edited buffers
 set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
-set number				                " show line numers
+set number                              " show line numers
 set mouse=a                             " mouse support in all modes
-set showcmd			                    " show partial command
-set wildmenu                        	" turn wild menu on
+set showcmd	                            " show partial command
 
 " text wrapping
 set wrap                            	" wrap long lines
@@ -74,18 +93,18 @@ set nolist                              " list option breaks linebreak
 set colorcolumn=80                      " color 80th column
 set textwidth=80                        " wrap at 80th colomn
 
+" splits
+set splitright                          " new vertical split on the right
+set splitbelow                          " new horizontal split below
+
 " tab stops
 set expandtab                           " tabs are spaces
 set shiftwidth=4                        " spaces for autoindent
 set tabstop=4                           " spaces per <tab> in file
 set softtabstop=4                       " spaces per <tab> while editing
 
-" splits
-set splitright                          " new vertical split on the right
-set splitbelow                          " new horizontal split below
-
-" Ignore compiled files for filcard expansion and search
-set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
+" python {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " python interpreter
 " following recommendation in h: python3_host_prog, I 
@@ -99,10 +118,13 @@ set ignorecase                          " case insensitive search...
 set smartcase                           " ... except when capitals used
 set hlsearch                            " highlight search results
 set incsearch                           " incremental result highlight
+set infercase                           " adapt change for autocomplete
+
+" Ignore compiled files for filcard expansion and search
+set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " turn off highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 
 " colors and fonts {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -121,8 +143,24 @@ set fillchars=""
 " mappings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" leave insert mode
+inoremap jk <esc>
+
+" abort (search) command
+cnoremap jk <C-c>
+
+" abort operator-pending command
+onoremap jk <esc>
+
 " make Y behave like C and D (see `h: Y`)
 map Y y$
+
+" move visual-line-wise
+nnoremap j gj
+nnoremap k gk
+
+" conveniently switch buffer (list open ones and type `:b `
+nnoremap <leader>b :ls<cr>:b<space>
 
 " change windows 
 map <C-j> <C-W>j
@@ -144,22 +182,26 @@ map <leader>es :split %%
 map <leader>ev :vsplit %%
 map <leader>et :tabedit %%
 
+" make and repeat substitution with flags
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
 " distraction free writing
 nnoremap <leader>df :Goyo<cr>
-
-" toggle spell checker
-map <leader>sc :setlocal spell!<cr>
 
 " git
 nnoremap <leader>gs :Git status<cr>
 nnoremap <leader>gg :call GitLazyPush()<cr>
 
 " edit and source vimrc
-map <silent> <leader>ve :vsp $MYVIMRC<cr>
-map <leader>vs :source $MYVIMRC<cr>
+map <silent> <leader>ve :edit $MYVIMRC<cr>
+map <silent> <leader>vve :vsplit $MYVIMRC<cr>
+map <leader>vs :write<cr>:source $MYVIMRC<cr>zazz
+map <leader>vS :write<cr>:source $MYVIMRC<cr>
 
-" more accessible escape
-inoremap jk <esc>
+" print markdown headings
+nnoremap <leader>mh :g/^#<space><cr>
+nnoremap <leader>mhh :g/^#<cr>
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -199,11 +241,6 @@ nnoremap <space> za
 " snippets {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" use tab for expansion and movement
-let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-
 " open editor in vertical split 
 let g:UltiSnipsEditSplit = "vertical"   
 
@@ -215,7 +252,6 @@ nnoremap <leader>se :UltiSnipsEdit<cr>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " vimtex configuration
-let g:vimtex_view_method = 'skim'
 
 " status bar {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
