@@ -5,7 +5,11 @@
 [alias]
 	adco = !git add -A && git commit
 	sta = !git status
+	ctags = !.git/hooks/ctags
 [core]
 	excludesfile = /Users/fgu/.gitignore_global
 [pull]
 	rebase = false
+[init]
+	templatedir = ~/.git_template
+	defaultBranch = main

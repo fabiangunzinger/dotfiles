@@ -53,6 +53,7 @@ alias dbln='cd ~/dev/projects/blog/_notebooks'
 alias dfo='cd ~/dev/projects/food-tracker'
 alias dtr='cd ~/dev/projects/te/tracker'
 alias dtra='cd ~/dev/projects/te/admin'
+alias dtrr='cd ~/dev/projects/te/research'
 alias ddf='cd ~/dev/projects/dotfiles'
 
 alias dfa='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab'
@@ -107,11 +108,16 @@ function pdmp() { pandoc "$1" -o "${1/md/pdf}"; }
 # GitHub cli autocomplete
 # eval "$(gh completion -s bash)"
 
+# initialise cookiecutter project
+alias cc='cookiecutter https://github.com/drivendata/cookiecutter-data-science
+'
+
+
+
 
 # aws (on Macbook)
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-# 
 # commands with a prefix are for my personal account and instance; those with
 # at prefix, for uk-tracker account and instance.
 
@@ -167,8 +173,11 @@ function asy() { aws s3 sync $1 $2; }
 alias larp='ps aux'
 function lrp() { ps aux | grep $1; }
 
+# aws cli with tracker-uk profile
+function awst() { aws '$1' --profile 'tracker-fgu'; }
+
 # pull latest fable data
-alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://raw-fable'
+alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://3di-data-fable/raw/'
 # alias atjc='ssh -i ~/.aws/fgu-tracker-key.pem -N -f -L 9999:localhost:9999 ec2-user@ec2-3-8-141-132.eu-west-2.compute.amazonaws.com'
 
 
@@ -195,10 +204,16 @@ alias ate='ssh -i ~/.aws/ec2-tracker-fgu.pem -L 9999:localhost:9999 ubuntu@ec2-5
 alias atue='aws s3 mv ~/Downloads/ s3://3di-data-experian/raw --recursive
 --exclude "*" --include "uofn_*" --profile "tracker-fgu'
 
+# update local app data (pull from aws)
+alias gad="aws s3 cp s3://3di-project-te/app/ ~/dev/projects/te/tracker/app/data/ --recursive --profile 'tracker-fgu'"
 
+# environment variables
+#~~~~~~~~~~~~~~~~~~~~~~~
+
+export FABIB=~/dev/projects/dotfiles/latex/fabib.bib
 
 # environment settings
-##############################################################################
+#~~~~~~~~~~~~~~~~~~~~~~
 
 # prompt
 # details: https://youtu.be/LXgXV7YmSiU. colors: 256color_chart.svg
@@ -220,3 +235,4 @@ export PS1;
 
 # path
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"      # use gnu grep
+
