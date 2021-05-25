@@ -1,14 +1,14 @@
-% ============================================================================
 %
-%   packages 2.sty, Fabian Gunzinger
+%   presentation.sty, fabian gunzinger
 %
-%   This file loads all basic packages required to compile latex.
+%   template for academic presentations
 %
-% ============================================================================
 
 
 % Basic packages
 \usepackage{
+    % appendixnumberbeamer,
+    % setspace,
     % amssymb,
     % amsfonts,
     % amsmath,
@@ -22,7 +22,6 @@
     % graphicx,
     % latexsym,
     % morefloats,
-    setspace,
     % fancyhdr,
     % url,
     % float,
@@ -32,10 +31,30 @@
     % threeparttable,
     % dcolumn,
     % booktabs,
-    % tikz,
     % xfrac,
-    % xcolor
+    % tikz
 }
+
+% % Hyper refs
+% \usepackage[
+%     % bookmarks=true,
+%     % bookmarksopen=true,
+%     % pdfborder={0 0 0},
+%     % pdfhighlight={/N},
+%     % linkbordercolor={.5 .5 .5},
+%     % implicit=false,
+%     colorlinks,
+%     % breaklinks,
+%     % bookmarks=false,
+%     % pdfstartview=Fit,  % for fitting entire page; FitW just fits width
+%     % pdfview=Fit,       % after traversing a hyperlink
+%     linkcolor=black,
+%     urlcolor=blue,
+%     citecolor=black,
+%     % hyperfootnotes=false
+% ]{hyperref}
+% % \usepackage[figure,table]{hypcap}
+
 
 % \usepackage[math]{iwona}
 \usepackage[utf8, ansinew]{inputenc}    % required for umlaute
@@ -45,20 +64,6 @@
 % \usepackage[section]{placeins}
 % \usepackage{placeins}
 % \usepackage{adjustbox}
-
-% Hyper refs
-\usepackage[
-    % colorlinks,
-    % breaklinks,
-    % bookmarks=false,
-    % pdfstartview=Fit,  % for fitting entire page; FitW just fits width
-    % pdfview=Fit,       % after traversing a hyperlink
-    % linkcolor=black,
-    % urlcolor=blue,
-    % citecolor=black,
-    % hyperfootnotes=false
-]{hyperref}
-% \usepackage[figure,table]{hypcap}
 
 % Bibliography style settings.
 \usepackage[
@@ -71,6 +76,7 @@
 	eprint=false,
 	url=true
 ]{biblatex}
+
 \renewcommand*{\multicitedelim}{,\space}
 \DeclareFieldFormat[techreport,report,unpublished]{title}{\mkbibquote{#1}}
 \AtEveryBibitem{% Clean up the bibtex rather than editing it
@@ -91,20 +97,31 @@
 % \usepackage{etoolbox}
 % \AtBeginEnvironment{quote}{\singlespacing\small}
 
-% Command shortcuts
-\newcommand{\citet}[1]{\textcite{#1}}
-\newcommand{\citep}[1]{\parencite{#1}}
-\newcommand{\citef}[1]{\footcite{#1}}
-\newcommand{\edit}[1]{{\noindent\color{red}{#1}}}
-\newcommand{\gap}{{\color{red}...\#...}}
-% \newcommand{\note}[1]{\center\scriptsize Note: #1}
-\newcommand{\source}[1]{\center\scriptsize Source: #1}
-\newcommand{\what}[1]{{\noindent\textit{\color{blue}{#1}}}}
+% % Command shortcuts
+% \newcommand{\citet}[1]{\textcite{#1}}
+% \newcommand{\citep}[1]{\parencite{#1}}
+% \newcommand{\citef}[1]{\footcite{#1}}
+% \newcommand{\citeb}[1]{{\tiny{\textcite{#1}}}}
+% \newcommand{\edit}[1]{{\noindent\color{red}{#1}}}
+% \newcommand{\gap}{{\color{red}...\#...}}
+% % \newcommand{\note}[1]{\center\scriptsize Note: #1}
+% \newcommand{\source}[1]{\center\scriptsize Source: #1}
+% \newcommand{\what}[1]{{\noindent\textit{\color{blue}{#1}}}}
+% \newcommand*{\figtitle}[1]{{\centering\textbf{#1}\par\medskip}}
 
-% Add blue summary bar at the bottom of each slide
-% \usetheme{Boadilla}
 
-% Add page numbers to navigation symbols on plain page
+
+% \mode<presentation>
+% {
+%   \usetheme{default}
+%   \useinnertheme{rectangles}
+%   \usecolortheme{seahorse}
+%   \setbeamercovered{transparent}
+%   \setbeamertemplate{caption}[numbered]
+%   % \insertframenumber/\inserttotalframenumber
+
+
+% }
 % \addtobeamertemplate{navigation symbols}{}{%
 %     \usebeamerfont{footline}%
 %     \usebeamercolor[fg]{footline}%
@@ -112,10 +129,11 @@
 %     \insertframenumber/\inserttotalframenumber
 % }
 
+% Add blue summary bar at the bottom of each slide
+% \usetheme{Boadilla}
 
 % Square bullet points
 % \useinnertheme{rectangles}
-
 
 % Title case format
 % \captionsetup{labelfont=bf, font=bf}
