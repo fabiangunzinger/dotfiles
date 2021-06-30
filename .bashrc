@@ -5,8 +5,8 @@
 ############################################################################
 
 # temp
-alias dto='cd ~/dev/projects/applications/assignments/tesco'
-
+alias dgu='cd ~/dev/projects/gutenberg'
+alias dpp='cd ~/dev/projects/preproc'
 
 # bash
 alias la='ls -a'
@@ -15,12 +15,12 @@ alias lla='ls -aho'
 alias lg='lla | grep $1'
 alias copy='pwd | pbcopy'
 
-
 alias tf='terraform'
 alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
 alias vim='nvim'
+alias vgp='vimgolf put '
 
 # blog shortcuts
 alias nb='open https://fabiangunzinger.github.io/blog/'
@@ -46,7 +46,9 @@ alias dap='cd ~/dev/projects/applications'
 alias dha='cd ~/dev/projects/habits/'
 alias dhat='cd ~/dev/projects/habits/text'
 alias dle='cd ~/dev/projects/learning/'
+alias dth='cd ~/dev/projects/learning/think-python'
 alias dml='cd ~/dev/projects/mlbt/'
+alias dmd='cd ~/dev/projects/mdb/'
 alias dbl='cd ~/dev/projects/blog'
 alias dblp='cd ~/dev/projects/blog/_posts'
 alias dbln='cd ~/dev/projects/blog/_notebooks'
@@ -57,7 +59,7 @@ alias dtrr='cd ~/dev/projects/te/research'
 alias ddf='cd ~/dev/projects/dotfiles'
 
 alias dfa='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab'
-alias drev='dfa; cd edu/wbs/reviews'
+alias dwb='dfa; cd edu/wbs'
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
 alias dla='cd /Users/fgu/Library/texmf/tex/latex/styfiles/'

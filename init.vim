@@ -26,18 +26,22 @@ Plug 'tpope/vim-repeat'   " use . after plugin map
 Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
+Plug 'psliwka/vim-smoothie'   " smooth scrolling
+
+Plug 'jpalardy/vim-slime' 
+    let g:slime_target = "vimterminal"
 
 " colorschemes
 Plug 'altercation/vim-colors-solarized'   " colorscheme
 
 " python
+" Plug 'davidhalter/jedi-vim'   " python autocompletion
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
-Plug 'jeetsukumaran/vim-pythonsense'   " text objects
+Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
 Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
 
 " latex
 Plug 'lervag/vimtex'   " latex support
-    let g:vimtex_quickfix_mode=1   " open quickfix and make active
     let g:vimtex_view_method = 'skim'   " use skim as editor
 
 " Plug 'hashivim/vim-terraform'
@@ -71,13 +75,14 @@ nnoremap <leader>pc :write<cr>:source $MYVIMRC<cr>:PlugClean<cr>
 
 " general {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set history=5000                        " lines to remember
-set encoding=utf8                       " standard encoding
 filetype plugin on			            " enable filetype plugins
 filetype indent on                      " enable filetype indent
+
+" misc.
+set history=5000                        " lines to remember
+set encoding=utf8                       " standard encoding
 set backspace=indent,eol,start          " powerful backspace in insert mode
 set spelllang=en_gb                     " spell checker uses british english
-
 set hidden                              " switch away from edited buffers
 set laststatus=2			            " always show statusline
 set lazyredraw                      	" avoid undue redrawing
@@ -103,13 +108,8 @@ set shiftwidth=4                        " spaces for autoindent
 set tabstop=4                           " spaces per <tab> in file
 set softtabstop=4                       " spaces per <tab> while editing
 
-" python {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " python interpreter
-" following recommendation in h: python3_host_prog, I 
-" created a separate virtual env for nvim and explicitly
-" use that python version as nvim's interpreter.
+" use dedicated virtual env as nvim interpreter (:h python3_host_prog)
 let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 
 " search {{{1
@@ -130,7 +130,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                           " syntax highlighting
 let python_highlight_all=1
-set background=dark
+set background=dark                     " dark background
 colorscheme solarized                   " custom colorscheme
 
 " vertical split color
@@ -161,6 +161,7 @@ nnoremap k gk
 
 " conveniently switch buffer (list open ones and type `:b `
 nnoremap <leader>b :ls<cr>:b<space>
+nnoremap <leader>vb :ls<cr>:vert sb<space>
 
 " change windows 
 map <C-j> <C-W>j
@@ -199,9 +200,19 @@ map <silent> <leader>vve :vsplit $MYVIMRC<cr>
 map <leader>vs :write<cr>:source $MYVIMRC<cr>zazz
 map <leader>vS :write<cr>:source $MYVIMRC<cr>
 
+" open cheatsheets
+map <leader>cv :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
+map <leader>cm :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
+
 " print markdown headings
 nnoremap <leader>mh :g/^#<space><cr>
 nnoremap <leader>mhh :g/^#<cr>
+
+" run current file externally ('do')
+nnoremap <leader>dp :w<cr>:!python %<cr>
+
+" close buffer but not window split
+command Bd bp\|bd\#
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -246,12 +257,9 @@ let g:UltiSnipsEditSplit = "vertical"
 
 " edit snippets
 nnoremap <leader>se :UltiSnipsEdit<cr>
+nnoremap <leader>vsp :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/python.snippets<cr>
 
 
-" latex {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" vimtex configuration
 
 " status bar {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -266,9 +274,6 @@ let g:lightline = {
     \   'gitbranch': 'FugitiveHead'
     \ },
     \ }
-
-
-
 
 
 " archive {{{1
