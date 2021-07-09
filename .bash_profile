@@ -1,4 +1,17 @@
 
+# My settings
+if [ -f ~/.bashrc ]; then
+    source ~/.bashrc
+fi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/fgu/google-cloud-sdk/path.bash.inc' ]; then . '/Users/fgu/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/fgu/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/fgu/google-cloud-sdk/completion.bash.inc'; fi
+
+
+
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 __conda_setup="$('/Users/fgu/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
@@ -14,14 +27,3 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-
-# My settings
-if [ -f ~/.bashrc ]; then
-    source ~/.bashrc
-fi
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/fgu/google-cloud-sdk/path.bash.inc' ]; then . '/Users/fgu/google-cloud-sdk/path.bash.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/fgu/google-cloud-sdk/completion.bash.inc' ]; then . '/Users/fgu/google-cloud-sdk/completion.bash.inc'; fi
