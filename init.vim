@@ -4,8 +4,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " activate vim-plug
 call plug#begin()
-
-" general
 Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
 Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'itchyny/lightline.vim'   " statusbar
@@ -13,9 +11,6 @@ Plug 'machakann/vim-highlightedyank'   " highlight yanked region
 Plug 'mileszs/ack.vim'   " faster grep alternative
 Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
 Plug 'SirVer/ultisnips'   " snippets engine
-    let g:UltiSnipsExpandTrigger = '<tab>'
-    let g:UltiSnipsJumpForwardTrigger = '<C-j>'
-    let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 Plug 'honza/vim-snippets'   " snippets
 Plug 'tpope/vim-abolish'   " powerful substitution and case conversions
 Plug 'tpope/vim-commentary'   " commenting
@@ -27,50 +22,17 @@ Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
 Plug 'psliwka/vim-smoothie'   " smooth scrolling
-
-Plug 'jpalardy/vim-slime' 
+Plug 'jpalardy/vim-slime'   " repl interaction support
     let g:slime_target = "vimterminal"
-
-" colorschemes
 Plug 'altercation/vim-colors-solarized'   " colorscheme
-
-" python
-" Plug 'davidhalter/jedi-vim'   " python autocompletion
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
 Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
 Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
-
-" latex
 Plug 'lervag/vimtex'   " latex support
-    let g:vimtex_view_method = 'skim'   " use skim as editor
-
-" Plug 'hashivim/vim-terraform'
-" Plug 'ivanov/vim-ipython'
-" Plug 'jpalardy/vim-slime'
-" Plug 'junegunn/goyo.vim'
-" Plug 'junegunn/seoul256.vim'
-" Plug 'mg979/vim-visual-multi'
-" Plug 'mhinz/vim-startify'
-" Plug 'nvie/vim-flake8'
-" Plug 'ycm-core/YouCompleteMe'
-" Plug 'ncm2/ncm2'   " code autocomplete
-" Plug 'roxma/nvim-yarp'   " ncm dependency
-" Plug 'ncm2/ncm2-bufword'   " ncm completion source
-" Plug 'ncm2/ncm2-path'   " ncm completion source
-" Plug 'ncm2/ncm2-github'   " ncm completion source
-" Plug 'ncm2/ncm2-jedi'   " ncm completion source
-" Plug 'ncm2/ncm2-ultisnips'   " ncm completion source
-" Plug 'gaalcaras/ncm-R'   " ncm completion source
-" Plug 'oncomouse/ncm2-biblatex'   " ncm completion source
-" Plug 'rakr/vim-one'   " colorscheme
-" Plug 'sheerun/vim-polyglot'
-" Plug 'tmhedberg/SimpylFold'
-" Plug 'ervandew/supertab'   " make ultisnip and ycm compatible
 call plug#end()
 
 nnoremap <leader>pi :write<cr>:source $MYVIMRC<cr>:PlugInstall<cr>
 nnoremap <leader>pc :write<cr>:source $MYVIMRC<cr>:PlugClean<cr>
-
 
 
 " general {{{1
@@ -212,7 +174,8 @@ nnoremap <leader>mhh :g/^#<cr>
 nnoremap <leader>dp :w<cr>:!python %<cr>
 
 " close buffer but not window split
-command Bd bp\|bd\#
+" command Bd bp\|bd\#
+
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -252,13 +215,25 @@ nnoremap <space> za
 " snippets {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" open editor in vertical split 
+" ultisnip settings
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 let g:UltiSnipsEditSplit = "vertical"   
 
 " edit snippets
 nnoremap <leader>se :UltiSnipsEdit<cr>
 nnoremap <leader>vsp :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/python.snippets<cr>
 
+" latex {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" use skim as editor
+let g:vimtex_view_method = 'skim'   " use skim as editor
+
+" use neovim-remote as compiler
+" installation info: https://github.com/lervag/vimtex/issues/1327
+let g:vimtex_compiler_progname = $HOME.'/miniconda3/envs/nvim/bin/nvr' 
 
 
 " status bar {{{1
