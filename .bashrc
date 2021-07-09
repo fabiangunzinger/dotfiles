@@ -53,7 +53,7 @@ alias dbl='cd ~/dev/projects/blog'
 alias dblp='cd ~/dev/projects/blog/_posts'
 alias dbln='cd ~/dev/projects/blog/_notebooks'
 alias dfo='cd ~/dev/projects/food-tracker'
-alias dtr='cd ~/dev/projects/te/tracker'
+alias dte='cd ~/dev/projects/tracktheeconomy'
 alias dtra='cd ~/dev/projects/te/admin'
 alias dtrr='cd ~/dev/projects/te/research'
 alias ddf='cd ~/dev/projects/dotfiles'
@@ -64,7 +64,6 @@ alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
 alias dla='cd /Users/fgu/Library/texmf/tex/latex/styfiles/'
 alias dju='cd /Users/fgu/Library/Jupyter/snippets'
-alias dte='cd /Users/fgu/tmp'
 
 # dotfiles
 alias fb='nvim ~/.bashrc'
@@ -102,7 +101,8 @@ function grc() { git rm --cached $1; }
 function ca() { conda activate "$1"; }
 function ce() { conda deactivate; }
 alias cl='conda list'
-function cik() { python -m ipykernel install --user --name "$1"; }
+function cki() { python -m ipykernel install --user --name "$1"; }
+function cee() { conda env export --name "$1" > environment.yml; }
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
@@ -176,7 +176,7 @@ alias larp='ps aux'
 function lrp() { ps aux | grep $1; }
 
 # aws cli with tracker-uk profile
-function awst() { aws '$1' --profile 'tracker-fgu'; }
+function awst() { aws "$@" --profile "tracker-fgu"; }
 
 # pull latest fable data
 alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://3di-data-fable/raw/'
