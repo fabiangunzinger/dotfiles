@@ -71,7 +71,7 @@ set tabstop=4                           " spaces per <tab> in file
 set softtabstop=4                       " spaces per <tab> while editing
 
 " python interpreter
-" use dedicated virtual env as nvim interpreter (:h python3_host_prog)
+" use dedicated virtual env as nvim intrpreter (:h python3_host_prog)
 let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 
 " search {{{1
@@ -170,8 +170,8 @@ map <leader>cm :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
 nnoremap <leader>mh :g/^#<space><cr>
 nnoremap <leader>mhh :g/^#<cr>
 
-" run current file externally ('do')
-nnoremap <leader>dp :w<cr>:!python %<cr>
+" run current file in python
+nnoremap <leader>rp :w<cr>:!python %<cr>
 
 " close buffer but not window split
 " command Bd bp\|bd\#
@@ -224,6 +224,7 @@ let g:UltiSnipsEditSplit = "vertical"
 " edit snippets
 nnoremap <leader>se :UltiSnipsEdit<cr>
 nnoremap <leader>vsp :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/python.snippets<cr>
+nnoremap <leader>vst :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/tex.snippets<cr>
 
 " latex {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

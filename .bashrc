@@ -7,6 +7,7 @@
 # temp
 alias dgu='cd ~/dev/projects/gutenberg'
 alias dpp='cd ~/dev/projects/preproc'
+alias fvi='cd ~/dev/projects/blog/_posts/; pe vim-e'
 
 # bash
 alias la='ls -a'
@@ -33,9 +34,6 @@ pe() { nvim $(find . -name *$1*); }
 # alias itb='itermocil blog'
 # complete -W "$(itermocil --list)" itermocil
 
-# projects
-alias ptr='dtr; nvim'
-
 # navigation
 alias dde='cd ~/dev'
 alias dpr='cd ~/dev/projects'
@@ -48,6 +46,7 @@ alias dhat='cd ~/dev/projects/habits/text'
 alias dle='cd ~/dev/projects/learning/'
 alias dth='cd ~/dev/projects/learning/think-python'
 alias dml='cd ~/dev/projects/mlbt/'
+alias dmlp='cd ~/dev/projects/mlbt/text/paper'
 alias dmd='cd ~/dev/projects/mdb/'
 alias dbl='cd ~/dev/projects/blog'
 alias dblp='cd ~/dev/projects/blog/_posts'
@@ -57,7 +56,6 @@ alias dte='cd ~/dev/projects/tracktheeconomy'
 alias dtra='cd ~/dev/projects/te/admin'
 alias dtrr='cd ~/dev/projects/te/research'
 alias ddf='cd ~/dev/projects/dotfiles'
-
 alias dfa='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab'
 alias dwb='dfa; cd edu/wbs'
 alias dsu='cd ~/setup/SublimeProjects'
@@ -75,6 +73,10 @@ alias juno='jupyter notebook'
 alias jula='jupyter lab'
 alias clh='open -a safari https://localhost:9999'
 alias sdo='StataSE -e do'
+
+# projects
+alias ptr='dtr; nvim'
+alias pfo='dfo; ca foods; jula'
 
 # git
 alias gs='git status -u'
