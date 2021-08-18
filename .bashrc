@@ -8,6 +8,7 @@
 alias dgu='cd ~/dev/projects/gutenberg'
 alias dpp='cd ~/dev/projects/preproc'
 alias fvi='cd ~/dev/projects/blog/_posts/; pe vim-e'
+alias dapc='cd ~/dev/projects/applications/interview-prep/code'
 
 # bash
 alias la='ls -a'
@@ -103,7 +104,7 @@ function grc() { git rm --cached $1; }
 function ca() { conda activate "$1"; }
 function ce() { conda deactivate; }
 alias cl='conda list'
-function cki() { python -m ipykernel install --user --name "$1"; }
+function ik() { python -m ipykernel install --user --name "$1"; }
 function cee() { conda env export --name "$1" > environment.yml; }
 
 # pandoc

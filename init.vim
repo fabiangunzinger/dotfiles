@@ -7,6 +7,7 @@ call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
 Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'itchyny/lightline.vim'   " statusbar
+Plug 'junegunn/goyo.vim'   " distraction free writing
 Plug 'machakann/vim-highlightedyank'   " highlight yanked region
 Plug 'mileszs/ack.vim'   " faster grep alternative
 Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
@@ -150,7 +151,7 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 " distraction free writing
-nnoremap <leader>df :Goyo<cr>
+nnoremap <leader>w :Goyo<cr>
 
 " git
 nnoremap <leader>gs :Git status<cr>
@@ -172,6 +173,7 @@ nnoremap <leader>mhh :g/^#<cr>
 
 " run current file in python
 nnoremap <leader>rp :w<cr>:!python %<cr>
+nnoremap <leader>rpd :w<cr>:!python -m doctest %<cr>
 
 " close buffer but not window split
 " command Bd bp\|bd\#
