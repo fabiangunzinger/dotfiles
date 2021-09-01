@@ -142,7 +142,6 @@ map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
 " ew is for open (edit) new file in window
 cnoremap %% <C-R>=fnameescape(expand('%:h')).'/'<cr>
 map <leader>ew :edit %%
-map <leader>es :split %%
 map <leader>ev :vsplit %%
 map <leader>et :tabedit %%
 
@@ -151,21 +150,23 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 " distraction free writing
-nnoremap <leader>w :Goyo<cr>
+nnoremap <silent> <leader>w :Goyo<cr>
 
 " git
 nnoremap <leader>gs :Git status<cr>
 nnoremap <leader>gg :call GitLazyPush()<cr>
 
-" edit and source vimrc
-map <silent> <leader>ve :edit $MYVIMRC<cr>
-map <silent> <leader>vve :vsplit $MYVIMRC<cr>
-map <leader>vs :write<cr>:source $MYVIMRC<cr>zazz
-map <leader>vS :write<cr>:source $MYVIMRC<cr>
+" source vimrc
+map <leader>sv :write<cr>:source $MYVIMRC<cr>zazz
+map <leader>Sv :write<cr>:source $MYVIMRC<cr>
 
-" open cheatsheets
-map <leader>cv :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
-map <leader>cm :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
+" open files
+map <silent> <leader>fvr :edit $MYVIMRC<cr>
+map <silent> <leader>fvv :vsplit $MYVIMRC<cr>
+map <silent> <leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
+map <silent> <leader>fre :edit ~/dev/projects/blog/_posts/2021-08-26-regex-essentials.md<cr>
+map <silent> <leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
+map <silent> <leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
 
 " print markdown headings
 nnoremap <leader>mh :g/^#<space><cr>
@@ -224,9 +225,9 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 let g:UltiSnipsEditSplit = "vertical"   
 
 " edit snippets
-nnoremap <leader>se :UltiSnipsEdit<cr>
-nnoremap <leader>vsp :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/python.snippets<cr>
-nnoremap <leader>vst :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/tex.snippets<cr>
+nnoremap <leader>es :UltiSnipsEdit<cr>
+nnoremap <leader>esp :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/python.snippets<cr>
+nnoremap <leader>est :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/tex.snippets<cr>
 
 " latex {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

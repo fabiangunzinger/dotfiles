@@ -1,83 +1,118 @@
 # fabian gunzinger's .bashrc
 
 
+#################################################
 # aliases
-############################################################################
+#################################################
 
 # temp
 alias dgu='cd ~/dev/projects/gutenberg'
 alias dpp='cd ~/dev/projects/preproc'
-alias fvi='cd ~/dev/projects/blog/_posts/; pe vim-e'
-alias dapc='cd ~/dev/projects/applications/interview-prep/code'
 
 # bash
+alias sb='source ~/.bashrc'
 alias la='ls -a'
 alias ll='ls -oh'
 alias lla='ls -aho'
 alias lg='lla | grep $1'
-alias copy='pwd | pbcopy'
+alias cpwd='pwd | pbcopy'
 
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+# alias rmd='rm -rfv '
+
+# running processes
+alias p='ps aux | grep '
+alias tcpu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
+
+# search file in current folder
+alias f='find . | grep '
+
+# system shutdown and reboots
+alias sd='sudo shutdown'
+alias rb='sudo shutdown -r now'
+
+# disk space and directory structure
+alias dum='du -h | sort -n -r | more'
+alias duf='du -h -d 2'
+alias tree='tree -CAhF --dirsfirst'
+alias treed='tree -CAFd'
+
+# commands
+alias jula='jupyter lab'
+alias clh='open -a safari https://localhost:9999'
+alias sdo='StataSE -e do'
 alias tf='terraform'
 alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
-alias vim='nvim'
+alias vi='nvim'
 alias vgp='vimgolf put '
 
-# blog shortcuts
-alias nb='open https://fabiangunzinger.github.io/blog/'
-pn() { nvim $(date +'%Y-%m-%d-')"$1"; }
-pe() { nvim $(find . -name *$1*); }
-
-# # projects
-# alias dit='cd ~/dev/projects/dotfiles/.itermocil'
-# alias itt='itermocil tracker'
-# alias itb='itermocil blog'
-# complete -W "$(itermocil --list)" itermocil
-
-# navigation
+# go to directory
 alias dde='cd ~/dev'
-alias dpr='cd ~/dev/projects'
-alias dre='cd ~/dev/remote'
+alias dpr='dde; cd projects'
+alias drm='dde; cd remote'
 alias dli='cd ~/dev/projects/limo'
 alias dcl='cd ~/dev/projects/clean-cleaning'
 alias dap='cd ~/dev/projects/applications'
-alias dha='cd ~/dev/projects/habits/'
-alias dhat='cd ~/dev/projects/habits/text'
+alias dapc='cd ~/dev/projects/applications/interview-prep/code'
+alias dfa='cd ~/dev/projects/fabiangunzinger.github.io'
+alias den='cd ~/dev/projects/entropy/'
+alias dent='den; cd text'
 alias dle='cd ~/dev/projects/learning/'
 alias dth='cd ~/dev/projects/learning/think-python'
 alias dml='cd ~/dev/projects/mlbt/'
 alias dmlp='cd ~/dev/projects/mlbt/text/paper'
 alias dmd='cd ~/dev/projects/mdb/'
-alias dbl='cd ~/dev/projects/blog'
-alias dblp='cd ~/dev/projects/blog/_posts'
-alias dbln='cd ~/dev/projects/blog/_notebooks'
+alias dbl='dpr; cd blog'
+alias dblp='dbl; cd _posts'
+alias dbln='dbl; cd _notebooks'
 alias dfo='cd ~/dev/projects/food-tracker'
 alias dte='cd ~/dev/projects/tracktheeconomy'
 alias dtra='cd ~/dev/projects/te/admin'
 alias dtrr='cd ~/dev/projects/te/research'
 alias ddf='cd ~/dev/projects/dotfiles'
-alias dfa='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs/fab'
-alias dwb='dfa; cd edu/wbs'
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
 alias dla='cd /Users/fgu/Library/texmf/tex/latex/styfiles/'
 alias dju='cd /Users/fgu/Library/Jupyter/snippets'
+alias dic='cd ~/Library/Mobile\ Documents/com~apple~CloudDocs'
+alias dfab='dic; cd fab'
+alias dre='dfab; cd library/resources'
+alias dpa='dfab; cd library/papers'
 
-# dotfiles
-alias fb='nvim ~/.bashrc'
-alias sb='source ~/.bashrc'
-alias ftm='nvim ~/.tmux.conf'
-alias fv='nvim ~/.config/nvim/init.vim'
+# open directory
+alias ore='dre; open .'
+alias opa='dpa; open .'
 
-alias juno='jupyter notebook'
-alias jula='jupyter lab'
-alias clh='open -a safari https://localhost:9999'
-alias sdo='StataSE -e do'
+# files
+alias fbr='vi ~/.bashrc'
+alias ftm='vi ~/.tmux.conf'
+alias fvr='vi ~/.config/nvim/init.vim'
+alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
+alias fre='cd ~/dev/projects/blog/_posts/; pe regex-essentials.md'
+alias frc='open ~/'
 
 # projects
-alias ptr='dtr; nvim'
-alias pfo='dfo; ca foods; jula'
+alias pbl='dbl; ca blog'
+alias pfo='dfo; ca foods'
+alias pen='den; ca entropy'
+alias pmd='dmd; ca mdb'
+alias ptr='dtr; ca te'
+
+
+# jupyter lab
+alias jfo='dfo; jula'
+alias jbl='pbl; jula'
+alias jmd='pmd; jula'
+
+# blog shortcuts
+alias nb='open https://fabiangunzinger.github.io/blog/'
+pn() { vi $(date +'%Y-%m-%d-')"$1"; }
+pe() { vi $(find . -name *$1*); }
 
 # git
 alias gs='git status -u'
@@ -118,10 +153,9 @@ alias cc='cookiecutter https://github.com/drivendata/cookiecutter-data-science
 '
 
 
-
-
+#################################################
 # aws (on Macbook)
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#################################################
 
 # commands with a prefix are for my personal account and instance; those with
 # at prefix, for uk-tracker account and instance.
@@ -212,16 +246,20 @@ alias atue='aws s3 mv ~/Downloads/ s3://3di-data-experian/raw --recursive
 # update local app data (pull from aws)
 alias gad="aws s3 cp s3://3di-project-te/app/ ~/dev/projects/te/tracker/app/data/ --recursive --profile 'tracker-fgu'"
 
-# environment variables
-#~~~~~~~~~~~~~~~~~~~~~~~
+
+#################################################
+# exports
+#################################################
 
 export FABIB=~/dev/projects/dotfiles/latex/fabib.bib
+export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"      # use gnu grep
 
-# environment settings
-#~~~~~~~~~~~~~~~~~~~~~~
 
+#################################################
 # prompt
-# details: https://youtu.be/LXgXV7YmSiU. colors: 256color_chart.svg
+#################################################
+
+# heavily based on https://youtu.be/LXgXV7YmSiU. colors: 256color_chart.svg
 blue=$(tput setaf 033)
 green=$(tput setaf 034)
 white=$(tput setaf 15)
@@ -237,7 +275,4 @@ PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\W";      # basename of working directory
 PS1+="\[${reset}\] $ ";
 export PS1;
-
-# path
-export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"      # use gnu grep
 
