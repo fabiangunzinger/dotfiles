@@ -96,17 +96,17 @@ alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
 alias fre='cd ~/dev/projects/blog/_posts/; pe regex-essentials.md'
 alias frc='open ~/'
 
-# projects
+# start project
 alias pbl='dbl; ca blog'
 alias pfo='dfo; ca foods'
 alias pen='den; ca entropy'
 alias pmd='dmd; ca mdb'
 alias ptr='dtr; ca te'
 
-
-# jupyter lab
-alias jfo='dfo; jula'
+# start jupyter lab for project
 alias jbl='pbl; jula'
+alias jen='den; jula'
+alias jfo='dfo; jula'
 alias jmd='pmd; jula'
 
 # blog shortcuts

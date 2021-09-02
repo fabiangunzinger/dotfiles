@@ -118,6 +118,9 @@ onoremap jk <esc>
 " make Y behave like C and D (see `h: Y`)
 map Y y$
 
+" write
+nnoremap <leader>w :w<cr>
+
 " move visual-line-wise
 nnoremap j gj
 nnoremap k gk
@@ -150,7 +153,7 @@ nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
 " distraction free writing
-nnoremap <silent> <leader>w :Goyo<cr>
+nnoremap <silent> <leader>wr :Goyo<cr>
 
 " git
 nnoremap <leader>gs :Git status<cr>
@@ -175,6 +178,10 @@ nnoremap <leader>mhh :g/^#<cr>
 " run current file in python
 nnoremap <leader>rp :w<cr>:!python %<cr>
 nnoremap <leader>rpd :w<cr>:!python -m doctest %<cr>
+
+" switch textwrap on and off (following unimpaired mappings
+nnoremap [ot :set textwidth=80<cr>
+nnoremap ]ot :set textwidth=0<cr>
 
 " close buffer but not window split
 " command Bd bp\|bd\#
