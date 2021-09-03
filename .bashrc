@@ -25,26 +25,29 @@ alias ....='cd ../../..'
 
 # running processes
 alias p='ps aux | grep '
-alias tcpu='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
+alias pt='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 
 # search file in current folder
 alias f='find . | grep '
 
 # system shutdown and reboots
-alias sd='sudo shutdown'
-alias rb='sudo shutdown -r now'
+alias ss='sudo shutdown'
+alias sr='sudo shutdown -r now'
 
 # disk space and directory structure
 alias dum='du -h | sort -n -r | more'
-alias duf='du -h -d 2'
-alias tree='tree -CAhF --dirsfirst'
-alias treed='tree -CAFd'
+alias dud='du -h -d 2'
+alias t='tree -CAhF --dirsfirst'
+alias td='tree -CAFd'
 
 # commands
 alias jula='jupyter lab'
 alias clh='open -a safari https://localhost:9999'
 alias sdo='StataSE -e do'
 alias tf='terraform'
+alias tfa='tf apply'
+alias tfs='tf show'
+alias tfd='tf destroy'
 alias tm='tmux'
 alias tmkss='tmux kill-session'
 function tma() { tmux attach-session -t "$1"; }
@@ -72,8 +75,8 @@ alias dblp='dbl; cd _posts'
 alias dbln='dbl; cd _notebooks'
 alias dfo='cd ~/dev/projects/food-tracker'
 alias dte='cd ~/dev/projects/tracktheeconomy'
-alias dtra='cd ~/dev/projects/te/admin'
-alias dtrr='cd ~/dev/projects/te/research'
+alias dtea='cd ~/dev/projects/te/admin'
+alias dter='cd ~/dev/projects/te/research'
 alias ddf='cd ~/dev/projects/dotfiles'
 alias dsu='cd ~/setup/SublimeProjects'
 alias dad='cd ~/Library/Application\ Support/Stata/ado/personal'
@@ -96,18 +99,19 @@ alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
 alias fre='cd ~/dev/projects/blog/_posts/; pe regex-essentials.md'
 alias frc='open ~/'
 
-# start project
-alias pbl='dbl; ca blog'
-alias pfo='dfo; ca foods'
-alias pen='den; ca entropy'
-alias pmd='dmd; ca mdb'
-alias ptr='dtr; ca te'
+# activate project
+alias abl='dbl; ca blog'
+alias aen='den; ca entropy'
+alias afo='dfo; ca foods'
+alias amd='dmd; ca mdb'
+alias ate='dte; ca te'
 
 # start jupyter lab for project
-alias jbl='pbl; jula'
-alias jen='den; jula'
-alias jfo='dfo; jula'
-alias jmd='pmd; jula'
+alias jbl='abl; jula'
+alias jen='aen; jula'
+alias jfo='afo; jula'
+alias jmd='amd; jula'
+alias jte='ate; jula'
 
 # blog shortcuts
 alias nb='open https://fabiangunzinger.github.io/blog/'
@@ -136,9 +140,11 @@ function gbn() { git config branch.$( git branch --show-current ).note "$1"; }
 function grc() { git rm --cached $1; }
 
 # conda
+alias ci='conda install '
+alias cl='conda list'
+alias clg='conda list | grep '
 function ca() { conda activate "$1"; }
 function ce() { conda deactivate; }
-alias cl='conda list'
 function ik() { python -m ipykernel install --user --name "$1"; }
 function cee() { conda env export --name "$1" > environment.yml; }
 
@@ -253,6 +259,8 @@ alias gad="aws s3 cp s3://3di-project-te/app/ ~/dev/projects/te/tracker/app/data
 
 export FABIB=~/dev/projects/dotfiles/latex/fabib.bib
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"      # use gnu grep
+export EDITOR=nvim
+export VISUAL="$EDITOR"
 
 
 #################################################
