@@ -21,7 +21,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 
-# alias rmd='rm -rfv '
+alias rmd='rm -rfi '
 
 # running processes
 alias p='ps aux | grep '
@@ -40,12 +40,17 @@ alias dud='du -h -d 2'
 alias t='tree -CAhF --dirsfirst'
 alias td='tree -CAFd'
 
+# terraform
+alias tf='terraform'
+alias tfi='tf init'
+alias tfa='tf apply'
+alias tfo='tf output'
+alias tfoi='tf output instance_id'
+
 # commands
 alias jula='jupyter lab'
 alias clh='open -a safari https://localhost:9999'
 alias sdo='StataSE -e do'
-alias tf='terraform'
-alias tfa='tf apply'
 alias tfs='tf show'
 alias tfd='tf destroy'
 alias tm='tmux'
@@ -55,6 +60,7 @@ alias vi='nvim'
 alias vgp='vimgolf put '
 
 # go to directory
+alias daw='cd ~/.aws'
 alias dde='cd ~/dev'
 alias dpr='dde; cd projects'
 alias drm='dde; cd remote'
@@ -65,6 +71,7 @@ alias dapc='cd ~/dev/projects/applications/interview-prep/code'
 alias dfa='cd ~/dev/projects/fabiangunzinger.github.io'
 alias den='cd ~/dev/projects/entropy/'
 alias dent='den; cd text'
+alias deni='den; cd infra'
 alias dle='cd ~/dev/projects/learning/'
 alias dth='cd ~/dev/projects/learning/think-python'
 alias dml='cd ~/dev/projects/mlbt/'
@@ -113,6 +120,11 @@ alias jfo='afo; jula'
 alias jmd='amd; jula'
 alias jte='ate; jula'
 
+# misc.
+alias pre='open https://regex101.com; open https://www.regular-expressions.info;
+open https://www.rexegg.com; fre'
+
+
 # blog shortcuts
 alias nb='open https://fabiangunzinger.github.io/blog/'
 pn() { vi $(date +'%Y-%m-%d-')"$1"; }
@@ -160,19 +172,33 @@ alias cc='cookiecutter https://github.com/drivendata/cookiecutter-data-science
 
 
 #################################################
-# aws (on Macbook)
+# aws
 #################################################
 
-# commands with a prefix are for my personal account and instance; those with
-# at prefix, for uk-tracker account and instance.
 
-# connect (with local host forwarding)
+mac_ip=$(curl -s ifconfig.me)
+mac_remote=/Users/fgu/dev/remote
+vm_remote=/home/fgu/dev/remote
+localhost_forward=9999:localhost:9999 
+
+te_keypair=/Users/fgu/.aws/ec2-tracker-fgu.pem
+te_host=ec2-18-135-13-11.eu-west-2.compute.amazonaws.com
+
+entropy_host=ec2-35-177-2-138.eu-west-2.compute.amazonaws.com
+entropy_keypair=/Users/fgu/.aws/ec2-tracker-fgu.pem
+
+alias aenf='ssh -i $entropy_keypair -L $localhost_forward ubuntu@$entropy_host'
+
+
+alias atco='ssh -i $te_keypair -L $localhost_forward fgu@$te_host'
+
+
 # to my ec2
 alias aco='ssh -X -i ~/.aws/fgu-ec2-key.pem -L 9999:localhost:9999 ec2-user@ec2-18-130-22-104.eu-west-2.compute.amazonaws.com'
-# to tracker as fgu
-alias atco='ssh -i ~/.aws/ec2-tracker-fgu.pem -L 9999:localhost:9999 fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com'
+
 # to tracker as default user
 alias atcod='ssh -i ~/.aws/ec2-tracker-ec2user.pem -L 9999:localhost:9999 ec2-user@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com'
+
 
 # instance info
 alias adi='aws ec2 describe-instances --filters Name=owner-id,Values=481079503739'
@@ -186,13 +212,6 @@ alias asto='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
 
 # mount and unmount project dir
 
-mac_ip=80.43.66.208
-mac_remote=/Users/fgu/dev/remote
-mac_pem=/Users/fgu/.aws/ec2-tracker-fgu.pem
-te_ip=18.135.13.11
-te_remote=/home/fgu/dev/remote
-
-
 alias mmat='sshfs fgu@$te_ip:$te_remote $mac_remote -o identityfile=$mac_pem; echo $te_remote mounted'
 
 alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
@@ -202,9 +221,6 @@ alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/
 alias um='umount -f ~/dev/remote; echo "Unmounted"'
 
 
-# open RStudio server
-alias atrs='open -a safari http://ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:8787'
-
 # download file from ec2 to Mac
 function atdl() { scp -i ~/.aws/ec2-tracker-fgu.pem fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:$1 $2; }
 
@@ -213,10 +229,6 @@ function atul() { scp -i ~/.aws/ec2-tracker-fgu.pem $1 fgu@ec2-18-135-13-11.eu-w
 
 # copy files from a to b
 function asy() { aws s3 sync $1 $2; }
-
-# list running processes with keyword
-alias larp='ps aux'
-function lrp() { ps aux | grep $1; }
 
 # aws cli with tracker-uk profile
 function awst() { aws "$@" --profile "tracker-fgu"; }

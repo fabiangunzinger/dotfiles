@@ -6,6 +6,7 @@
 call plug#begin()
 Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
 Plug 'godlygeek/tabular'   " tabular formatting
+Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
 Plug 'itchyny/lightline.vim'   " statusbar
 Plug 'junegunn/goyo.vim'   " distraction free writing
 Plug 'machakann/vim-highlightedyank'   " highlight yanked region
@@ -160,8 +161,8 @@ nnoremap <leader>gs :Git status<cr>
 nnoremap <leader>gg :call GitLazyPush()<cr>
 
 " source vimrc
-map <leader>sv :write<cr>:source $MYVIMRC<cr>zazz
-map <leader>Sv :write<cr>:source $MYVIMRC<cr>
+map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>zazz
+map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>
 
 " open files
 map <silent> <leader>fvr :edit $MYVIMRC<cr>
@@ -183,9 +184,14 @@ nnoremap <leader>rpd :w<cr>:!python -m doctest %<cr>
 nnoremap [ot :set textwidth=80<cr>
 nnoremap ]ot :set textwidth=0<cr>
 
-" close buffer but not window split
-" command Bd bp\|bd\#
+" terraform
+cnoremap tfi Terraform init
+cnoremap tfa Terraform apply
+nnoremap tff :TerraformFmt<cr>
 
+" semshi
+nnoremap <silent> <leader>gu :Semshi goto unresolved<cr>
+nnoremap <silent> <leader>ge :Semshi goto error<cr>
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
