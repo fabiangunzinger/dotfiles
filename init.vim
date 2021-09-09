@@ -4,7 +4,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " activate vim-plug
 call plug#begin()
-Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
+" Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
 Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
 Plug 'itchyny/lightline.vim'   " statusbar
@@ -23,6 +23,7 @@ Plug 'tpope/vim-repeat'   " use . after plugin map
 Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
+Plug 'wincent/command-t'   " fuzzy file finder
 Plug 'psliwka/vim-smoothie'   " smooth scrolling
 Plug 'jpalardy/vim-slime'   " repl interaction support
     let g:slime_target = "vimterminal"
@@ -76,6 +77,7 @@ set softtabstop=4                       " spaces per <tab> while editing
 " use dedicated virtual env as nvim intrpreter (:h python3_host_prog)
 let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 
+
 " search {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set ignorecase                          " case insensitive search...
@@ -89,6 +91,7 @@ set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
 " turn off highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 
 " colors and fonts {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -119,14 +122,14 @@ onoremap jk <esc>
 " make Y behave like C and D (see `h: Y`)
 map Y y$
 
-" write
+" write buffer
 nnoremap <leader>w :w<cr>
 
 " move visual-line-wise
 nnoremap j gj
 nnoremap k gk
 
-" conveniently switch buffer (list open ones and type `:b `
+" conveniently switch buffer 
 nnoremap <leader>b :ls<cr>:b<space>
 nnoremap <leader>vb :ls<cr>:vert sb<space>
 
@@ -153,12 +156,16 @@ map <leader>et :tabedit %%
 nnoremap & :&&<CR>
 xnoremap & :&&<CR>
 
-" distraction free writing
-nnoremap <silent> <leader>wr :Goyo<cr>
+" switch textwrap on and off (following unimpaired mappings)
+nnoremap [ot :set textwidth=80<cr>
+nnoremap ]ot :set textwidth=0<cr>
 
-" git
-nnoremap <leader>gs :Git status<cr>
-nnoremap <leader>gg :call GitLazyPush()<cr>
+" print markdown headings
+nnoremap <leader>mh :g/^#<space><cr>
+nnoremap <leader>mhh :g/^#<cr>
+
+" distraction free writing
+nnoremap <silent> <leader>dw :Goyo<cr>
 
 " source vimrc
 map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>zazz
@@ -172,17 +179,13 @@ map <silent> <leader>fre :edit ~/dev/projects/blog/_posts/2021-08-26-regex-essen
 map <silent> <leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
 map <silent> <leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
 
-" print markdown headings
-nnoremap <leader>mh :g/^#<space><cr>
-nnoremap <leader>mhh :g/^#<cr>
-
 " run current file in python
 nnoremap <leader>rp :w<cr>:!python %<cr>
 nnoremap <leader>rpd :w<cr>:!python -m doctest %<cr>
 
-" switch textwrap on and off (following unimpaired mappings
-nnoremap [ot :set textwidth=80<cr>
-nnoremap ]ot :set textwidth=0<cr>
+" git
+nnoremap <leader>gs :Git status<cr>
+nnoremap <leader>gg :call GitLazyPush()<cr>
 
 " terraform
 cnoremap tfi Terraform init
@@ -192,6 +195,11 @@ nnoremap tff :TerraformFmt<cr>
 " semshi
 nnoremap <silent> <leader>gu :Semshi goto unresolved<cr>
 nnoremap <silent> <leader>ge :Semshi goto error<cr>
+
+" command-t
+nmap <silent> <C-p> <plug>(CommandT)
+nmap <silent> <C-p><C-p> <plug>(CommandTBuffer)
+
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

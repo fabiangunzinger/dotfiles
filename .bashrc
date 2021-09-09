@@ -122,7 +122,8 @@ alias jte='ate; jula'
 
 # misc.
 alias pre='open https://regex101.com; open https://www.regular-expressions.info;
-open https://www.rexegg.com; fre'
+open https://www.rexegg.com; open https://docs.python.org/3/library/re.html;
+jbl; fre'
 
 
 # blog shortcuts
@@ -227,11 +228,12 @@ function atdl() { scp -i ~/.aws/ec2-tracker-fgu.pem fgu@ec2-18-135-13-11.eu-west
 function atul() { scp -i ~/.aws/ec2-tracker-fgu.pem $1 fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:/data; }
 
 
-# copy files from a to b
-function asy() { aws s3 sync $1 $2; }
-
 # aws cli with tracker-uk profile
 function awst() { aws "$@" --profile "tracker-fgu"; }
+
+# copy files from a to b
+function asy() { aws s3 cp $1 $2; }
+function asyt() { aws s3 cp $1 $2 --profile "tracker-fgu"; }
 
 # pull latest fable data
 alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://3di-data-fable/raw/'
