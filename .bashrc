@@ -99,9 +99,9 @@ alias ore='dre; open .'
 alias opa='dpa; open .'
 
 # files
-alias fbr='vi ~/.bashrc'
+alias fb='vi ~/.bashrc'
 alias ftm='vi ~/.tmux.conf'
-alias fvr='vi ~/.config/nvim/init.vim'
+alias fv='vi ~/.config/nvim/init.vim'
 alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
 alias fre='cd ~/dev/projects/blog/_posts/; pe regex-essentials.md'
 alias frc='open ~/'
@@ -123,7 +123,7 @@ alias jte='ate; jula'
 # misc.
 alias pre='open https://regex101.com; open https://www.regular-expressions.info;
 open https://www.rexegg.com; open https://docs.python.org/3/library/re.html;
-jbl; fre'
+jbl'
 
 
 # blog shortcuts

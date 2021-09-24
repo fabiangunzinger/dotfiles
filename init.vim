@@ -4,7 +4,6 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " activate vim-plug
 call plug#begin()
-" Plug 'ctrlpvim/ctrlp.vim'   " fuzzy search
 Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
 Plug 'itchyny/lightline.vim'   " statusbar
@@ -40,6 +39,8 @@ nnoremap <leader>pc :write<cr>:source $MYVIMRC<cr>:PlugClean<cr>
 
 " general {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" filetype detection
 filetype plugin on			            " enable filetype plugins
 filetype indent on                      " enable filetype indent
 
@@ -60,8 +61,9 @@ set showcmd	                            " show partial command
 set wrap                            	" wrap long lines
 set linebreak                           " don't break word
 set nolist                              " list option breaks linebreak
-set colorcolumn=80                      " color 80th column
-set textwidth=80                        " wrap at 80th colomn
+" set colorcolumn=79                      " color last column
+set textwidth=79                        " wrap text at specified column
+set formatoptions=tc
 
 " splits
 set splitright                          " new vertical split on the right
@@ -96,17 +98,19 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " colors and fonts {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 syntax enable                           " syntax highlighting
-let python_highlight_all=1
 set background=dark                     " dark background
 colorscheme solarized                   " custom colorscheme
+let python_highlight_all=1
 
+
+" old setting backup 
 " vertical split color
-highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
-
+" highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
 " remove split separator fill characters
-set fillchars=""
+" set fillchars=""
 
-
+set fillchars+=vert:│
+hi VertSplit ctermbg=NONE guibg=NONE
 " mappings {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -134,16 +138,16 @@ nnoremap <leader>b :ls<cr>:b<space>
 nnoremap <leader>vb :ls<cr>:vert sb<space>
 
 " change windows 
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
+" map <C-j> <C-W>j
+" map <C-k> <C-W>k
+" map <C-h> <C-W>h
+" map <C-l> <C-W>l
 
 " tabs
-map <leader>tn :tabnew<cr>
-map <leader>tc :tabclose<cr>
+" map <leader>tn :tabnew<cr>
+" map <leader>tc :tabclose<cr>
 " Open new tab with current buffer's path
-map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
+" map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
 
 " open files from same directory as current buffer
 " ew is for open (edit) new file in window
@@ -164,6 +168,10 @@ nnoremap ]ot :set textwidth=0<cr>
 nnoremap <leader>mh :g/^#<space><cr>
 nnoremap <leader>mhh :g/^#<cr>
 
+" line numbers
+nnoremap <silent> <leader>n :setlocal number!<cr>
+nnoremap <silent> <leader>nr :setlocal relativnnumber!<cr>
+
 " distraction free writing
 nnoremap <silent> <leader>dw :Goyo<cr>
 
@@ -172,12 +180,12 @@ map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>zazz
 map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>
 
 " open files
-map <silent> <leader>fvr :edit $MYVIMRC<cr>
-map <silent> <leader>fvv :vsplit $MYVIMRC<cr>
+map <silent> <leader>fvv :edit $MYVIMRC<cr>
 map <silent> <leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
 map <silent> <leader>fre :edit ~/dev/projects/blog/_posts/2021-08-26-regex-essentials.md<cr>
 map <silent> <leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
 map <silent> <leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
+map <silent> <leader>fli :edit ~/dev/projects/blog/_posts/2021-02-08-linux.md<cr>
 
 " run current file in python
 nnoremap <leader>rp :w<cr>:!python %<cr>
@@ -197,8 +205,11 @@ nnoremap <silent> <leader>gu :Semshi goto unresolved<cr>
 nnoremap <silent> <leader>ge :Semshi goto error<cr>
 
 " command-t
-nmap <silent> <C-p> <plug>(CommandT)
-nmap <silent> <C-p><C-p> <plug>(CommandTBuffer)
+" start and cancel with <c-p>
+" nmap <silent> <c-p> <plug>(CommandT)
+" nmap <silent> <c-[> <plug>(CommandTBuffer)
+" let g:CommandTSelectPrevMap=['<v-k>', '<Up>']
+" let g:CommandTCancelMap=['<c-c>', '<c-p>']
 
 
 " sessions {{{1
@@ -217,12 +228,12 @@ exec 'nnoremap <leader>sr :source' . g:session_dir . g:files_list
 " git {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 function! GitLazyPush()
-    call inputsave()
-    let msg = input("Commit message: ")
-    call inputrestore()
-    :Git add --all
-    :execute ":Git commit -m ".'"'.msg.'"'
-    :Git push   
+call inputsave()
+let msg = input("Commit message: ")
+call inputrestore()
+:Git add --all
+:execute ":Git commit -m ".'"'.msg.'"'
+:Git push   
 endfunction
 
 
