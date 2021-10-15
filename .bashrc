@@ -31,8 +31,11 @@ alias pt='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 alias f='find . | grep '
 
 # system shutdown and reboots
-alias ss='sudo shutdown'
+alias ss='sudo shutdown -h now'
 alias sr='sudo shutdown -r now'
+
+# start of day
+alias jk='open /System/Applications/Calendar.app; open /System/Applications/Notes.app'
 
 # disk space and directory structure
 alias dum='du -h | sort -n -r | more'
@@ -103,7 +106,7 @@ alias fb='vi ~/.bashrc'
 alias ftm='vi ~/.tmux.conf'
 alias fv='vi ~/.config/nvim/init.vim'
 alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
-alias fre='cd ~/dev/projects/blog/_posts/; pe regex-essentials.md'
+alias fre='vi ~/dev/projects/blog/_posts/2021-09-11-regex.md'
 alias frc='open ~/'
 
 # activate project
@@ -123,7 +126,7 @@ alias jte='ate; jula'
 # misc.
 alias pre='open https://regex101.com; open https://www.regular-expressions.info;
 open https://www.rexegg.com; open https://docs.python.org/3/library/re.html;
-jbl'
+open https://bitbucket.org/mrabarnett/mrab-regex/src/hg/; jbl'
 
 
 # blog shortcuts

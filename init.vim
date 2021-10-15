@@ -4,7 +4,11 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " activate vim-plug
 call plug#begin()
+Plug 'alfredodeza/pytest.vim'   " pytest support
 Plug 'godlygeek/tabular'   " tabular formatting
+Plug 'plasticboy/vim-markdown'   " markdown support
+  let g:vim_markdown_auto_insert_bullets = 0
+  let g:vim_markdown_new_list_item_indent = 0
 Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
 Plug 'itchyny/lightline.vim'   " statusbar
 Plug 'junegunn/goyo.vim'   " distraction free writing
@@ -63,7 +67,6 @@ set linebreak                           " don't break word
 set nolist                              " list option breaks linebreak
 " set colorcolumn=79                      " color last column
 set textwidth=79                        " wrap text at specified column
-set formatoptions=tc
 
 " splits
 set splitright                          " new vertical split on the right
@@ -75,9 +78,19 @@ set shiftwidth=4                        " spaces for autoindent
 set tabstop=4                           " spaces per <tab> in file
 set softtabstop=4                       " spaces per <tab> while editing
 
+" colors and fonts
+syntax enable                           " syntax highlighting
+set background=dark                     " dark background
+colorscheme solarized                   " custom colorscheme
+let python_highlight_all=1
+
 " python interpreter
 " use dedicated virtual env as nvim intrpreter (:h python3_host_prog)
 let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+
+" remove vertical split column highlight
+" only fillchar vert default | is shows
+highlight VertSplit ctermbg=NONE
 
 
 " search {{{1
@@ -94,25 +107,21 @@ set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 " turn off highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-
-" colors and fonts {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-syntax enable                           " syntax highlighting
-set background=dark                     " dark background
-colorscheme solarized                   " custom colorscheme
-let python_highlight_all=1
+" netrw settings
+let g:netrw_preview = 1
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 30
 
 
-" old setting backup 
-" vertical split color
-" highlight VertSplit guifg=Red guibg=Blue ctermfg=6 ctermbg=0
-" remove split separator fill characters
-" set fillchars=""
-
-set fillchars+=vert:│
-hi VertSplit ctermbg=NONE guibg=NONE
 " mappings {{{1
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" letters to keep free
+" letter    | purpose
+" t,b       | command-t search
+    
+
+let mapleader = ','
 
 " leave insert mode
 inoremap jk <esc>
@@ -133,21 +142,11 @@ nnoremap <leader>w :w<cr>
 nnoremap j gj
 nnoremap k gk
 
-" conveniently switch buffer 
-nnoremap <leader>b :ls<cr>:b<space>
-nnoremap <leader>vb :ls<cr>:vert sb<space>
-
 " change windows 
 " map <C-j> <C-W>j
 " map <C-k> <C-W>k
 " map <C-h> <C-W>h
 " map <C-l> <C-W>l
-
-" tabs
-" map <leader>tn :tabnew<cr>
-" map <leader>tc :tabclose<cr>
-" Open new tab with current buffer's path
-" map <leader>tp :tabedit <C-r>=expand("%:p:h")<cr>/
 
 " open files from same directory as current buffer
 " ew is for open (edit) new file in window
@@ -170,7 +169,7 @@ nnoremap <leader>mhh :g/^#<cr>
 
 " line numbers
 nnoremap <silent> <leader>n :setlocal number!<cr>
-nnoremap <silent> <leader>nr :setlocal relativnnumber!<cr>
+nnoremap <silent> <leader>nr :setlocal relativenumber!<cr>
 
 " distraction free writing
 nnoremap <silent> <leader>dw :Goyo<cr>
@@ -182,7 +181,7 @@ map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>
 " open files
 map <silent> <leader>fvv :edit $MYVIMRC<cr>
 map <silent> <leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
-map <silent> <leader>fre :edit ~/dev/projects/blog/_posts/2021-08-26-regex-essentials.md<cr>
+map <silent> <leader>fre :edit ~/dev/projects/blog/_posts/2021-09-11-regex.md<cr>
 map <silent> <leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
 map <silent> <leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
 map <silent> <leader>fli :edit ~/dev/projects/blog/_posts/2021-02-08-linux.md<cr>
@@ -195,21 +194,20 @@ nnoremap <leader>rpd :w<cr>:!python -m doctest %<cr>
 nnoremap <leader>gs :Git status<cr>
 nnoremap <leader>gg :call GitLazyPush()<cr>
 
-" terraform
-cnoremap tfi Terraform init
-cnoremap tfa Terraform apply
-nnoremap tff :TerraformFmt<cr>
-
 " semshi
 nnoremap <silent> <leader>gu :Semshi goto unresolved<cr>
 nnoremap <silent> <leader>ge :Semshi goto error<cr>
 
+" close buffer but not window
+" nnoremap Bd :bp\|bd #<cr>
+
+" quick formatting
+" nnoremap <silent> <leader>tp gqap<cr>
+
 " command-t
-" start and cancel with <c-p>
-" nmap <silent> <c-p> <plug>(CommandT)
-" nmap <silent> <c-[> <plug>(CommandTBuffer)
-" let g:CommandTSelectPrevMap=['<v-k>', '<Up>']
-" let g:CommandTCancelMap=['<c-c>', '<c-p>']
+" nnoremap <c-cr> :CommandTOpen vs
+" let g:CommandTCancelMap=['<c-c>', 'jk']
+
 
 
 " sessions {{{1
