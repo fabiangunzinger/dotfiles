@@ -7,8 +7,6 @@ call plug#begin()
 Plug 'alfredodeza/pytest.vim'   " pytest support
 Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'plasticboy/vim-markdown'   " markdown support
-  let g:vim_markdown_auto_insert_bullets = 0
-  let g:vim_markdown_new_list_item_indent = 0
 Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
 Plug 'itchyny/lightline.vim'   " statusbar
 Plug 'junegunn/goyo.vim'   " distraction free writing
@@ -119,7 +117,13 @@ let g:netrw_winsize = 30
 " letters to keep free
 " letter    | purpose
 " t,b       | command-t search
-    
+
+" ~~~ new and experimental ~~~
+" turn of highlighting after search by hitting cr again
+" disables all other cr functions like jumping around in toc, find better
+" solution
+" nnoremap <silent><cr> :nohlsearch<cr>
+
 
 let mapleader = ','
 
@@ -137,6 +141,9 @@ map Y y$
 
 " write buffer
 nnoremap <leader>w :w<cr>
+
+" edit alternate file
+nnoremap <silent><leader>a :e#<cr>
 
 " move visual-line-wise
 nnoremap j gj
@@ -179,12 +186,13 @@ map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>zazz
 map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>
 
 " open files
-map <silent> <leader>fvv :edit $MYVIMRC<cr>
-map <silent> <leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
-map <silent> <leader>fre :edit ~/dev/projects/blog/_posts/2021-09-11-regex.md<cr>
-map <silent> <leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
-map <silent> <leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
-map <silent> <leader>fli :edit ~/dev/projects/blog/_posts/2021-02-08-linux.md<cr>
+map <silent><leader>fvr :edit $MYVIMRC<cr>
+map <silent><leader>fvvr :vsplit $MYVIMRC<cr>
+map <silent><leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
+map <silent><leader>fre :edit ~/dev/projects/blog/_posts/2021-09-11-regex.md<cr>
+map <silent><leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
+map <silent><leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
+map <silent><leader>fli :edit ~/dev/projects/blog/_posts/2021-02-08-linux.md<cr>
 
 " run current file in python
 nnoremap <leader>rp :w<cr>:!python %<cr>
@@ -193,6 +201,19 @@ nnoremap <leader>rpd :w<cr>:!python -m doctest %<cr>
 " git
 nnoremap <leader>gs :Git status<cr>
 nnoremap <leader>gg :call GitLazyPush()<cr>
+" below doesn't work, as it creates a conflict with pushed commit if pushed
+" already. So I need to pull first and merge, then push.
+" nnoremap <leader>gam :Git add --all \| Git commit --amend --no-edit<cr>
+
+" pytest
+nnoremap <silent><leader>uff :Pytest file<cr>
+nnoremap <silent><leader>uc :Pytest class<cr>
+nnoremap <silent><leader>uf :Pytest function<cr>
+nnoremap <silent><leader>um :Pytest method<cr>
+nnoremap <silent><leader>un :Pytest next<cr>
+nnoremap <silent><leader>up :Pytest previous<cr>
+nnoremap <silent><leader>us :Pytest session<cr>
+nnoremap <silent><leader>ufa :Pytest fails<cr>
 
 " semshi
 nnoremap <silent> <leader>gu :Semshi goto unresolved<cr>
@@ -269,6 +290,14 @@ let g:vimtex_view_method = 'skim'   " use skim as editor
 " installation info: https://github.com/lervag/vimtex/issues/1327
 let g:vimtex_compiler_progname = $HOME.'/miniconda3/envs/nvim/bin/nvr' 
 
+" markdown {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:vim_markdown_auto_insert_bullets = 0
+let g:vim_markdown_new_list_item_indent = 0
+
+" disable ge command to keep it free for default movement behaviour
+map <Plug> <Plug>Markdown_EditUrlUnderCursor
 
 " status bar {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
