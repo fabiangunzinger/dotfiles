@@ -35,7 +35,7 @@
 
 \usepackage[margin=2.5cm]{geometry}   % page margins
 
-\usepackage[utf8, ansinew]{inputenc}    % required for umlaute
+\usepackage[utf8, ansinew]{inputenc}    % unicode encoding
 \usepackage{csquotes}
 \usepackage[ngerman, english]{babel}    % required for umlaute
 \usepackage[T1]{fontenc}                % required for umlaute
@@ -96,7 +96,9 @@
 \newcommand{\paper}[1]{\citet{#1}: \citetitle{#1}}
 \newcommand{\edit}[1]{{\noindent\color{red}{#1}}}
 \newcommand{\gap}{{\color{red}...\#...}}
-\newcommand{\note}[1]{\center\scriptsize Note: #1}
+\newcommand{\notes}[1]{\newlineNotes: #1}
+\newcommand{\fignote}[2]{\center\parbox[c]{#1}{\footnotesize Notes: #2}}
+\newcommand{\tabnote}[2]{\center\parbox[c]{#1}{\footnotesize Notes: #2}}
 \newcommand{\source}[1]{\center\scriptsize Source: #1}
 \newcommand{\what}[1]{{\noindent\textit{\color{blue}{#1}}}}
 

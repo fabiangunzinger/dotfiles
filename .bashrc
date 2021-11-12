@@ -30,8 +30,8 @@ alias pt='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 # search file in current folder
 alias f='find . | grep '
 
-# system shutdown and reboots
-alias ss='sudo shutdown -h now'
+# system shutdown (also shuts down aws instance) and reboots
+alias ss='atesp; sudo shutdown -h now'
 alias sr='sudo shutdown -r now'
 
 # start of day
@@ -104,7 +104,7 @@ alias opa='dpa; open .'
 # files
 alias fb='vi ~/.bashrc'
 alias ftm='vi ~/.tmux.conf'
-alias fv='vi ~/.config/nvim/init.vim'
+alias fvr='vi ~/.config/nvim/init.vim'
 alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
 alias fre='vi ~/dev/projects/blog/_posts/2021-09-11-regex.md'
 alias frc='open ~/'
@@ -140,6 +140,7 @@ alias ga='git add --all'
 alias gp='git push'
 alias gl='git log --oneline'
 function gac() { git add --all; git commit -m "$1"; }
+# function gam() { git add --all; git commit --amend --no-edit; } # not working
 function gc() { git commit -m "$1"; }
 function gg() { git add --all; git commit -m "$1"; git push; }
 function gb() { git branch; }
@@ -185,89 +186,79 @@ mac_remote=/Users/fgu/dev/remote
 vm_remote=/home/fgu/dev/remote
 localhost_forward=9999:localhost:9999 
 
-te_keypair=/Users/fgu/.aws/ec2-tracker-fgu.pem
-te_host=ec2-18-135-13-11.eu-west-2.compute.amazonaws.com
+te_keypair=/Users/fgu/.aws/3di.pem
+instance_id=i-0d38c6fcdfb909b7b
 
-entropy_host=ec2-35-177-2-138.eu-west-2.compute.amazonaws.com
-entropy_keypair=/Users/fgu/.aws/ec2-tracker-fgu.pem
-
-alias aenf='ssh -i $entropy_keypair -L $localhost_forward ubuntu@$entropy_host'
-
-
-alias atco='ssh -i $te_keypair -L $localhost_forward fgu@$te_host'
-
-
-# to my ec2
-alias aco='ssh -X -i ~/.aws/fgu-ec2-key.pem -L 9999:localhost:9999 ec2-user@ec2-18-130-22-104.eu-west-2.compute.amazonaws.com'
-
-# to tracker as default user
-alias atcod='ssh -i ~/.aws/ec2-tracker-ec2user.pem -L 9999:localhost:9999 ec2-user@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com'
-
-
-# instance info
-alias adi='aws ec2 describe-instances --filters Name=owner-id,Values=481079503739'
-alias atdi='aws ec2 describe-instances --filters Name=owner-id,Values=934342343463'
-alias ais='aws ec2 describe-instance-status --instance-ids i-035ee6232fc6eb131'
-alias atis='aws ec2 describe-instance-status --instance-ids i-07803e23266a1d0fd'
+alias get_dns="aws ec2 describe-instances \
+    --instance-ids $instance_id \
+    --query 'Reservations[].Instances[].PublicDnsName' \
+    --profile '3di' \
+    --region 'eu-west-2' \
+    --output 'text'"
+te_dns=$( get_dns )
 
 # start and stop instance
-alias asta='aws ec2 start-instances --instance-ids i-035ee6232fc6eb131'
-alias asto='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
+tail='--profile 3di --region eu-west-2'
+alias atesp='aws ec2 stop-instances --instance-ids $instance_id $tail'
+alias atest='aws ec2 start-instances --instance-ids $instance_id $tail'
 
-# mount and unmount project dir
+# connect to ec2 instances
+alias atec='ssh -i $te_keypair -L $localhost_forward fgu@$te_dns'
+alias atecu='ssh -i $te_keypair -L $localhost_forward ubuntu@$te_dns'
 
-alias mmat='sshfs fgu@$te_ip:$te_remote $mac_remote -o identityfile=$mac_pem; echo $te_remote mounted'
-
-alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
-
-alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote/ -o identityfile=/users/fgu/.aws/ec2-tracker-fgu.pem'
-
-alias um='umount -f ~/dev/remote; echo "Unmounted"'
-
-
-# download file from ec2 to Mac
-function atdl() { scp -i ~/.aws/ec2-tracker-fgu.pem fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:$1 $2; }
-
-function atul() { scp -i ~/.aws/ec2-tracker-fgu.pem $1 fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:/data; }
-
-
-# aws cli with tracker-uk profile
-function awst() { aws "$@" --profile "tracker-fgu"; }
+# fetch latest fable data
+source=s3://fd-eu-rowlevel-v2
+destination=s3://3di-data-fable/raw/
+alias getfable="aws s3 sync $source $destination --profile '3di'"
 
 # copy files from a to b
-function asy() { aws s3 cp $1 $2; }
-function asyt() { aws s3 cp $1 $2 --profile "tracker-fgu"; }
+function acp() { aws s3 cp $1 $2; }
+function acpt() { aws s3 cp $1 $2 --profile '3di'; }
 
-# pull latest fable data
-alias getfable='aws s3 sync s3://euhistoricaldatav1 s3://3di-data-fable/raw/'
-# alias atjc='ssh -i ~/.aws/fgu-tracker-key.pem -N -f -L 9999:localhost:9999 ec2-user@ec2-3-8-141-132.eu-west-2.compute.amazonaws.com'
+## to my ec2
+#alias aco='ssh -X -i ~/.aws/fgu-ec2-key.pem -L 9999:localhost:9999 ec2-user@ec2-18-130-22-104.eu-west-2.compute.amazonaws.com'
 
-
-# alias atco='ssh -i ~/.aws/fgu-tracker-key.pem ec2-user@ec2-3-8-141-132.eu-west-2.compute.amazonaws.com'
-#
-# alias atjc='ssh -i ~/.aws/fgu-tracker-key.pem -N -f -L 9999:localhost:9999 ec2-user@ec2-3-8-141-132.eu-west-2.compute.amazonaws.com'
+## to tracker as default user
+#alias atcod='ssh -i ~/.aws/ec2-tracker-ec2user.pem -L 9999:localhost:9999 ec2-user@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com'
 
 
-# alias atde='aws ec2 describe-instances'
-# alias atst='aws ec2 describe-instance-status --instance-ids i-035ee6232fc6eb131'
-# alias atmo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
-# alias atum='umount -f /Users/fgu/dev/remote_projects'
-# alias atsa='aws ec2 start-instances --instance-ids i-035ee6232fc6eb131'
-# alias atso='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
+## instance info
+#alias adi='aws ec2 describe-instances --filters Name=owner-id,Values=481079503739'
+#alias atdi='aws ec2 describe-instances --filters Name=owner-id,Values=934342343463'
+#alias ais='aws ec2 describe-instance-status --instance-ids i-035ee6232fc6eb131'
+#alias atis='aws ec2 describe-instance-status --instance-ids i-07803e23266a1d0fd'
+
+## start and stop instance
+#alias asta='aws ec2 start-instances --instance-ids i-035ee6232fc6eb131'
+#alias asto='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
+
+## mount and unmount project dir
+
+#alias mmat='sshfs fgu@$te_ip:$te_remote $mac_remote -o identityfile=$mac_pem; echo $te_remote mounted'
+
+#alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
+
+#alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote/ -o identityfile=/users/fgu/.aws/ec2-tracker-fgu.pem'
+
+#alias um='umount -f ~/dev/remote; echo "Unmounted"'
 
 
-# aws tracker ubuntu instance
-# 3.8.201.147
+## download file from ec2 to Mac
+#function atdl() { scp -i ~/.aws/ec2-tracker-fgu.pem fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:$1 $2; }
 
-alias ate='ssh -i ~/.aws/ec2-tracker-fgu.pem -L 9999:localhost:9999 ubuntu@ec2-52-56-193-5.eu-west-2.compute.amazonaws.com'
+#function atul() { scp -i ~/.aws/ec2-tracker-fgu.pem $1 fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:/data; }
 
 
-# upload latest experian data 
-alias atue='aws s3 mv ~/Downloads/ s3://3di-data-experian/raw --recursive
---exclude "*" --include "uofn_*" --profile "tracker-fgu'
+## aws cli with tracker-uk profile
+#function awst() { aws "$@" --profile "tracker-fgu"; }
 
-# update local app data (pull from aws)
-alias gad="aws s3 cp s3://3di-project-te/app/ ~/dev/projects/te/tracker/app/data/ --recursive --profile 'tracker-fgu'"
+
+## upload latest experian data 
+#alias atue='aws s3 mv ~/Downloads/ s3://3di-data-experian/raw --recursive
+#--exclude "*" --include "uofn_*" --profile "tracker-fgu'
+
+## update local app data (pull from aws)
+#alias gad="aws s3 cp s3://3di-project-te/app/ ~/dev/projects/te/tracker/app/data/ --recursive --profile 'tracker-fgu'"
 
 
 #################################################
