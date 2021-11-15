@@ -5,6 +5,7 @@
 " activate vim-plug
 call plug#begin()
 Plug 'alfredodeza/pytest.vim'   " pytest support
+Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
 Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'plasticboy/vim-markdown'   " markdown support
 Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
@@ -35,8 +36,8 @@ Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
 Plug 'lervag/vimtex'   " latex support
 call plug#end()
 
-nnoremap <leader>pi :write<cr>:source $MYVIMRC<cr>:PlugInstall<cr>
-nnoremap <leader>pc :write<cr>:source $MYVIMRC<cr>:PlugClean<cr>
+nnoremap <leader>ip :write<cr>:source $MYVIMRC<cr>:PlugInstall<cr>
+nnoremap <leader>cp :write<cr>:source $MYVIMRC<cr>:PlugClean<cr>
 
 
 " general {{{1
@@ -119,11 +120,17 @@ let g:netrw_winsize = 30
 " t,b       | command-t search
 
 " ~~~ new and experimental ~~~
+
 " turn of highlighting after search by hitting cr again
 " disables all other cr functions like jumping around in toc, find better
 " solution
 " nnoremap <silent><cr> :nohlsearch<cr>
 
+nnoremap <silent><leader>x :x<cr>
+
+
+
+" ~~~ permanent ~~~
 
 let mapleader = ','
 
@@ -214,6 +221,9 @@ nnoremap <silent><leader>un :Pytest next<cr>
 nnoremap <silent><leader>up :Pytest previous<cr>
 nnoremap <silent><leader>us :Pytest session<cr>
 nnoremap <silent><leader>ufa :Pytest fails<cr>
+
+"pytest
+nnoremap <silent><leader>fo :Black<cr>
 
 " semshi
 nnoremap <silent> <leader>gu :Semshi goto unresolved<cr>
