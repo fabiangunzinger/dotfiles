@@ -166,6 +166,7 @@ function ca() { conda activate "$1"; }
 function ce() { conda deactivate; }
 function ik() { python -m ipykernel install --user --name "$1"; }
 function cee() { conda env export --name "$1" > environment.yml; }
+alias newenv='python pandas scipy scikit-learn seaborn s3fs jupyterlab'
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
