@@ -49,16 +49,19 @@ alias tfi='tf init'
 alias tfa='tf apply'
 alias tfo='tf output'
 alias tfoi='tf output instance_id'
+alias tfs='tf show'
+alias tfd='tf destroy'
 
-# commands
+# tmux
+alias tmls='tmux ls'
+function tmsn() { tmux new -s $1; }
+function tmsa() { tmux attach-session -t $1; }
+function tmsk() { tmux kill-session -t $1; }
+
+# misc. commands
 alias jula='jupyter lab'
 alias clh='open -a safari https://localhost:9999'
 alias sdo='StataSE -e do'
-alias tfs='tf show'
-alias tfd='tf destroy'
-alias tm='tmux'
-alias tmkss='tmux kill-session'
-function tma() { tmux attach-session -t "$1"; }
 alias vi='nvim'
 alias vgp='vimgolf put '
 
@@ -106,7 +109,7 @@ alias fb='vi ~/.bashrc'
 alias ftm='vi ~/.tmux.conf'
 alias fvr='vi ~/.config/nvim/init.vim'
 alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
-alias fre='vi ~/dev/projects/blog/_posts/2021-09-11-regex.md'
+alias fre='dblp; vi 2021-09-11-regex.md'
 alias frc='open ~/'
 
 # activate project
@@ -180,7 +183,6 @@ alias cc='cookiecutter https://github.com/drivendata/cookiecutter-data-science
 # aws
 #################################################
 
-
 mac_ip=$(curl -s ifconfig.me)
 mac_remote=/Users/fgu/dev/remote
 vm_remote=/home/fgu/dev/remote
@@ -191,7 +193,7 @@ instance_id=i-0d38c6fcdfb909b7b
 
 alias get_dns="aws ec2 describe-instances \
     --instance-ids $instance_id \
-    --query 'Reservations[].Instances[].PublicDnsName' \
+    --query 'Reservations[*].Instances[*].PublicDnsName' \
     --profile '3di' \
     --region 'eu-west-2' \
     --output 'text'"
@@ -203,7 +205,9 @@ alias atesp='aws ec2 stop-instances --instance-ids $instance_id $tail'
 alias atest='aws ec2 start-instances --instance-ids $instance_id $tail'
 
 # connect to ec2 instances
-alias atec='ssh -i $te_keypair -L $localhost_forward fgu@$te_dns'
+alias atec='ssh -i $te_keypair fgu@$te_dns'
+alias atect='ssh -i $te_keypair te@$te_dns'
+# alias atec='ssh -i $te_keypair -L $localhost_forward fgu@$te_dns'
 alias atecu='ssh -i $te_keypair -L $localhost_forward ubuntu@$te_dns'
 
 # fetch latest fable data
@@ -292,3 +296,5 @@ PS1+="\[${green}\]\W";      # basename of working directory
 PS1+="\[${reset}\] $ ";
 export PS1;
 
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

@@ -2,18 +2,26 @@
 
 " plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 " activate vim-plug
 call plug#begin()
 Plug 'alfredodeza/pytest.vim'   " pytest support
 Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
+Plug 'ggVGc/vim-fuzzysearch'   " fuzzy search
+    let g:fuzzysearch_prompt = '/'
+    let g:fuzzysearch_match_spaces = 1
 Plug 'godlygeek/tabular'   " tabular formatting
 Plug 'plasticboy/vim-markdown'   " markdown support
 Plug 'hashivim/vim-terraform'   " terraform commands and syntax highlighting
+Plug 'jremmen/vim-ripgrep'   " search
+    let g:rg_command = 'rg --vimgrep -S'   " user smartcase by default
 Plug 'itchyny/lightline.vim'   " statusbar
 Plug 'junegunn/goyo.vim'   " distraction free writing
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy search
 Plug 'machakann/vim-highlightedyank'   " highlight yanked region
 Plug 'mileszs/ack.vim'   " faster grep alternative
 Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
+Plug 'stefandtw/quickfix-reflector.vim'   " use quickfix for bulk change/replace
 Plug 'SirVer/ultisnips'   " snippets engine
 Plug 'honza/vim-snippets'   " snippets
 Plug 'tpope/vim-abolish'   " powerful substitution and case conversions
@@ -27,8 +35,8 @@ Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
 Plug 'wincent/command-t'   " fuzzy file finder
 Plug 'psliwka/vim-smoothie'   " smooth scrolling
-Plug 'jpalardy/vim-slime'   " repl interaction support
-    let g:slime_target = "vimterminal"
+" Plug 'jpalardy/vim-slime'   " repl interaction support
+    " let g:slime_target = "vimterminal"
 Plug 'altercation/vim-colors-solarized'   " colorscheme
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
 Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
@@ -36,8 +44,7 @@ Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
 Plug 'lervag/vimtex'   " latex support
 call plug#end()
 
-nnoremap <leader>ip :write<cr>:source $MYVIMRC<cr>:PlugInstall<cr>
-nnoremap <leader>cp :write<cr>:source $MYVIMRC<cr>:PlugClean<cr>
+" Use `:PlugInstall` and `:PlugClean` as needed.
 
 
 " general {{{1
@@ -127,7 +134,7 @@ let g:netrw_winsize = 30
 " nnoremap <silent><cr> :nohlsearch<cr>
 
 nnoremap <silent><leader>x :x<cr>
-
+" nnoremap / :FuzzySearch<cr>
 
 
 " ~~~ permanent ~~~
