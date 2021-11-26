@@ -17,6 +17,7 @@ Plug 'jremmen/vim-ripgrep'   " search
     let g:rg_command = 'rg --vimgrep -S'   " user smartcase by default
 Plug 'itchyny/lightline.vim'   " statusbar
 Plug 'junegunn/goyo.vim'   " distraction free writing
+Plug 'junegunn/fzf.vim'   " fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy search
 Plug 'machakann/vim-highlightedyank'   " highlight yanked region
 Plug 'mileszs/ack.vim'   " faster grep alternative
