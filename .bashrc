@@ -1,6 +1,14 @@
 # fabian gunzinger's .bashrc
 
 #################################################
+# experimental
+#################################################
+
+# GitHub cli autocomplete
+# eval "$(gh completion -s bash)"
+
+
+#################################################
 # aliases
 #################################################
 
@@ -142,7 +150,7 @@ alias ga='git add --all'
 alias gp='git push'
 alias gl='git log --oneline'
 function gac() { git add --all; git commit -m "$1"; }
-# function gam() { git add --all; git commit --amend --no-edit; } # not working
+# function gacm() { git add --all; git commit --amend --no-edit; } # not working
 function gc() { git commit -m "$1"; }
 function gg() { git add --all; git commit -m "$1"; git push; }
 function gb() { git branch; }
@@ -154,7 +162,9 @@ function gm() { git merge "$1"; }
 function gmd() { git merge dev; }
 function gmm() { gcm; gmd; gp; gcd; }
 function gcb() { git checkout -b "$1"; }
+function gbdo() { git branch -d $1; git push origin --delete $1; }
 function gbd() { git branch -d "$1"; }
+function gbdf() { git branch -D "$1"; }
 function gbn() { git config branch.$( git branch --show-current ).note "$1"; }
 function grc() { git rm --cached $1; }
 
@@ -162,22 +172,16 @@ function grc() { git rm --cached $1; }
 alias ci='conda install '
 alias cl='conda list'
 alias clg='conda list | grep '
+alias cee='conda env export > environment.yml'
+alias ceeh='conda env export --from-history > environment.yml'
 function ca() { conda activate "$1"; }
 function ce() { conda deactivate; }
-function ik() { python -m ipykernel install --user --name "$1"; }
-function cee() { conda env export --name "$1" > environment.yml; }
-alias newenv='python pandas scipy scikit-learn seaborn s3fs jupyterlab'
+function pik() { python -m ipykernel install --user --name "$1"; }
+function cen() { conda create --name $1 python=3.9 pandas scipy scikit-learn seaborn s3fs pyarrow jupyterlab statsmodels linearmodels; }
+function cer() { conda remove --name $1 --all; }
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
-
-# GitHub cli autocomplete
-# eval "$(gh completion -s bash)"
-
-# initialise cookiecutter project
-alias cc='cookiecutter https://github.com/drivendata/cookiecutter-data-science
-'
-
 
 #################################################
 # aws
@@ -190,6 +194,7 @@ localhost_forward=9999:localhost:9999
 
 te_keypair=/Users/fgu/.aws/3di.pem
 instance_id=i-0d38c6fcdfb909b7b
+tail='--region eu-west-2 --profile 3di'
 
 alias get_dns="aws ec2 describe-instances \
     --instance-ids $instance_id \
@@ -200,14 +205,12 @@ alias get_dns="aws ec2 describe-instances \
 te_dns=$( get_dns )
 
 # start and stop instance
-tail='--profile 3di --region eu-west-2'
 alias atesp='aws ec2 stop-instances --instance-ids $instance_id $tail'
 alias atest='aws ec2 start-instances --instance-ids $instance_id $tail'
 
 # connect to ec2 instances
 alias atec='ssh -i $te_keypair fgu@$te_dns'
 alias atect='ssh -i $te_keypair te@$te_dns'
-# alias atec='ssh -i $te_keypair -L $localhost_forward fgu@$te_dns'
 alias atecu='ssh -i $te_keypair -L $localhost_forward ubuntu@$te_dns'
 
 # fetch latest fable data
