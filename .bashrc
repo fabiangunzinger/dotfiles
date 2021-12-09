@@ -115,9 +115,12 @@ alias opa='dpa; open .'
 alias fb='vi ~/.bashrc'
 alias ftm='vi ~/.tmux.conf'
 alias fvr='vi ~/.config/nvim/init.vim'
-alias fve='cd ~/dev/projects/blog/_posts/; pe vim-essentials.md'
+alias fvi='cd ~/dev/projects/blog/_posts/; pe vim.md'
+alias fgi='cd ~/dev/projects/blog/_posts/; pe git.md'
 alias fre='dblp; vi 2021-09-11-regex.md'
 alias frc='open ~/'
+alias fcv='vi /Users/fgu/dev/projects/applications/cv/cvfgu.tex'
+alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 
 # activate project
 alias abl='dbl; ca blog'
@@ -145,13 +148,20 @@ pn() { vi $(date +'%Y-%m-%d-')"$1"; }
 pe() { vi $(find . -name *$1*); }
 
 # git
-alias gs='git status -u'
+alias gs='git status'
+alias gss='git status --short'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gc='git commit'
+alias gcv='git commit --verbose'
+alias gcm='git commit --message'
+
+
 alias ga='git add --all'
 alias gp='git push'
 alias gl='git log --oneline'
 function gac() { git add --all; git commit -m "$1"; }
 # function gacm() { git add --all; git commit --amend --no-edit; } # not working
-function gc() { git commit -m "$1"; }
 function gg() { git add --all; git commit -m "$1"; git push; }
 function gb() { git branch; }
 function gco() { git checkout "$1"; }
