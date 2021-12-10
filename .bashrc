@@ -148,20 +148,30 @@ pn() { vi $(date +'%Y-%m-%d-')"$1"; }
 pe() { vi $(find . -name *$1*); }
 
 # git
+alias gh='git help'
 alias gs='git status'
-alias gss='git status --short'
-alias gd='git diff'
-alias gds='git diff --staged'
+alias gss='git status --short'      # cols are staging area and working-tree
+alias gd='git diff'                 # unstaged changes 
+alias gds='git diff --staged'       # staged changes
+alias glo='git log --oneline'
+alias gl='git log --graph'          # shows branch and merge history
+alias gls='git log --stat'          # shows line change stats
+alias glp='git log --patch'         # shows diff
+alias glpp='git log --patch --'     # shows diff for filepath appended
+
+alias ga='git add'
+alias gaa='git add --all'
 alias gc='git commit'
-alias gcv='git commit --verbose'
-alias gcm='git commit --message'
+alias gcv='git commit --verbose'    # shows diff
+alias gcm='git commit --message'    # inline message
+alias gcam='git commit --all -m'    # commits all tracked files with inline message
 
+alias grm='git rm'   # remove deleted untracked or delete and remove tracked
+alias grmc='git rm --cached'   # remove from staging area (e.g. forgot to ignore)
 
-alias ga='git add --all'
-alias gp='git push'
-alias gl='git log --oneline'
-function gac() { git add --all; git commit -m "$1"; }
-# function gacm() { git add --all; git commit --amend --no-edit; } # not working
+alias gph='git push'
+alias gpl='git pull'
+
 function gg() { git add --all; git commit -m "$1"; git push; }
 function gb() { git branch; }
 function gco() { git checkout "$1"; }
