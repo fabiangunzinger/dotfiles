@@ -4,9 +4,6 @@
 # experimental
 #################################################
 
-# GitHub cli autocomplete
-# eval "$(gh completion -s bash)"
-
 
 #################################################
 # aliases
@@ -112,7 +109,8 @@ alias ore='dre; open .'
 alias opa='dpa; open .'
 
 # files
-alias fb='vi ~/.bashrc'
+alias fb='ddf; vi ~/.bashrc'
+alias fbb='vi ~/.bashrc'
 alias ftm='vi ~/.tmux.conf'
 alias fvr='vi ~/.config/nvim/init.vim'
 alias fvi='cd ~/dev/projects/blog/_posts/; pe vim.md'
@@ -149,12 +147,12 @@ pe() { vi $(find . -name *$1*); }
 
 # git
 alias gh='git help'
-alias gs='git status'
-alias gss='git status --short'      # cols are staging area and working-tree
+alias gs='git status --short'       # cols are staging area and working-tree
+alias gss='git status'
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
-alias glo='git log --oneline'
 alias gl='git log --graph'          # shows branch and merge history
+alias glo='git log --oneline'       # shows hash and name only
 alias gls='git log --stat'          # shows line change stats
 alias glp='git log --patch'         # shows diff
 alias glpp='git log --patch --'     # shows diff for filepath appended
@@ -164,14 +162,18 @@ alias gaa='git add --all'
 alias gc='git commit'
 alias gcv='git commit --verbose'    # shows diff
 alias gcm='git commit --message'    # inline message
-alias gcam='git commit --all -m'    # commits all tracked files with inline message
+alias gca='git commit --all -m'     # commit all tracked files with inline msg
+alias gcam='git commit --amend'     # make changes to last commit
 
 alias grm='git rm'   # remove deleted untracked or delete and remove tracked
-alias grmc='git rm --cached'   # remove from staging area (e.g. forgot to ignore)
+alias gres='git restore --staged'   # remove from index
+alias gre='git restore'             # revert file back to state of last commit
+alias grmc='git rm --cached'        # remove from index (and delete file?)
 
 alias gph='git push'
 alias gpl='git pull'
 
+# alias gcam='git commit --all -m'    # commits all tracked files with inline message
 function gg() { git add --all; git commit -m "$1"; git push; }
 function gb() { git branch; }
 function gco() { git checkout "$1"; }
