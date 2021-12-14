@@ -162,16 +162,21 @@ alias gaa='git add --all'
 alias gc='git commit'
 alias gcv='git commit --verbose'    # shows diff
 alias gcm='git commit --message'    # inline message
-alias gca='git commit --all -m'     # commit all tracked files with inline msg
-alias gcam='git commit --amend'     # make changes to last commit
+alias gcam='git commit --all -m'    # commit all tracked files with inline msg
+alias gcad='git commit --amend'     # make changes to last commit
 
-alias grm='git rm'   # remove deleted untracked or delete and remove tracked
 alias gres='git restore --staged'   # remove from index
 alias gre='git restore'             # revert file back to state of last commit
+alias grm='git rm'   # remove deleted untracked or delete and remove tracked
 alias grmc='git rm --cached'        # remove from index (and delete file?)
 
+alias gf='git fetch'                # download new files from remote (no merge)
+alias gpl='git pull'                # download and merge new files from remote
 alias gph='git push'
-alias gpl='git pull'
+
+function gta() { git tag --annotate "$1" --message "$2"; }
+
+
 
 # alias gcam='git commit --all -m'    # commits all tracked files with inline message
 function gg() { git add --all; git commit -m "$1"; git push; }

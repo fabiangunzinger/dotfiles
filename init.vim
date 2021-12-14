@@ -203,7 +203,7 @@ map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>
 " open files
 map <silent><leader>fvr :edit $MYVIMRC<cr>
 map <silent><leader>fvvr :vsplit $MYVIMRC<cr>
-map <silent><leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim-essentials.md<cr>
+map <silent><leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim.md<cr>
 map <silent><leader>fre :edit ~/dev/projects/blog/_posts/2021-09-11-regex.md<cr>
 map <silent><leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
 map <silent><leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
