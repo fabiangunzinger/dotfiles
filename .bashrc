@@ -174,7 +174,14 @@ alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
 alias gph='git push'
 
-function gta() { git tag --annotate "$1" --message "$2"; }
+alias gt='git tag'                  # list existing tag
+function gta() { git tag --annotate "$1" --message "$2"; } # tag last commit
+alias gtph='git push origin --tags' # push tags to remote
+function gtd() { git tag --delete "$1"; git push origin --delete "$1"; }
+
+
+
+
 
 
 
