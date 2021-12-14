@@ -163,7 +163,7 @@ alias gc='git commit'
 alias gcv='git commit --verbose'    # shows diff
 alias gcm='git commit --message'    # inline message
 alias gcam='git commit --all -m'    # commit all tracked files with inline msg
-alias gcad='git commit --amend'     # make changes to last commit
+alias gcad='git commit --amend --no-edit' # add changes to last commit
 
 alias gres='git restore --staged'   # remove from index
 alias gre='git restore'             # revert file back to state of last commit
