@@ -151,10 +151,10 @@ alias gs='git status --short'       # cols are staging area and working-tree
 alias gss='git status'
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
-alias gl='git log --graph'          # shows branch and merge history
-alias glo='git log --oneline'       # shows hash and name only
-alias gls='git log --stat'          # shows line change stats
-alias glp='git log --patch'         # shows diff
+alias gl='git log --graph -5'       # shows branch and merge history
+alias glo='git log --oneline -10'   # shows hash and name only
+alias gls='git log --stat -5'       # shows line change stats
+alias glp='git log --patch -5'      # shows diff
 alias glpp='git log --patch --'     # shows diff for filepath appended
 
 alias ga='git add'
