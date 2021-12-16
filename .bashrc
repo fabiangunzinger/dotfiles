@@ -122,7 +122,7 @@ alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 
 # activate project
 alias abl='dbl; ca blog'
-alias aen='den; ca entropy'
+alias aen='den; ca entropy; gl'
 alias afo='dfo; ca foods'
 alias amd='dmd; ca mdb'
 alias ate='dte; ca te'
@@ -162,11 +162,11 @@ alias gaa='git add --all'           # add all modified files to index
 alias gc='git commit'               # commit files in index
 alias gcv='git commit --verbose'    # shows diff in editor
 alias gcm='git commit --message'    # inline message
-alias gcam='git commit --all'       # add and commit all tracked files
-alias gcad='git commit --amend --no-edit' # add changes to last commit
+alias gcam='git commit --all --message' # add and commit all tracked files
+alias gcan='git commit --amend --no-edit' # add changes to last commit
 
-alias gres='git restore --staged'   # remove from index
-alias gre='git restore'             # revert file back to state of last commit
+alias grs='git restore --staged'   # remove from index
+alias gr='git restore'             # revert file back to state of last commit
 alias grm='git rm'   # remove deleted untracked or delete and remove tracked
 alias grmc='git rm --cached'        # remove from index (and delete file?)
 
