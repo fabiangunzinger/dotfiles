@@ -146,9 +146,9 @@ pn() { vi $(date +'%Y-%m-%d-')"$1"; }
 pe() { vi $(find . -name *$1*); }
 
 # git
-alias gh='git help'
+alias gh='git help'                 # can add verb (e.g. git help add)
 alias gs='git status --short'       # cols are staging area and working-tree
-alias gss='git status'
+alias gss='git status'              # full status
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
 alias gl='git log --oneline --graph --all -10'   # shows hash and name only
@@ -165,7 +165,6 @@ alias gcm='git commit --message'    # inline message
 alias gcam='git commit --all'       # add and commit all tracked files
 alias gcad='git commit --amend --no-edit' # add changes to last commit
 
-
 alias gres='git restore --staged'   # remove from index
 alias gre='git restore'             # revert file back to state of last commit
 alias grm='git rm'   # remove deleted untracked or delete and remove tracked
@@ -177,27 +176,15 @@ alias gph='git push'
 
 function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
-alias gt='git tag'                  # list existing tag
-function gta() { git tag --annotate "$1" --message "$2"; } # tag last commit
-alias gtph='git push origin --tags' # push tags to remote
-function gtd() { git tag --delete "$1"; git push origin --delete "$1"; }
-
 alias gb='git branch'               # list branches
 alias gsc='git switch --create'     # create new branch and switch to it
-alias gsw='git switch'               # switch to branch
+alias gsw='git switch'              # switch to branch
 alias gsp='git switch -'            # switch to previously checked out branch
 alias gsm='git switch main'         # switch to main branch
 alias gm='git merge'                # merge branch
 alias gbd='git branch -d'           # delete branch
 alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
-
-
-# alias gcam='git commit --all -m'    # commits all tracked files with inline message
-function gg() { git add --all; git commit -m "$1"; git push; }
-function gbdo() { git branch -d $1; git push origin --delete $1; }
-function gbn() { git config branch.$( git branch --show-current ).note "$1"; }
-function grc() { git rm --cached $1; }
 
 # conda
 alias ci='conda install '
