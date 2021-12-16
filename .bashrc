@@ -157,13 +157,14 @@ alias gls='git log --stat -5'       # shows line change stats
 alias glp='git log --patch -5'      # shows diff
 alias glpp='git log --patch --'     # shows diff for filepath appended
 
-alias ga='git add'
-alias gaa='git add --all'
-alias gc='git commit'
-alias gcv='git commit --verbose'    # shows diff
+alias ga='git add'                  # add file to index
+alias gaa='git add --all'           # add all modified files to index
+alias gc='git commit'               # commit files in index
+alias gcv='git commit --verbose'    # shows diff in editor
 alias gcm='git commit --message'    # inline message
-alias gcam='git commit --all -m'    # commit all tracked files with inline msg
+alias gcam='git commit --all'       # add and commit all tracked files
 alias gcad='git commit --amend --no-edit' # add changes to last commit
+
 
 alias gres='git restore --staged'   # remove from index
 alias gre='git restore'             # revert file back to state of last commit
@@ -174,31 +175,27 @@ alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
 alias gph='git push'
 
+function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
+
 alias gt='git tag'                  # list existing tag
 function gta() { git tag --annotate "$1" --message "$2"; } # tag last commit
 alias gtph='git push origin --tags' # push tags to remote
 function gtd() { git tag --delete "$1"; git push origin --delete "$1"; }
 
-
-
-
+alias gb='git branch'               # list branches
+alias gsc='git switch --create'     # create new branch and switch to it
+alias gsw='git switch'               # switch to branch
+alias gsp='git switch -'            # switch to previously checked out branch
+alias gsm='git switch main'         # switch to main branch
+alias gm='git merge'                # merge branch
+alias gbd='git branch -d'           # delete branch
+alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
 
 
 # alias gcam='git commit --all -m'    # commits all tracked files with inline message
 function gg() { git add --all; git commit -m "$1"; git push; }
-function gb() { git branch; }
-function gco() { git checkout "$1"; }
-function gcm() { git checkout main; }
-function gcmm() { git checkout master; }
-function gcd() { git checkout dev; }
-function gm() { git merge "$1"; }
-function gmd() { git merge dev; }
-function gmm() { gcm; gmd; gp; gcd; }
-function gcb() { git checkout -b "$1"; }
 function gbdo() { git branch -d $1; git push origin --delete $1; }
-function gbd() { git branch -d "$1"; }
-function gbdf() { git branch -D "$1"; }
 function gbn() { git config branch.$( git branch --show-current ).note "$1"; }
 function grc() { git rm --cached $1; }
 
