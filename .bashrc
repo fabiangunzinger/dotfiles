@@ -109,7 +109,7 @@ alias ore='dre; open .'
 alias opa='dpa; open .'
 
 # files
-alias fb='ddf; vi ~/.bashrc'
+alias fb='vi ~/.bashrc'
 alias fbb='vi ~/.bashrc'
 alias ftm='vi ~/.tmux.conf'
 alias fvr='vi ~/.config/nvim/init.vim'
@@ -177,11 +177,15 @@ alias gph='git push'
 function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
 alias gb='git branch'               # list branches
+alias gbv='gb --verbose'            # list last commit for each branch
+alias gbm='gb --merged'             # list bs already merged into current b
+alias gbnm='gb --no-merged'         # list bs not yet merged into current b
 alias gsc='git switch --create'     # create new branch and switch to it
-alias gsw='git switch'              # switch to branch
+alias gsw='git switch'              # switch to branch (or get from remote)
 alias gsp='git switch -'            # switch to previously checked out branch
 alias gsm='git switch main'         # switch to main branch
 alias gm='git merge'                # merge branch
+alias gpsu='git push --set-upstream origin'   # create remote branch
 alias gbd='git branch -d'           # delete branch
 alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
