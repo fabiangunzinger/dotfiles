@@ -151,7 +151,7 @@ alias gs='git status --short'       # cols are staging area and working-tree
 alias gss='git status'              # full status
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
-alias gl='git log --oneline --graph --all -10'   # shows hash and name only
+alias gl='git log --oneline --graph --all -3'   # shows hash and name only
 alias glg='git log --graph -5'       # shows branch and merge history
 alias gls='git log --stat -5'       # shows line change stats
 alias glp='git log --patch -5'      # shows diff
@@ -176,12 +176,11 @@ alias gph='git push'
 
 function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
-alias gb='git branch'               # list branches
-alias gbv='gb --verbose'            # list last commit for each branch
+alias gb='git branch -vv'           # list branches
 alias gbm='gb --merged'             # list bs already merged into current b
 alias gbnm='gb --no-merged'         # list bs not yet merged into current b
+alias gsb='git switch'               # switch to branch (or get from remote)
 alias gsc='git switch --create'     # create new branch and switch to it
-alias gs='git switch'              # switch to branch (or get from remote)
 alias gsp='git switch -'            # switch to previously checked out branch
 alias gsm='git switch main'         # switch to main branch
 alias gm='git merge'                # merge branch
