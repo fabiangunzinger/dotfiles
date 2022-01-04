@@ -152,8 +152,8 @@ alias gss='git status'              # full status
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
 alias gl='git log --oneline --graph --all -3'   # shows hash and name only
-alias glg='git log --graph --patch' # with branch history and patches
-alias glpf='glg; --'                # above but for filepath appended
+alias gll='git log --graph --patch' # with branch history and patches
+alias gllf='gll; --'                # above but for filepath appended
 
 alias ga='git add'                  # add file to index
 alias gaa='git add --all'           # add all modified files to index
