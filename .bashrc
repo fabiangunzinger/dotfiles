@@ -162,8 +162,9 @@ alias gaa='git add --all'           # add all modified files to index
 alias gc='git commit'               # commit files in index
 alias gcv='git commit --verbose'    # shows diff in editor
 alias gcm='git commit --message'    # inline message
-alias gcam='git commit --all --message' # add and commit all tracked files
-alias gcan='git commit --amend --no-edit' # add changes to last commit
+alias gca='git commit --all --message' # add and commit all tracked files
+alias gcam='git commit --amend'    # edit last commit
+alias gcamn='git commit --amend --no-edit' # add changes to last commit
 
 alias grs='git restore --staged'   # remove from index
 alias gr='git restore'             # revert file back to state of last commit
