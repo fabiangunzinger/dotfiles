@@ -152,28 +152,28 @@ alias gss='git status'              # full status
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
 alias gl='git log --oneline --graph --all -3'   # shows hash and name only
-alias glg='git log --graph -5'       # shows branch and merge history
-alias gls='git log --stat -5'       # shows line change stats
-alias glp='git log --patch -5'      # shows diff
-alias glpp='git log --patch --'     # shows diff for filepath appended
+alias glg='git log --graph --patch' # with branch history and patches
+alias glpf='glg; --'                # above but for filepath appended
 
 alias ga='git add'                  # add file to index
 alias gaa='git add --all'           # add all modified files to index
-alias gc='git commit'               # commit files in index
-alias gcv='git commit --verbose'    # shows diff in editor
-alias gcm='git commit --message'    # inline message
-alias gca='git commit --all --message' # add and commit all tracked files
-alias gcam='git commit --amend'    # edit last commit
-alias gcamn='git commit --amend --no-edit' # add changes to last commit
+alias gc='git commit --message'     # commit with inline message
+alias gac='git commit --all --message' # commit all tracked files
+alias gcv='git commit --verbose'    # write msg in editor and shows diff
+alias gcam='git commit --amend'     # add changes to last commit or change msg
+alias gcamn='gcam; --no-edit'       # add changes to last commit (keep msg)
 
 alias grs='git restore --staged'   # remove from index
 alias gr='git restore'             # revert file back to state of last commit
 alias grm='git rm'   # remove deleted untracked or delete and remove tracked
 alias grmc='git rm --cached'        # remove from index (and delete file?)
 
+alias gph='git push'                # move remote pointer to match local one 
+alias gphu='git push --set-upstream origin'   # create remote branch
+alias gphd='git push origin --delete'   # remove all listed refs (e.g. branchname)
+
 alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
-alias gph='git push'
 
 function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
@@ -185,7 +185,6 @@ alias gsc='git switch --create'     # create new branch and switch to it
 alias gsp='git switch -'            # switch to previously checked out branch
 alias gsm='git switch main'         # switch to main branch
 alias gm='git merge'                # merge branch
-alias gpsu='git push --set-upstream origin'   # create remote branch
 alias gbd='git branch -d'           # delete branch
 alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
