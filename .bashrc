@@ -157,10 +157,9 @@ alias gllf='gll; --'                # above but for filepath appended
 
 alias ga='git add'                  # add file to index
 alias gaa='git add --all'           # add all modified files to index
-alias gc='git commit'               # commit
-alias gcm='git commit --message'     # commit with inline message
-alias gca='git commit --all'        # commit all tracked files
-alias gcv='git commit --verbose'    # write msg in editor and shows diff
+alias gc='git commit --verbose'     # show diff in editor
+alias gcm='git commit --message'    # commit with inline message
+alias gca='gc --all'                # commit all tracked files
 alias gcam='git commit --amend'     # add changes to last commit or change msg
 alias gcamn='gcam --no-edit'       # add changes to last commit (keep msg)
 
