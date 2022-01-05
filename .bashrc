@@ -160,8 +160,8 @@ alias gaa='git add --all'           # add all modified files to index
 alias gc='git commit --verbose'     # show diff in editor
 alias gcm='git commit --message'    # commit with inline message
 alias gca='gc --all'                # commit all tracked files
-alias gcam='git commit --amend'     # add changes to last commit or change msg
-alias gcamn='gcam --no-edit'       # add changes to last commit (keep msg)
+alias gcam='gc --amend'             # add changes to last commit or edit msg
+alias gcamn='gcam --no-edit'        # add changes to last commit (keep msg)
 
 alias grs='git restore --staged'   # remove from index
 alias gr='git restore'             # revert file back to state of last commit
