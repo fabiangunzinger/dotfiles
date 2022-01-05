@@ -162,7 +162,7 @@ alias gcm='git commit --message'     # commit with inline message
 alias gca='git commit --all'        # commit all tracked files
 alias gcv='git commit --verbose'    # write msg in editor and shows diff
 alias gcam='git commit --amend'     # add changes to last commit or change msg
-alias gcamn='gcam; --no-edit'       # add changes to last commit (keep msg)
+alias gcamn='gcam --no-edit'       # add changes to last commit (keep msg)
 
 alias grs='git restore --staged'   # remove from index
 alias gr='git restore'             # revert file back to state of last commit
