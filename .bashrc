@@ -157,8 +157,9 @@ alias gllf='gll; --'                # above but for filepath appended
 
 alias ga='git add'                  # add file to index
 alias gaa='git add --all'           # add all modified files to index
+alias gc='git commit'               # commit
 alias gc='git commit --message'     # commit with inline message
-alias gac='git commit --all --message' # commit all tracked files
+alias gac='git commit --all'        # commit all tracked files
 alias gcv='git commit --verbose'    # write msg in editor and shows diff
 alias gcam='git commit --amend'     # add changes to last commit or change msg
 alias gcamn='gcam; --no-edit'       # add changes to last commit (keep msg)
@@ -175,7 +176,7 @@ alias gphd='git push origin --delete'   # remove all listed refs (e.g. branchnam
 alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
 
-function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
+function gacp() { gaa; gc "$1"; gph; } # add, commit, and push all files
 
 alias gb='git branch -vv'           # list branches
 alias gbm='gb --merged'             # list bs already merged into current b
