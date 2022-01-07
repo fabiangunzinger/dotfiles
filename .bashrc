@@ -36,6 +36,7 @@ alias gshl='gsh list'               # list stored stashes
 alias gsha='gsh apply'              # apply (last) stash
 alias gshd='gsh drop'               # drop (last) stash
 alias gshp='gs pop'                 # apply and delete (last)
+
 function gshar() { gsha stash@{$1}; } # apply stash using ref number
 
 alias grs='git restore --staged'   # remove from index
