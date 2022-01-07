@@ -11,9 +11,11 @@ alias gss='git status'              # full status
 alias gsw='git show'                # show some object
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
-alias gl='git log --oneline --graph --all -3'   # shows hash and name only
-alias gll='git log --graph --patch' # with branch history and patches
-alias gllf='gll; --'                # above but for filepath appended
+alias gl='git log --oneline'        # basic log
+alias gla='gl -3'                   # abbreviated basic log
+alias gloh='gl origin/main..HEAD'   # easily view commits about to be pushed
+alias glv='git log --graph --patch' # verbose log
+alias glvf='glv; --'                # above but for filepath appended
 
 alias ga='git add'                  # add file to index
 alias gaa='git add --all'           # add all modified files to index
@@ -223,16 +225,15 @@ alias get_dns="aws ec2 describe-instances \
     --profile '3di' \
     --region 'eu-west-2' \
     --output 'text'"
-te_dns=$( get_dns )
 
 # start and stop instance
 alias atesp='aws ec2 stop-instances --instance-ids $instance_id $tail'
 alias atest='aws ec2 start-instances --instance-ids $instance_id $tail'
 
 # connect to ec2 instances
-alias atec='ssh -i $te_keypair fgu@$te_dns'
-alias atect='ssh -i $te_keypair te@$te_dns'
-alias atecu='ssh -i $te_keypair -L $localhost_forward ubuntu@$te_dns'
+alias atec='ssh -i $te_keypair fgu@$(get_dns)'
+alias atect='ssh -i $te_keypair te@$(get_dns)'
+alias atecu='ssh -i $te_keypair -L $localhost_forward ubuntu@$(get_dns)'
 
 # fetch latest fable data
 source=s3://fd-eu-rowlevel-v2
