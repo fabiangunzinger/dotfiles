@@ -243,51 +243,6 @@ alias getfable="aws s3 sync $source $destination --profile '3di'"
 function acp() { aws s3 cp $1 $2; }
 function acpt() { aws s3 cp $1 $2 --profile '3di'; }
 
-## to my ec2
-#alias aco='ssh -X -i ~/.aws/fgu-ec2-key.pem -L 9999:localhost:9999 ec2-user@ec2-18-130-22-104.eu-west-2.compute.amazonaws.com'
-
-## to tracker as default user
-#alias atcod='ssh -i ~/.aws/ec2-tracker-ec2user.pem -L 9999:localhost:9999 ec2-user@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com'
-
-
-## instance info
-#alias adi='aws ec2 describe-instances --filters Name=owner-id,Values=481079503739'
-#alias atdi='aws ec2 describe-instances --filters Name=owner-id,Values=934342343463'
-#alias ais='aws ec2 describe-instance-status --instance-ids i-035ee6232fc6eb131'
-#alias atis='aws ec2 describe-instance-status --instance-ids i-07803e23266a1d0fd'
-
-## start and stop instance
-#alias asta='aws ec2 start-instances --instance-ids i-035ee6232fc6eb131'
-#alias asto='aws ec2 stop-instances --instance-ids i-035ee6232fc6eb131'
-
-## mount and unmount project dir
-
-#alias mmat='sshfs fgu@$te_ip:$te_remote $mac_remote -o identityfile=$mac_pem; echo $te_remote mounted'
-
-#alias amo='sshfs ec2-user@18.130.22.104:/home/ec2-user/dev/projects/ /Users/fgu/dev/remote_projects/ -o IdentityFile=/Users/fgu/.aws/fgu-ec2-key.pem'
-
-#alias atmo='sshfs fgu@18.135.13.11:/home/fgu/dev/projects/uk-tracker /Users/fgu/dev/remote/ -o identityfile=/users/fgu/.aws/ec2-tracker-fgu.pem'
-
-#alias um='umount -f ~/dev/remote; echo "Unmounted"'
-
-
-## download file from ec2 to Mac
-#function atdl() { scp -i ~/.aws/ec2-tracker-fgu.pem fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:$1 $2; }
-
-#function atul() { scp -i ~/.aws/ec2-tracker-fgu.pem $1 fgu@ec2-18-135-13-11.eu-west-2.compute.amazonaws.com:/data; }
-
-
-## aws cli with tracker-uk profile
-#function awst() { aws "$@" --profile "tracker-fgu"; }
-
-
-## upload latest experian data 
-#alias atue='aws s3 mv ~/Downloads/ s3://3di-data-experian/raw --recursive
-#--exclude "*" --include "uofn_*" --profile "tracker-fgu'
-
-## update local app data (pull from aws)
-#alias gad="aws s3 cp s3://3di-project-te/app/ ~/dev/projects/te/tracker/app/data/ --recursive --profile 'tracker-fgu'"
-
 
 #################################################
 # exports
