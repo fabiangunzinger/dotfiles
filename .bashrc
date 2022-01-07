@@ -1,8 +1,53 @@
 # fabian gunzinger's .bashrc
 
 #################################################
-# experimental
+# dev
 #################################################
+
+# git
+alias gh='git help'                 # can add verb (e.g. git help add)
+alias gs='git status --short'       # cols are staging area and working-tree
+alias gss='git status'              # full status
+alias gsw='git show'                # show some object
+alias gd='git diff'                 # unstaged changes 
+alias gds='git diff --staged'       # staged changes
+alias gl='git log --oneline --graph --all -3'   # shows hash and name only
+alias gll='git log --graph --patch' # with branch history and patches
+alias gllf='gll; --'                # above but for filepath appended
+
+alias ga='git add'                  # add file to index
+alias gaa='git add --all'           # add all modified files to index
+alias gc='git commit --verbose'     # show diff in editor
+alias gcm='git commit --message'    # commit with inline message
+alias gca='gc --all'                # commit all tracked files
+alias gcam='gca --message'          # above with inline message
+alias gcad='gc --amend'             # add changes to last commit or edit msg
+alias gcadn='gcad --no-edit'        # add changes to last commit (keep msg)
+
+alias grs='git restore --staged'   # remove from index
+alias gr='git restore'             # revert file back to state of last commit
+alias grm='git rm'   # remove deleted untracked or delete and remove tracked
+alias grmc='git rm --cached'        # remove from index (and delete file?)
+
+alias gph='git push'                # move remote pointer to match local one 
+alias gphu='git push --set-upstream origin'   # create remote branch
+alias gphd='git push origin --delete'   # remove all listed refs (e.g. branchname)
+
+alias gf='git fetch'                # download new files from remote (no merge)
+alias gpl='git pull'                # download and merge new files from remote
+
+function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
+
+alias gb='git branch -vv'           # list branches
+alias gbm='gb --merged'             # list bs already merged into current b
+alias gbnm='gb --no-merged'         # list bs not yet merged into current b
+alias gsb='git switch'               # switch to branch (or get from remote)
+alias gsc='git switch --create'     # create new branch and switch to it
+alias gsp='git switch -'            # switch to previously checked out branch
+alias gsm='git switch main'         # switch to main branch
+alias gm='git merge'                # merge branch
+alias gbd='git branch -d'           # delete branch
+alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
 
 #################################################
@@ -138,59 +183,10 @@ alias jfo='afo; jula'
 alias jmd='amd; jula'
 alias jte='ate; jula'
 
-# misc.
-alias pre='open https://regex101.com; open https://www.regular-expressions.info;
-open https://www.rexegg.com; open https://docs.python.org/3/library/re.html;
-open https://bitbucket.org/mrabarnett/mrab-regex/src/hg/; jbl'
-
-
 # blog shortcuts
 alias nb='open https://fabiangunzinger.github.io/blog/'
 pn() { vi $(date +'%Y-%m-%d-')"$1"; }
 pe() { vi $(find . -name *$1*); }
-
-# git
-alias gh='git help'                 # can add verb (e.g. git help add)
-alias gs='git status --short'       # cols are staging area and working-tree
-alias gss='git status'              # full status
-alias gd='git diff'                 # unstaged changes 
-alias gds='git diff --staged'       # staged changes
-alias gl='git log --oneline --graph --all -3'   # shows hash and name only
-alias gll='git log --graph --patch' # with branch history and patches
-alias gllf='gll; --'                # above but for filepath appended
-
-alias ga='git add'                  # add file to index
-alias gaa='git add --all'           # add all modified files to index
-alias gc='git commit --verbose'     # show diff in editor
-alias gcm='git commit --message'    # commit with inline message
-alias gca='gc --all'                # commit all tracked files
-alias gcam='gc --amend'             # add changes to last commit or edit msg
-alias gcamn='gcam --no-edit'        # add changes to last commit (keep msg)
-
-alias grs='git restore --staged'   # remove from index
-alias gr='git restore'             # revert file back to state of last commit
-alias grm='git rm'   # remove deleted untracked or delete and remove tracked
-alias grmc='git rm --cached'        # remove from index (and delete file?)
-
-alias gph='git push'                # move remote pointer to match local one 
-alias gphu='git push --set-upstream origin'   # create remote branch
-alias gphd='git push origin --delete'   # remove all listed refs (e.g. branchname)
-
-alias gf='git fetch'                # download new files from remote (no merge)
-alias gpl='git pull'                # download and merge new files from remote
-
-function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
-
-alias gb='git branch -vv'           # list branches
-alias gbm='gb --merged'             # list bs already merged into current b
-alias gbnm='gb --no-merged'         # list bs not yet merged into current b
-alias gsb='git switch'               # switch to branch (or get from remote)
-alias gsc='git switch --create'     # create new branch and switch to it
-alias gsp='git switch -'            # switch to previously checked out branch
-alias gsm='git switch main'         # switch to main branch
-alias gm='git merge'                # merge branch
-alias gbd='git branch -d'           # delete branch
-alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
 
 # conda
