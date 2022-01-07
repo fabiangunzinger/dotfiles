@@ -4,6 +4,7 @@
 # dev
 #################################################
 
+
 # git
 alias gh='git help'                 # can add verb (e.g. git help add)
 alias gs='git status --short'       # cols are staging area and working-tree
@@ -11,20 +12,31 @@ alias gss='git status'              # full status
 alias gsw='git show'                # show some object
 alias gd='git diff'                 # unstaged changes 
 alias gds='git diff --staged'       # staged changes
-alias gl='git log --oneline'        # basic log
+alias gl='git log'                  # basic log
+alias glo='gl --oneline'            # oneline log
 alias gla='gl -3'                   # abbreviated basic log
 alias gloh='gl origin/main..HEAD'   # easily view commits about to be pushed
+alias gllr='gl --left-right'        # list commits only on either left or right
 alias glv='git log --graph --patch' # verbose log
 alias glvf='glv; --'                # above but for filepath appended
 
-alias ga='git add'                  # add file to index
+alias ga='git add'                  # stage file (move to index)
 alias gaa='git add --all'           # add all modified files to index
+alias gai='git add --interactive'   # stage with interactive mode
+alias gap='git add --patch'         # stage individual hunks
 alias gc='git commit --verbose'     # show diff in editor
 alias gcm='git commit --message'    # commit with inline message
 alias gca='gc --all'                # commit all tracked files
 alias gcam='gca --message'          # above with inline message
 alias gcad='gc --amend'             # add changes to last commit or edit msg
 alias gcadn='gcad --no-edit'        # add changes to last commit (keep msg)
+
+alias gsh='git stash'               # save current state of working tree
+alias gshl='gsh list'               # list stored stashes
+alias gsha='gsh apply'              # apply (last) stash
+alias gshd='gsh drop'               # drop (last) stash
+alias gshp='gs pop'                 # apply and delete (last)
+function gshar() { gsha stash@{$1}; } # apply stash using ref number
 
 alias grs='git restore --staged'   # remove from index
 alias gr='git restore'             # revert file back to state of last commit
@@ -43,6 +55,7 @@ function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 alias gb='git branch -vv'           # list branches
 alias gbm='gb --merged'             # list bs already merged into current b
 alias gbnm='gb --no-merged'         # list bs not yet merged into current b
+alias gbme='git branch --move'      # rename by appending <oldname> <newname>
 alias gsb='git switch'               # switch to branch (or get from remote)
 alias gsc='git switch --create'     # create new branch and switch to it
 alias gsp='git switch -'            # switch to previously checked out branch
@@ -173,7 +186,7 @@ alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 
 # activate project
 alias abl='dbl; ca blog'
-alias aen='den; ca entropy; gl'
+alias aen='den; ca entropy; gla'
 alias afo='dfo; ca foods'
 alias amd='dmd; ca mdb'
 alias ate='dte; ca te'
