@@ -13,6 +13,10 @@
 alias dgu='cd ~/dev/projects/gutenberg'
 alias dpp='cd ~/dev/projects/preproc'
 
+# restore entropy paper which gets automatically updated when
+# switching branches
+alias grp='gr text/paper/entropy.pdf'
+
 # bash
 alias sb='source ~/.bashrc'
 alias la='ls -a'
@@ -175,7 +179,7 @@ alias gphd='git push origin --delete'   # remove all listed refs (e.g. branchnam
 alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
 
-function gacp() { gaa; gc "$1"; gph; } # add, commit, and push all files
+function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
 alias gb='git branch -vv'           # list branches
 alias gbm='gb --merged'             # list bs already merged into current b
