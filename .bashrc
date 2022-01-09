@@ -4,7 +4,6 @@
 # dev
 #################################################
 
-
 # git
 alias gh='git help'                 # can add verb (e.g. git help add)
 alias gs='git status --short'       # cols are staging area and working-tree
@@ -14,7 +13,7 @@ alias gd='git diff'                 # unstaged changes
 alias gds='git diff --staged'       # staged changes
 alias gl='git log'                  # basic log
 alias glo='gl --oneline'            # oneline log
-alias gla='gl -3'                   # abbreviated basic log
+alias gla='glo -3'                  # abbreviated basic log
 alias gloh='gl origin/main..HEAD'   # easily view commits about to be pushed
 alias gllr='gl --left-right'        # list commits only on either left or right
 alias glv='git log --graph --patch' # verbose log
@@ -36,6 +35,7 @@ alias gshl='gsh list'               # list stored stashes
 alias gsha='gsh apply'              # apply (last) stash
 alias gshd='gsh drop'               # drop (last) stash
 alias gshp='gs pop'                 # apply and delete (last)
+alias gshb='gs branch'              # creates branch from (last) stash
 
 function gshar() { gsha stash@{$1}; } # apply stash using ref number
 
@@ -98,6 +98,9 @@ alias pt='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 
 # search file in current folder
 alias f='find . | grep '
+
+# open dictionary
+function lu() { open dict://"$1"; }
 
 # system shutdown (also shuts down aws instance) and reboots
 alias ss='atesp; sudo shutdown -h now'
@@ -187,7 +190,7 @@ alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 
 # activate project
 alias abl='dbl; ca blog'
-alias aen='den; ca entropy; gla'
+alias aen='den; ca entropy; glo -3'
 alias afo='dfo; ca foods'
 alias amd='dmd; ca mdb'
 alias ate='dte; ca te'
