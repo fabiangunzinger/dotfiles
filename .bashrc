@@ -187,7 +187,7 @@ alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 
 # activate project
 alias abl='dbl; ca blog'
-alias aen='den; ca entropy; gla'
+alias aen='den; ca entropy; glo -3'
 alias afo='dfo; ca foods'
 alias amd='dmd; ca mdb'
 alias ate='dte; ca te'
