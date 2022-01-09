@@ -4,7 +4,6 @@
 # dev
 #################################################
 
-
 # git
 alias gh='git help'                 # can add verb (e.g. git help add)
 alias gs='git status --short'       # cols are staging area and working-tree
@@ -36,6 +35,7 @@ alias gshl='gsh list'               # list stored stashes
 alias gsha='gsh apply'              # apply (last) stash
 alias gshd='gsh drop'               # drop (last) stash
 alias gshp='gs pop'                 # apply and delete (last)
+alias gshb='gs branch'              # creates branch from (last) stash
 
 function gshar() { gsha stash@{$1}; } # apply stash using ref number
 
