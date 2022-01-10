@@ -276,11 +276,16 @@ export VISUAL="$EDITOR"
 # prompt
 #################################################
 
+get_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+    
 # heavily based on https://youtu.be/LXgXV7YmSiU. colors: 256color_chart.svg
 blue=$(tput setaf 033)
 green=$(tput setaf 034)
 white=$(tput setaf 15)
 orange=$(tput setaf 208)
+colour=$(tput setaf 075)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
@@ -290,6 +295,7 @@ PS1+="\[${white}\]@";
 PS1+="\[${orange}\]\h";     # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\W";      # basename of working directory
+PS1+="\[${colour}\]$(get_git_branch)";
 PS1+="\[${reset}\] $ ";
 export PS1;
 
