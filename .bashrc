@@ -295,7 +295,7 @@ PS1+="\[${white}\]@";
 PS1+="\[${orange}\]\h";     # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\W";      # basename of working directory
-PS1+="\[${colour}\]$(get_git_branch)";
+PS1+="\[${colour}\]\$(get_git_branch)";
 PS1+="\[${reset}\] $ ";
 export PS1;
 
