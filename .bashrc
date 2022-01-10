@@ -13,7 +13,7 @@ alias gd='git diff'                 # unstaged changes
 alias gds='git diff --staged'       # staged changes
 alias gl='git log'                  # basic log
 alias glo='gl --oneline'            # oneline log
-alias gla='gl -3'                   # abbreviated basic log
+alias gla='glo -3'                  # abbreviated basic log
 alias gloh='gl origin/main..HEAD'   # easily view commits about to be pushed
 alias gllr='gl --left-right'        # list commits only on either left or right
 alias glv='git log --graph --patch' # verbose log
@@ -98,6 +98,9 @@ alias pt='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
 
 # search file in current folder
 alias f='find . | grep '
+
+# open dictionary
+function lu() { open dict://"$1"; }
 
 # system shutdown (also shuts down aws instance) and reboots
 alias ss='atesp; sudo shutdown -h now'
