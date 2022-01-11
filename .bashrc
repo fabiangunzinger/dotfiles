@@ -5,7 +5,7 @@
 #################################################
 
 # git
-alias gh='git help'                 # can add verb (e.g. git help add)
+alias ghp='git help'                 # can add verb (e.g. git help add)
 alias gs='git status --short'       # cols are staging area and working-tree
 alias gss='git status'              # full status
 alias gsw='git show'                # show some object
