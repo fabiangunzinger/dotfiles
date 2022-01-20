@@ -129,8 +129,12 @@ let g:netrw_winsize = 30
 
 " ~~~ new and experimental ~~~
 
+" easily open and close quickfix window
 nnoremap <silent><leader>cc :cclose<cr>
 nnoremap <silent><leader>co :copen<cr>
+
+" delete to end of line in insert mode
+inoremap <c-l> <c-o>D
 
 
 " ~~~ permanent ~~~

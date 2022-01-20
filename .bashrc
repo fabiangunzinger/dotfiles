@@ -9,23 +9,16 @@ alias ghrc='gh repo create'         # interactively create a new repo
 alias ghp='git help'                # can add verb (e.g. git help add)
 
 alias gs='git status --short'       # cols are staging area and working-tree
-alias gss='git status'              # full status
+alias gsv='git status'              # verbose status
+alias gl='git log --oneline -3'      # oneline log
+alias glv='git log -3'              # verbose log
 
-alias gl='git log -3'               # basic log
-alias glo='gl --oneline -3'            # oneline log
-alias gloh='gl origin/main..HEAD'   # easily view commits about to be pushed
-alias gllr='gl --left-right'        # list commits only on either left or right
-alias glv='git log --graph --patch' # verbose log
-alias glvf='glv; --'                # above but for filepath appended
+alias gd='git diff'                 # .. ref a and b, defaults to wd and idx
+alias gds='git diff --staged'       # diff between index and last commit
 
-alias gd='git diff'                 # unstaged changes 
-alias gds='git diff --staged'       # staged changes
-
-alias ga='git add'                  # stage file (move to index)
+alias ga='git add'                  # .. file to stage (move to index)
 alias gaa='git add --all'           # add all modified files to index
-alias gai='git add --interactive'   # stage with interactive mode
 alias gap='git add --patch'         # stage individual hunks
-
 alias gc='git commit --verbose'     # show diff in editor
 alias gcm='git commit --message'    # commit with inline message
 alias gca='gc --all'                # commit all tracked files
@@ -33,19 +26,18 @@ alias gcam='gca --message'          # above with inline message
 alias gcad='gc --amend'             # add changes to last commit or edit msg
 alias gcadn='gcad --no-edit'        # add changes to last commit (keep msg)
 
-alias gsh='git stash'               # save current state of working tree
-alias gshl='gsh list'               # list stored stashes
-alias gsha='gsh apply'              # apply (last) stash
-alias gshd='gsh drop'               # drop (last) stash
-alias gshp='gs pop'                 # apply and delete (last)
-alias gshb='gs branch'              # creates branch from (last) stash
-
-function gshar() { gsha stash@{$1}; } # apply stash using ref number
-
-alias grs='git restore --staged'   # remove from index
-alias gr='git restore'             # revert file back to state of last commit
+alias grs='git restore --staged'    # .. file to remove from idx
+alias gr='git restore'              # .. file to be revert file back to state of last commit
 alias grm='git rm'   # remove deleted untracked or delete and remove tracked
 alias grmc='git rm --cached'        # remove from index (and delete file?)
+
+
+alias gsh='git stash'               # save current state of working tree
+alias gshl='gsh list'               # list stored stashes
+alias gsha='gsh apply'              # .. stash ref to apply, default is last
+alias gshd='gsh drop'               # .. stash ref to drop, Cdrop (last) stash
+alias gshp='gs pop'                 # apply and delete (last)
+alias gshb='gs branch'              # creates branch from (last) stash
 
 alias gph='git push'                # move remote pointer to match local one 
 alias gphu='git push --set-upstream origin'   # create remote branch
