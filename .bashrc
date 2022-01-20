@@ -4,25 +4,28 @@
 # dev
 #################################################
 
-# git
-alias ghp='git help'                 # can add verb (e.g. git help add)
+# git and github
+alias ghrc='gh repo create'         # interactively create a new repo
+alias ghp='git help'                # can add verb (e.g. git help add)
+
 alias gs='git status --short'       # cols are staging area and working-tree
 alias gss='git status'              # full status
-alias gsw='git show'                # show some object
-alias gd='git diff'                 # unstaged changes 
-alias gds='git diff --staged'       # staged changes
-alias gl='git log'                  # basic log
-alias glo='gl --oneline'            # oneline log
-alias gla='glo -3'                  # abbreviated basic log
+
+alias gl='git log -3'               # basic log
+alias glo='gl --oneline -3'            # oneline log
 alias gloh='gl origin/main..HEAD'   # easily view commits about to be pushed
 alias gllr='gl --left-right'        # list commits only on either left or right
 alias glv='git log --graph --patch' # verbose log
 alias glvf='glv; --'                # above but for filepath appended
 
+alias gd='git diff'                 # unstaged changes 
+alias gds='git diff --staged'       # staged changes
+
 alias ga='git add'                  # stage file (move to index)
 alias gaa='git add --all'           # add all modified files to index
 alias gai='git add --interactive'   # stage with interactive mode
 alias gap='git add --patch'         # stage individual hunks
+
 alias gc='git commit --verbose'     # show diff in editor
 alias gcm='git commit --message'    # commit with inline message
 alias gca='gc --all'                # commit all tracked files
@@ -64,6 +67,9 @@ alias gsm='git switch main'         # switch to main branch
 alias gm='git merge'                # merge branch
 alias gbd='git branch -d'           # delete branch
 alias gbdf='git branch -D'          # force delete branch with uncommited edits
+
+# to delete if not missed
+alias gsw='git show'                # show some object
 
 
 #################################################
@@ -285,7 +291,7 @@ blue=$(tput setaf 033)
 green=$(tput setaf 034)
 white=$(tput setaf 15)
 orange=$(tput setaf 208)
-colour=$(tput setaf 075)
+branch_col=$(tput setaf 161)
 bold=$(tput bold)
 reset=$(tput sgr0)
 
@@ -295,7 +301,7 @@ PS1+="\[${white}\]@";
 PS1+="\[${orange}\]\h";     # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\W";      # basename of working directory
-PS1+="\[${colour}\]\$(get_git_branch)";
+PS1+="\[${branch_col}\]\$(get_git_branch)";
 PS1+="\[${reset}\] $ ";
 export PS1;
 

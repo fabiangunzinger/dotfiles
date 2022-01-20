@@ -129,13 +129,8 @@ let g:netrw_winsize = 30
 
 " ~~~ new and experimental ~~~
 
-" turn of highlighting after search by hitting cr again
-" disables all other cr functions like jumping around in toc, find better
-" solution
-" nnoremap <silent><cr> :nohlsearch<cr>
-
-nnoremap <silent><leader>x :x<cr>
-" nnoremap / :FuzzySearch<cr>
+nnoremap <silent><leader>cc :cclose<cr>
+nnoremap <silent><leader>co :copen<cr>
 
 
 " ~~~ permanent ~~~
@@ -197,8 +192,8 @@ nnoremap <silent> <leader>nr :setlocal relativenumber!<cr>
 nnoremap <silent> <leader>dw :Goyo<cr>
 
 " source vimrc
-map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>zazz
-map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>
+map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>zazz
+map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>
 
 " open files
 map <silent><leader>fvr :edit $MYVIMRC<cr>
