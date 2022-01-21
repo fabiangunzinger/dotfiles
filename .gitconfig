@@ -4,6 +4,7 @@
 	email = fa.gunzinger@gmail.com
 [core]
 	excludesfile = /Users/fgu/.gitignore_global
+	editor = nvim
 [pull]
 	rebase = false
 [init]
