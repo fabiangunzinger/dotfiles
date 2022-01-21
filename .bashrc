@@ -89,13 +89,14 @@ alias ....='cd ../../..'
 alias rmd='rm -rfi '
 
 # running processes
-alias p='ps aux | grep '
-alias pt='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10'
+alias rp='ps aux | grep '               # ..pattern; list processes
+alias rpl='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10' # list largest
+alias rpk='kill'                        # ..process id to kill
 
 # search file in current folder
 alias f='find . | grep '
 
-# open dictionary
+# look up word from dictionary
 function lu() { open dict://"$1"; }
 
 # system shutdown (also shuts down aws instance) and reboots
