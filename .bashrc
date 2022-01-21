@@ -6,15 +6,15 @@
 
 # git and github
 alias ghrc='gh repo create'         # interactively create a new repo
-alias ghp='git help'                # can add verb (e.g. git help add)
-
+alias ghp='git help'                # ..git verb for which help is needed
 alias gs='git status --short'       # cols are staging area and working-tree
 alias gsv='git status'              # verbose status
-alias gl='git log --oneline -3'      # oneline log
+alias gl='git log --oneline -3'     # oneline log
 alias glv='git log -3'              # verbose log
-
 alias gd='git diff'                 # .. ref a and b, defaults to wd and idx
 alias gds='git diff --staged'       # diff between index and last commit
+alias gsw='git show'                # show some object
+alias gt='git tag'                  # ..tagname for last commit, dft lists tags
 
 alias ga='git add'                  # .. file to stage (move to index)
 alias gaa='git add --all'           # add all modified files to index
@@ -26,27 +26,26 @@ alias gcam='gca --message'          # above with inline message
 alias gcad='gc --amend'             # add changes to last commit or edit msg
 alias gcadn='gcad --no-edit'        # add changes to last commit (keep msg)
 
-alias grs='git restore --staged'    # .. file to remove from idx
-alias gr='git restore'              # .. file to be revert file back to state of last commit
-alias grm='git rm'   # remove deleted untracked or delete and remove tracked
-alias grmc='git rm --cached'        # remove from index (and delete file?)
-
+alias grm='git rm'                  # ..fn to remove, then stage for commit
+alias grmc='git rm --cached'        # ..fn to remove from index but not wd
+alias gre='git restore'             # ..fn to revert back to state of last commit
+alias gres='git restore --staged'   # ..fn to remove from index
+# alias grts='git reset --soft'
 
 alias gsh='git stash'               # save current state of working tree
 alias gshl='gsh list'               # list stored stashes
-alias gsha='gsh apply'              # .. stash ref to apply, default is last
-alias gshd='gsh drop'               # .. stash ref to drop, Cdrop (last) stash
+alias gsha='gsh apply'              # ..stash ref (sr) to apply, default is last
+alias gshd='gsh drop'               # ..sr to drop, default is last
 alias gshp='gs pop'                 # apply and delete (last)
-alias gshb='gs branch'              # creates branch from (last) stash
+alias gshb='gs branch'              # ..sr to create branch from, dft is last
+alias gcn='git clean'               # ..fn to be removed from wd
+alias gcnn='gc --dry-run'           # dry run of above
 
 alias gph='git push'                # move remote pointer to match local one 
-alias gphu='git push --set-upstream origin'   # create remote branch
-alias gphd='git push origin --delete'   # remove all listed refs (e.g. branchname)
-
+alias gphu='gph --set-upstream origin' # ..branch name of remote
+alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
 alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
-
-function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
 alias gb='git branch -vv'           # list branches
 alias gbm='gb --merged'             # list bs already merged into current b
@@ -60,8 +59,7 @@ alias gm='git merge'                # merge branch
 alias gbd='git branch -d'           # delete branch
 alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
-# to delete if not missed
-alias gsw='git show'                # show some object
+function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
 
 #################################################
@@ -188,7 +186,7 @@ alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 
 # activate project
 alias abl='dbl; ca blog'
-alias aen='den; ca entropy; glo -3'
+alias aen='den; ca entropy; gl'
 alias afo='dfo; ca foods'
 alias amd='dmd; ca mdb'
 alias ate='dte; ca te'
