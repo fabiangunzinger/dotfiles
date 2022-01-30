@@ -62,7 +62,7 @@ set backspace=indent,eol,start          " powerful backspace in insert mode
 set spelllang=en_gb                     " spell checker uses british english
 set hidden                              " switch away from edited buffers
 set laststatus=2			            " always show statusline
-set lazyredraw                      	" avoid undue redrawing
+" set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
 set number                              " show line numers
 set mouse=a                             " mouse support in all modes
@@ -111,9 +111,6 @@ set infercase                           " adapt change for autocomplete
 " Ignore compiled files for filcard expansion and search
 set wildignore=*.pyc,*.o,*~,*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
 
-" turn off highlighting
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 " netrw settings
 let g:netrw_preview = 1
 let g:netrw_liststyle = 3
@@ -129,6 +126,17 @@ let g:netrw_winsize = 30
 
 " ~~~ new and experimental ~~~
 
+" change windows quickly
+" first line below allows for quick cycling and jumping (e.g. 3<cr>)
+nnoremap <cr> <c-w>w
+nnoremap <A-j> <c-w>j
+nnoremap <A-k> <c-w>k
+nnoremap <A-h> <c-w>h
+nnoremap <A-l> <c-w>l
+
+" turn off highlighting
+nnoremap <nowait><silent> <c-c> :nohlsearch<cr>
+
 " easily open and close quickfix window
 nnoremap <silent><leader>cc :cclose<cr>
 nnoremap <silent><leader>co :copen<cr>
@@ -143,6 +151,9 @@ let mapleader = ','
 
 " leave insert mode
 inoremap jk <esc>
+
+" exit terminal mode
+tnoremap jk <c-\><c-n>
 
 " abort (search) command
 cnoremap jk <C-c>
@@ -162,12 +173,6 @@ nnoremap <silent><leader>a :e#<cr>
 " move visual-line-wise
 nnoremap j gj
 nnoremap k gk
-
-" change windows 
-" map <C-j> <C-W>j
-" map <C-k> <C-W>k
-" map <C-h> <C-W>h
-" map <C-l> <C-W>l
 
 " open files from same directory as current buffer
 " ew is for open (edit) new file in window
@@ -237,7 +242,7 @@ nnoremap <silent> <leader>gu :Semshi goto unresolved<cr>
 nnoremap <silent> <leader>ge :Semshi goto error<cr>
 
 " close buffer but not window
-" nnoremap Bd :bp\|bd #<cr>
+nnoremap Bd :bp\|bd #<cr>
 
 " quick formatting
 " nnoremap <silent> <leader>tp gqap<cr>
