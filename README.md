@@ -1,6 +1,6 @@
 # dotfiles
 
-How I manage my dotfiles:
+## How I manage my dotfiles:
 
 - Original files live in ~/dev/projects/dotfiles repo.
 
@@ -12,6 +12,10 @@ How I manage my dotfiles:
 - The purpose of this, of course, is to use a consistent set of dotfiles across all machines.
 
 
+## Python management
 
+- I use `pyenv` to manage Python versions and `pyenv-virtualenv` to manage
+  virtual environments. Currently testing whether to switch to this, still
+  mainly using Conda.
 
 

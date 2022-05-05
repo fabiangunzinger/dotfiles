@@ -4,6 +4,32 @@
 # dev
 #################################################
 
+# pyenv
+alias pea='pyenv activate'
+alias ped='pyenv deactivate'
+
+export FGUS='fabiangunzinger'
+export FGPW='mypnih-1tugJe-kandoz'
+
+
+
+# poetry
+
+
+
+# hugo
+
+function hnp() { hugo new --kind post content/post/$1; }
+alias hs='hugo server -D'
+alias nbc='jupyter nbconvert --to html'
+
+# blog
+alias dwo='dpr; cd wowchemy'
+alias dwop='dwo; cd content/post'
+alias dwoc='dwo; cd config/_default'
+alias dwoo='dwo; cd content/old'
+
+
 # git and github
 alias ghrc='gh repo create'         # interactively create a new repo
 alias ghp='git help'                # ..git verb for which help is needed
@@ -67,8 +93,7 @@ function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 #################################################
 
 # temp
-alias dgu='cd ~/dev/projects/gutenberg'
-alias dpp='cd ~/dev/projects/preproc'
+alias ddh='cd ~/dev/projects/dahel'
 
 # restore entropy paper which gets automatically updated when
 # switching branches
@@ -84,7 +109,6 @@ alias cpwd='pwd | pbcopy'
 
 alias ..='cd ..'
 alias ...='cd ../..'
-alias ....='cd ../../..'
 
 alias rmd='rm -rfi '
 
@@ -93,8 +117,9 @@ alias rp='ps aux | grep '               # ..pattern; list processes
 alias rpl='ps -eo pcpu,pid,user,args | sort -k 1 -r | head -10' # list largest
 alias rpk='kill'                        # ..process id to kill
 
-# search file in current folder
-alias f='find . | grep '
+# search file in current folder (non-recursive, and recursive)
+alias f='find . -maxdepth 1 | grep '
+alias ff='find . | grep '
 
 # look up word from dictionary
 function lu() { open dict://"$1"; }
@@ -188,6 +213,7 @@ alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 # activate project
 alias abl='dbl; ca blog'
 alias aen='den; ca entropy; gl'
+alias ven='aen; vi'
 alias afo='dfo; ca foods'
 alias amd='dmd; ca mdb'
 alias ate='dte; ca te'
@@ -262,9 +288,9 @@ function acpt() { aws s3 cp $1 $2 --profile '3di'; }
 #################################################
 # exports
 #################################################
-
 export FABIB=~/dev/projects/dotfiles/latex/fabib.bib
 export PATH="/usr/local/opt/grep/libexec/gnubin:$PATH"      # use gnu grep
+export PATH="/Users/fgu/.local/bin:$PATH"                   # add poetry topath
 export EDITOR=nvim
 export VISUAL="$EDITOR"
 
@@ -287,14 +313,15 @@ bold=$(tput bold)
 reset=$(tput sgr0)
 
 PS1="\[${bold}\]\n";
-PS1+="\[${blue}\]\u";       # username
+PS1+="\[${blue}\]\u";           # username
 PS1+="\[${white}\]@";
-PS1+="\[${orange}\]\h";     # host
+PS1+="\[${orange}\]\h";         # host
 PS1+="\[${white}\] in ";
-PS1+="\[${green}\]\W";      # basename of working directory
+PS1+="\[${green}\]\W";          # basename of working directory
 PS1+="\[${branch_col}\]\$(get_git_branch)";
 PS1+="\[${reset}\] $ ";
 export PS1;
 
-
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

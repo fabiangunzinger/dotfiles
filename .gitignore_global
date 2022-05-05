@@ -1,4 +1,8 @@
-## fabian gunzinger's global .gitignore
+# fabian gunzinger's global .gitignore
+
+# This handles tools I use generally, rather than languages
+# Used for specific projects, which are handled in project-
+# specifig .gitignore files.
 
 # mac #
 #######

@@ -6,7 +6,6 @@
 " activate vim-plug
 call plug#begin()
 Plug 'alfredodeza/pytest.vim'   " pytest support
-Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
 Plug 'ggVGc/vim-fuzzysearch'   " fuzzy search
     let g:fuzzysearch_prompt = '/'
     let g:fuzzysearch_match_spaces = 1
@@ -40,8 +39,11 @@ Plug 'psliwka/vim-smoothie'   " smooth scrolling
     " let g:slime_target = "vimterminal"
 Plug 'altercation/vim-colors-solarized'   " colorscheme
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
+
+Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
 Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
 Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
+
 Plug 'lervag/vimtex'   " latex support
 call plug#end()
 
@@ -127,15 +129,13 @@ let g:netrw_winsize = 30
 " ~~~ new and experimental ~~~
 
 " change windows quickly
-" first line below allows for quick cycling and jumping (e.g. 3<cr>)
-nnoremap <cr> <c-w>w
-nnoremap <A-j> <c-w>j
-nnoremap <A-k> <c-w>k
-nnoremap <A-h> <c-w>h
-nnoremap <A-l> <c-w>l
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
 
 " turn off highlighting
-nnoremap <nowait><silent> <c-c> :nohlsearch<cr>
+noremap <nowait><leader><leader> :nohlsearch<cr>
 
 " easily open and close quickfix window
 nnoremap <silent><leader>cc :cclose<cr>
