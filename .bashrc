@@ -134,8 +134,8 @@ alias jk='open /System/Applications/Calendar.app; open /System/Applications/Note
 # disk space and directory structure
 alias dum='du -h | sort -n -r | more'
 alias dud='du -h -d 2'
-alias t='tree -CAhF --dirsfirst'
-alias td='tree -CAFd'
+alias t='tree -I __*'
+alias td='tree -dI __*'
 
 # terraform
 alias tf='terraform'
@@ -212,11 +212,15 @@ alias fcvd='vi /Users/fgu/dev/projects/applications/cv/cvdev.tex'
 
 # activate project
 alias abl='dbl; ca blog'
-alias aen='den; ca entropy; gl'
-alias ven='aen; vi'
 alias afo='dfo; ca foods'
 alias amd='dmd; ca mdb'
 alias ate='dte; ca te'
+alias aen='den; ca entropy; gl'
+alias ven='aen; vi'
+alias dev='cd ~/dev/projects/mdb_eval'
+alias aev='dev; ca mdb_eval'
+alias vev='aev; vi'
+alias jev='aev; jula'
 
 # start jupyter lab for project
 alias jbl='abl; jula'
