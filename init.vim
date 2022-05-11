@@ -216,6 +216,7 @@ map <silent><leader>fli :edit ~/dev/projects/blog/_posts/2021-02-08-linux.md<cr>
 
 " run current file in python
 nnoremap <leader>rp :w<cr>:!python %<cr>
+nnoremap <leader>rpm :w<cr>:!python -m %<cr>
 nnoremap <leader>rpd :w<cr>:!python -m doctest %<cr>
 
 " git
