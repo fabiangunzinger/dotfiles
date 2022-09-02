@@ -15,7 +15,8 @@
     pgffor,   % for loops
     setspace,   % linespacing
     tabularx,   % custom table width
-    threeparttable   % pretty reg table notes layout
+    threeparttable,   % pretty reg table notes layout
+    subcaption   % create labelled subfigures
     % amsfonts,
     % bbm,
     % calc,
@@ -28,7 +29,6 @@
     % fancyhdr,
     % url,
     % caption,
-    % subcaption,
     % threeparttable,
     % dcolumn,
     % tikz,
@@ -101,7 +101,7 @@
 \newcommand{\edit}[1]{{\noindent\color{red}{#1}}}
 \newcommand{\gap}{{\color{red}...\#...}}
 \newcommand{\notes}[1]{\newlineNotes: #1}
-\newcommand{\fignote}[2]{{\center\parbox[c]{#1}{\footnotesize Notes: #2}}}
+\newcommand{\fignote}[2]{{\center\parbox[c]{#1}{\scriptsize Notes: #2}}}
 \newcommand{\tabnote}[2]{{\center\parbox[c]{#1}{\footnotesize Notes: #2}}}
 \newcommand{\source}[1]{{\center\scriptsize Source: #1}}
 \newcommand{\what}[1]{{\noindent\textit{\color{blue}{#1}}}}

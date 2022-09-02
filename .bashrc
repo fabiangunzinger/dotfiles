@@ -4,6 +4,8 @@
 # dev
 #################################################
 
+alias dje='cd ~/dev/projects/justeat'
+
 # pyenv
 alias pea='pyenv activate'
 alias ped='pyenv deactivate'
@@ -27,8 +29,8 @@ alias nbc='jupyter nbconvert --to html'
 alias dwo='dpr; cd wowchemy'
 alias dwop='dwo; cd content/post'
 alias dwoc='dwo; cd config/_default'
-alias dwoo='dwo; cd content/old'
-
+alias awo='dwop; ca wow'
+alias jwo='awo; jula'
 
 # git and github
 alias ghrc='gh repo create'         # interactively create a new repo
@@ -235,17 +237,27 @@ pn() { vi $(date +'%Y-%m-%d-')"$1"; }
 pe() { vi $(find . -name *$1*); }
 
 
+
+# jupyter kernels
+alias jkl='jupyter kernelspec list'
+function jkr { jupyter kernelspec remove $1; } 
+function jki { python -m ipykernel install --name $1; }
+
 # conda
 alias ci='conda install '
 alias cl='conda list'
 alias clg='conda list | grep '
-alias cee='conda env export > environment.yml'
-alias ceeh='conda env export --from-history > environment.yml'
+
+alias ce='conda env export > environment.yml'
+alias ceh='conda env export --from-history > environment.yml'
+
+function cc() { conda create --name $1; }
+function ccb() { conda create --name $1 python=3.9 pandas scipy scikit-learn matplotlib seaborn jupyterlab statsmodels linearmodels jupyterlab_code_formatter black isort s3fs pyarrow; }
+function cr() { conda remove --name $1 --all; }
+function ccf() { conda env create --file $1; }
 function ca() { conda activate "$1"; }
-function ce() { conda deactivate; }
-function pik() { python -m ipykernel install --user --name "$1"; }
-function cen() { conda create --name $1 python=3.9 pandas scipy scikit-learn seaborn s3fs pyarrow jupyterlab statsmodels linearmodels; }
-function cer() { conda remove --name $1 --all; }
+cda='conda deactivate'
+
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
