@@ -4,6 +4,8 @@
 # dev
 #################################################
 
+alias dth='cd ~/dev/projects/warwickthesis'
+
 alias dje='cd ~/dev/projects/justeat'
 
 # pyenv
@@ -175,7 +177,6 @@ alias den='cd ~/dev/projects/entropy/'
 alias dent='den; cd text'
 alias deni='den; cd infra'
 alias dle='cd ~/dev/projects/learning/'
-alias dth='cd ~/dev/projects/learning/think-python'
 alias dml='cd ~/dev/projects/mlbt/'
 alias dmlp='cd ~/dev/projects/mlbt/text/paper'
 alias dmd='cd ~/dev/projects/mdb/'

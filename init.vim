@@ -204,7 +204,7 @@ nnoremap <silent> <leader>dw :Goyo<cr>
 map <silent> <leader>Sv :write<cr>:source $MYVIMRC<cr>zazz
 map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>
 
-" open files
+" open files shortcuts
 map <silent><leader>fvr :edit $MYVIMRC<cr>
 map <silent><leader>fvvr :vsplit $MYVIMRC<cr>
 map <silent><leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim.md<cr>
