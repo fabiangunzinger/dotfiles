@@ -3,6 +3,7 @@
 " plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+
 " activate vim-plug
 call plug#begin()
 Plug 'alfredodeza/pytest.vim'   " pytest support
@@ -33,7 +34,8 @@ Plug 'tpope/vim-repeat'   " use . after plugin map
 Plug 'tpope/vim-surround'   " surround shortcuts
 Plug 'tpope/vim-unimpaired'   " complementary pairs of mappings
 Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
-Plug 'wincent/command-t'   " fuzzy file finder
+Plug 'wincent/command-t', {'do': 'cd lua/wincent/commandt/lib && make'}  " fuzzy file finder
+    let g:CommandTPreferredImplementation = 'lua'
 Plug 'psliwka/vim-smoothie'   " smooth scrolling
 " Plug 'jpalardy/vim-slime'   " repl interaction support
     " let g:slime_target = "vimterminal"
@@ -67,6 +69,7 @@ set laststatus=2			            " always show statusline
 " set lazyredraw                      	" avoid undue redrawing
 set noerrorbells                    	" disable error bells
 set number                              " show line numers
+set relativenumber                      " show relative line numbers
 set mouse=a                             " mouse support in all modes
 set showcmd	                            " show partial command
 
@@ -94,8 +97,11 @@ colorscheme solarized                   " custom colorscheme
 let python_highlight_all=1
 
 " python interpreter
-" use dedicated virtual env as nvim intrpreter (:h python3_host_prog)
-let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+" use dedicated virtual env as nvim intrpreter (:h python3_host_prog), since
+" -- when managing pyenv-virtualenv -- automatically detecting virtualenv
+" doesn't seem to work.
+let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
+" let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 
 " remove vertical split column highlight
 " only fillchar vert default | is shows
@@ -252,6 +258,8 @@ nnoremap Bd :bp\|bd #<cr>
 " command-t
 " nnoremap <c-cr> :CommandTOpen vs
 " let g:CommandTCancelMap=['<c-c>', 'jk']
+nnoremap <leader>t :CommandT<cr>
+nnoremap <leader>b :CommandTBuffer<cr>
 
 
 
