@@ -96,6 +96,12 @@ set background=dark                     " dark background
 colorscheme solarized                   " custom colorscheme
 let python_highlight_all=1
 
+" Clear git-gutter highlighting
+highlight clear SignColumn
+highlight clear GitGutterAdd
+highlight clear GitGutterChange
+highlight clear GitGutterDelete
+
 " python interpreter
 " use dedicated virtual env as nvim intrpreter (:h python3_host_prog), since
 " -- when managing pyenv-virtualenv -- automatically detecting virtualenv
