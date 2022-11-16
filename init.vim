@@ -6,6 +6,7 @@
 
 " activate vim-plug
 call plug#begin()
+Plug 'airblade/vim-gitgutter'   " show git diff in sign column
 Plug 'alfredodeza/pytest.vim'   " pytest support
 Plug 'ggVGc/vim-fuzzysearch'   " fuzzy search
     let g:fuzzysearch_prompt = '/'
