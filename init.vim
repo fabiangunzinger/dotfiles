@@ -38,8 +38,8 @@ Plug 'tpope/vim-vinegar'   " complement to netrw file system navigation
 Plug 'wincent/command-t', {'do': 'cd lua/wincent/commandt/lib && make'}  " fuzzy file finder
     let g:CommandTPreferredImplementation = 'lua'
 Plug 'psliwka/vim-smoothie'   " smooth scrolling
-" Plug 'jpalardy/vim-slime'   " repl interaction support
-    " let g:slime_target = "vimterminal"
+Plug 'jpalardy/vim-slime'   " repl interaction support
+    let g:slime_target = "neovim"
 Plug 'altercation/vim-colors-solarized'   " colorscheme
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
 
