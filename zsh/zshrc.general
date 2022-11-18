@@ -168,7 +168,7 @@ function pdmp() { pandoc "$1" -o "${1/md/pdf}"; }
 alias ghrc='gh repo create'         # interactively create a new repo
 alias ghp='git help'                # ..git verb for which help is needed
 alias gs='git status --short'       # cols are staging area and working-tree
-alias gsv='git status'              # verbose status
+alias gss='git status'              # verbose status
 alias gl='git log --oneline -3'     # oneline log
 alias glv='git log -3'              # verbose log
 alias gd='git diff'                 # .. ref a and b, defaults to wd and idx

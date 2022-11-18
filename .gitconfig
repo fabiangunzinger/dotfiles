@@ -1,12 +1,6 @@
-# This is Git's per-user configuration file.
-[user]
-	name = Fabian Gunzinger
-	email = fa.gunzinger@gmail.com
-[core]
-	excludesfile = /Users/fgu/.gitignore_global
-	editor = nvim
-[pull]
-	rebase = false
-[init]
-	templatedir = ~/.git_template
-	defaultBranch = main
+[includeIf "gitdir:~/dev/projects/"]
+    path = .gitconfig-projects
+
+[includeIf "gitdir:~/dev/jet/"]
+    path = .gitconfig-jet
+
