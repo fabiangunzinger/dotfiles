@@ -4,6 +4,7 @@
 
 # Project directories
 alias dje='dde; cd jet'
+alias dma='dje; cd matching-toolbox'
 
 # Open files
 alias fzj='ddf; cd zsh; nvim zshrc.jetmac'
