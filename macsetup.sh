@@ -1,9 +1,17 @@
+# macbook setup
+# fabian gunzinger
 
 # Xcode
 xcode-select --install
 
 # Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+# nvim
+brew install nvim
+# Enable nvim to use python plugins
+pip3 install pynvim   
+# set python interpreter manually (see init.vim)
 
 # Create SSH key
 cd
@@ -25,7 +33,6 @@ ln -s dev/projects/dotfiles/.zshrc ~
 ## See logic in .gitconfig
 ln -s dev/projects/dotfiles/.gitconfig* ~
 
-
 # Python
 brew install pyenv
 brew install openssl readline sqlite3 xz zlib tcl-tk
@@ -40,23 +47,24 @@ brew install pyenv-virtualenv
 # and is used to run Jupyter (see .zshrc.general and workflow post)
 pyenv virtualenv base   
 pyenv activate base
+pip install jupyterlab
+## In case I decide to manage base dir with Poetry after all
+# mkdir ~/dev/projects/base
+# cd ~/dev/projects/base
+# pyenv virtualenv 3.10.8 base
+# potry init
+# poetry add jupyterlab
+
 # todo: configure Jupyter environment
 
-# Dependency maagement
+# Dependency management
 ## Currently trying both pip and poetry
 
 ## Poetry installation
 curl -sSL https://install.python-poetry.org | python3 -
-poetry config virtualenvs.create false  # don't use poetry for virtualenv mgt
-
-# Base virtual environment with jupyterlab installed
-mkdir ~/dev/projects/base
-cd ~/dev/projects/base
-pyenv virtualenv 3.10.8 base
-potry init
-
-poetry add jupyterlab
-# customise jupyterlab - code formatter, etc.
+# Don't use poetry for virtualenv mgt
+poetry config virtualenvs.create false  
+# poetry completions bash > $(brew --prefix)/etc/bash_completion.d/poetry.bash-completion
 
 # Terminal
 ## Install iterm2
@@ -72,33 +80,13 @@ sh -c "$(curl -fsSl https://raw.githubusercontent.com/powerline/fonts/master/ins
 
 
 
-
-# nvim
-brew install nvim
-pip3 install pynvim   # enable nvim to use python plugins
-# set python interpreter manually (see init.vim)
-
-
-
-
-
-
-# Vim
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-# ... install homebrew
-
+# Stuff I might not need any longer
 
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
 
 brew install fzf
 $(brew --prefix)/opt/fzf/install
-
-curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python -
-poetry config virtualenvs.create false
-poetry completions bash > $(brew --prefix)/etc/bash_completion.d/poetry.bash-completion
 
 # miniconda install (check that it contains python version you want)
 curl -O https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
