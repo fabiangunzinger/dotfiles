@@ -77,7 +77,9 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 sh -c "$(curl -fsSl https://raw.githubusercontent.com/powerline/fonts/master/install.sh)"
 ## Manually import iterm-profiles.json (iterm2/Profiles/Other actions)
 
-
+## Install below prompt and customise
+## todo: customise prompt
+# https://github.com/agkozak/agkozak-zsh-prompt
 
 
 # Stuff I might not need any longer
