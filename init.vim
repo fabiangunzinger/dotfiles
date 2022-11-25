@@ -8,6 +8,7 @@
 call plug#begin()
 Plug 'airblade/vim-gitgutter'   " show git diff in sign column
 Plug 'alfredodeza/pytest.vim'   " pytest support
+Plug 'easymotion/vim-easymotion'   " speedy vim motions
 Plug 'ggVGc/vim-fuzzysearch'   " fuzzy search
     let g:fuzzysearch_prompt = '/'
     let g:fuzzysearch_match_spaces = 1
@@ -73,6 +74,7 @@ set number                              " show line numers
 set relativenumber                      " show relative line numbers
 set mouse=a                             " mouse support in all modes
 set showcmd	                            " show partial command
+set updatetime=100                      " shorter update time (for vim-gutter)
 
 " text wrapping
 set wrap                            	" wrap long lines
@@ -107,8 +109,8 @@ highlight clear GitGutterDelete
 " use dedicated virtual env as nvim intrpreter (:h python3_host_prog), since
 " -- when managing pyenv-virtualenv -- automatically detecting virtualenv
 " doesn't seem to work.
-let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
-" let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+" let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
+let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 
 " remove vertical split column highlight
 " only fillchar vert default | is shows
@@ -220,9 +222,9 @@ map <silent> <leader>sv :write<cr>:source $MYVIMRC<cr>
 " open files shortcuts
 map <silent><leader>fvr :edit $MYVIMRC<cr>
 map <silent><leader>fvvr :vsplit $MYVIMRC<cr>
-map <silent><leader>fve :edit ~/dev/projects/blog/_posts/2021-03-27-vim.md<cr>
-map <silent><leader>fre :edit ~/dev/projects/blog/_posts/2021-09-11-regex.md<cr>
-map <silent><leader>fmf :edit ~/dev/projects/blog/_posts/2021-04-29-makefiles.md<cr>
+map <silent><leader>fve :edit ~/dev/projects/wowchemy/content/post/vim.md<cr>
+map <silent><leader>fre :edit ~/dev/projects/wowchemy/content/post/regex.md<cr>
+map <silent><leader>fmf :edit ~/dev/projects/wowchemy/content/post/makefiles.md<cr>
 map <silent><leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
 map <silent><leader>fps :edit ~/dev/projects/dotfiles/latex/paper.sty<cr>
 map <silent><leader>fbr :edit ~/dev/projects/dotfiles/.bashrc<cr>
@@ -268,6 +270,17 @@ nnoremap Bd :bp\|bd #<cr>
 nnoremap <leader>t :CommandT<cr>
 nnoremap <leader>b :CommandTBuffer<cr>
 
+" vim-gitgutter
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+" easy-motion
+let g:EasyMotion_do_mapping = 0   " Disable default mapping
+let g:EasyMotion_smartcase = 1   " Case insensitive search
+" nmap s <Plug>(easymotion-overwin-f)
+nmap s <Plug>(easymotion-overwin-f2)
+map <Leader>j <Plug>(easymotion-j)
+map <Leader>k <Plug>(easymotion-k)
 
 
 " sessions {{{1

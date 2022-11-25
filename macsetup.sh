@@ -1,17 +1,17 @@
 
-
-
 # Xcode
 xcode-select --install
 
-# Install homebrew
+# Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Create SSH key
+cd
 ssh-keygen -t ed25519
 
 # GitHub CLI
 brew install gh
+## todo: add public key to Github so I can ssh into account
 
 # Create project directory
 cd
@@ -29,11 +29,19 @@ pyenv install 3.9
 pyenv install 3.10
 pyenv global 3.10
 
-# pyenv-virtualenv for virtual envs
+# Virtual environments
+# pyenv-virtualenv for virtual env management
 brew install pyenv-virtualenv
-pyenv virtualenv base   # gets automatically activated on shell startup (see .zshrc)
+# base environment that gets automatically activated on shell startup
+# and is used to run Jupyter (see .zshrc.general and workflow post)
+pyenv virtualenv base   
+pyenv activate base
+# todo: configure Jupyter environment
 
-# Poetry for package installation and dependency resolution
+# Dependency maagement
+## Currently trying both pip and poetry
+
+## Poetry installation
 curl -sSL https://install.python-poetry.org | python3 -
 poetry config virtualenvs.create false  # don't use poetry for virtualenv mgt
 
