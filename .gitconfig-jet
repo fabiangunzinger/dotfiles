@@ -1,0 +1,6 @@
+[user]
+    name = fabiangunzinger
+    email = fabian.gunzinger@justeattakeaway.com
+
+[core]
+    editor = nvim

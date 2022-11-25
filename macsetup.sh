@@ -21,6 +21,10 @@ mkdir -p dev/projects
 cd dev/projects
 git clone git@github.com:fabiangunzinger/dotfiles.git
 ln -s dev/projects/dotfiles/.zshrc ~
+## Have separate config file for private and work projects
+## See logic in .gitconfig
+ln -s dev/projects/dotfiles/.gitconfig* ~
+
 
 # Python
 brew install pyenv
