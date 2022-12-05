@@ -82,10 +82,24 @@ sh -c "$(curl -fsSl https://raw.githubusercontent.com/powerline/fonts/master/ins
 # https://github.com/agkozak/agkozak-zsh-prompt
 
 
+# macOS applications
+brew install --cask mactex
+brew install --cask skype
+brew install --cask spotify
+brew install --cask skim
+brew install --cask chrome
+brew install --cask whatsapp
+brew install --cask flux
+brew install --cask firefox
+
+
+
 # Stuff I might not need any longer
 
 brew tap hashicorp/tap
 brew install hashicorp/tap/terraform
+# Latex
+
 
 brew install fzf
 $(brew --prefix)/opt/fzf/install
