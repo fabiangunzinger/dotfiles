@@ -5,21 +5,7 @@
 #################################################
 
 alias dth='cd ~/dev/projects/warwickthesis'
-
 alias dje='cd ~/dev/projects/justeat'
-
-# pyenv
-alias pea='pyenv activate'
-alias ped='pyenv deactivate'
-
-export FGUS='fabiangunzinger'
-export FGPW='mypnih-1tugJe-kandoz'
-
-
-
-# poetry
-
-
 
 # hugo
 
@@ -338,7 +324,3 @@ PS1+="\[${green}\]\W";          # basename of working directory
 PS1+="\[${branch_col}\]\$(get_git_branch)";
 PS1+="\[${reset}\] $ ";
 export PS1;
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
