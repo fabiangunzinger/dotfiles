@@ -40,6 +40,7 @@ pyenv install 3.9
 pyenv install 3.10
 pyenv global 3.10
 
+
 # Virtual environments
 # pyenv-virtualenv for virtual env management
 brew install pyenv-virtualenv
@@ -83,6 +84,7 @@ sh -c "$(curl -fsSl https://raw.githubusercontent.com/powerline/fonts/master/ins
 
 
 # macOS applications
+brew install pandoc
 brew install --cask mactex
 brew install --cask skype
 brew install --cask spotify
