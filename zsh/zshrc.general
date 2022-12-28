@@ -126,7 +126,14 @@ pe() { vi $(find . -name *$1*); }
 # jupyter kernels
 alias jkl='jupyter kernelspec list'
 function jkr { jupyter kernelspec remove $1; } 
-function jki { python -m ipykernel install --name $1 --user; }
+
+## Install ipykernel into base environment (normally used)
+## See data-workflow.md post for details
+env_path=$HOME/.pyenv/versions/3.10.8/envs
+function iki { $env_path/"$1"/bin/python -m ipykernel install --prefix=$env_path/base --name "$1"; }
+
+## Install ipykernel into its own project environment
+function ikio { python -m ipykernel install --name $1 --user; }
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
@@ -174,7 +181,7 @@ alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
 alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
 
-alias gb='git branch -vv'           # list branches
+alias gb='git --no-pager branch -vv' # list branches
 alias gbm='gb --merged'             # list bs already merged into current b
 alias gbnm='gb --no-merged'         # list bs not yet merged into current b
 alias gbme='git branch --move'      # rename by appending <oldname> <newname>
@@ -231,4 +238,5 @@ prompt_context() {
   fi
 }
 
-
+# Adding poetry to path
+export PATH="$HOME/.local/bin:$PATH"

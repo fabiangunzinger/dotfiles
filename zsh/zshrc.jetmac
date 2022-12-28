@@ -5,6 +5,7 @@
 # Project directories
 alias dje='dde; cd jet'
 alias dma='dje; cd matching-toolbox'
+alias dek='dje; cd experimentation_knowledgebase'
 
 # Open files
 alias fzj='ddf; cd zsh; nvim zshrc.jetmac'
@@ -13,3 +14,5 @@ alias fzj='ddf; cd zsh; nvim zshrc.jetmac'
 # jetmac config
 #################################################
 
+
+GOOGLE_APPLICATION_CREDENTIALS="/root/.config/gcloud/application_default_credentials.json"
