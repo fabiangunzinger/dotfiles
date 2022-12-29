@@ -3,7 +3,3 @@
 
 [includeIf "gitdir:~/dev/jet/"]
     path = .gitconfig-jet
-
-[user]
-	name = Fabian Gunzinger
-	email = fa.gunzinger@gmail.com
