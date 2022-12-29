@@ -109,8 +109,11 @@ highlight clear GitGutterDelete
 " use dedicated virtual env as nvim intrpreter (:h python3_host_prog), since
 " -- when managing pyenv-virtualenv -- automatically detecting virtualenv
 " doesn't seem to work.
-" let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
-let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+if $USER=="fabian.gunzinger"
+	let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
+else
+	let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+endif
 
 " remove vertical split column highlight
 " only fillchar vert default | is shows
