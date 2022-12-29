@@ -50,31 +50,33 @@ ln -s $DOTFILES/git/.gitconfig .
 ln -s $DOTFILES/git/.gitignore_global .
 ln -s $DOTFILES/ssh/config .ssh
 
-
 # Python
-brew install pyenv
+## Install pyenv and dependencies
+## See https://github.com/pyenv/pyenv/wiki#suggested-build-environment
 brew install openssl readline sqlite3 xz zlib tcl-tk
+brew install pyenv
+## Install Python versions
 pyenv install 3.9
 pyenv install 3.10
+## Set default Python
 pyenv global 3.10
 
-
 # Virtual environments
-# pyenv-virtualenv for virtual env management
+## I manage virutal envs with pyenv-virtualenv
 brew install pyenv-virtualenv
-# base environment that gets automatically activated on shell startup
-# and is used to run Jupyter (see .zshrc.general and workflow post)
+## Create a base environment that gets automatically activated on shell startup
+## and is used to run Jupyter (see .zshrc.general and workflow post)
 pyenv virtualenv base   
 pyenv activate base
 pip install jupyterlab
+## todo: configure Jupyter environment
+## todo: save all virtualenv configs somewhere so I can share across machines
 ## In case I decide to manage base dir with Poetry after all
 # mkdir ~/dev/projects/base
 # cd ~/dev/projects/base
 # pyenv virtualenv 3.10.8 base
 # potry init
 # poetry add jupyterlab
-
-# todo: configure Jupyter environment
 
 # Dependency management
 ## Currently trying both pip and poetry

@@ -28,9 +28,15 @@ alias fzs='nvim ~/.zshrc'
 alias pas='acs'   # pretty aliases
 
 # pyenv
-alias pen='pyenv virtualenv'
+alias pei='pyenv install'
+alias pevs='pyenv versions'
+
+# pyenv-virtualenv
+## Create, activate, and deactivate environments
+alias pev='pyenv virtualenv'
 alias pea='pyenv activate'
 alias ped='pyenv deactivate'
+alias peves='pyenv virtualenvs'
 
 # blog
 alias dwo='dpr; cd wowchemy'
