@@ -7,6 +7,18 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# misc.
+alias rm='rm -I'
+alias sz='source ~/.zshrc'
+alias la='ls -a'
+alias ll='ls -oh'
+alias lla='ls -aho'
+alias lg='lla | grep $1'
+alias cpwd='pwd | pbcopy'
+alias ..='cd ..'
+alias ...='cd ../..'
+
+
 alias vi='nvim'
 
 # Oh My Zsh
@@ -195,17 +207,6 @@ alias gbdf='git branch -D'          # force delete branch with uncommited edits
 
 function gacp() { gaa; gcm "$1"; gph; } # add, commit, and push all files
 
-# bash
-alias sz='source ~/.zshrc'
-alias la='ls -a'
-alias ll='ls -oh'
-alias lla='ls -aho'
-alias lg='lla | grep $1'
-alias cpwd='pwd | pbcopy'
-alias ..='cd ..'
-alias ...='cd ../..'
-
-
 #################################################
 # general config
 #################################################
@@ -222,7 +223,7 @@ export PYENV_VIRTUALENV_DISABLE_PROMPT=0
 pyenv activate base
 
 
-# ## editor for remove and local sessions
+# ## editor for remote and local sessions
 if [[ -n $ssh_connection ]]; then
  export editor='vim'
 else
@@ -232,11 +233,12 @@ fi
 # agnoster omz theme - remove user@hostname (uncomment commented line to show
 # user name).
 # from here: https://github.com/agnoster/agnoster-zsh-theme/issues/39#issuecomment-307338817
-prompt_context() {
-  if [[ "$user" != "$default_user" || -n "$ssh_client" ]]; then
-    # prompt_segment black default "%(!.%{%f{yellow}%}.)$user"
-  fi
-}
+# prompt_context() {
+#   if [[ "$user" != "$default_user" || -n "$ssh_client" ]]; then
+#     # prompt_segment black default "%(!.%{%f{yellow}%}.)$user"
+#   fi
+# }
 
 # Adding poetry to path
 export PATH="$HOME/.local/bin:$PATH"
+

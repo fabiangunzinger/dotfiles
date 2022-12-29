@@ -1,5 +1,0 @@
-[includeIf "gitdir:~/dev/projects/"]
-    path = .gitconfig-projects
-
-[includeIf "gitdir:~/dev/jet/"]
-    path = .gitconfig-jet

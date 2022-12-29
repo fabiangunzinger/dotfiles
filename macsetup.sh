@@ -2,36 +2,54 @@
 # fabian gunzinger
 
 # Xcode
+echo "Installing Xcode..."
 xcode-select --install
 
 # Homebrew
+echo "Installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-# nvim
+# Neovim
+echo "Installing Neovim..."
 brew install nvim
-# Enable nvim to use python plugins
+## Enable nvim to use python plugins
 pip3 install pynvim   
-# set python interpreter manually (see init.vim)
+## Python interpreter will be set automatically in init.vim
 
-# Create SSH key
-cd
-ssh-keygen -t ed25519
-
-# GitHub CLI
+# GitHub
+echo "Authenticate GitHub accounts..."
+## Install GitHub CLI
 brew install gh
-## todo: add public key to Github so I can ssh into account
+## Create ssh keys and authenticate with GitHub accounts 
+## Specify appropriate comment and file path and provide empty
+## (new) passphrase to disable passphrase option
+cd
+## Personal account
+echo "Authenticate personal account..."
+ssh-keygen -t ed25519 -C "personal_gh" -f ".ssh/personal_gh" -N ""
+gh auth login -h "github.com" -w
+## Work account
+ssh-keygen -t ed25519 -C "jet_gh" -f ".ssh/jet_gh" -N ""
+gh auth login -h "github.je-labs.com" -w
 
-# Create project directory
+# Configuration files
+## Create directories
+echo "Creating dev directories..."
 cd
 mkdir -p dev/projects
-
-# Clone configuration files and activate with softlink to root directory
+## Clone dotfiles
+echo "Cloning dotfiles..."
 cd dev/projects
 git clone git@github.com:fabiangunzinger/dotfiles.git
-ln -s dev/projects/dotfiles/.zshrc ~
-## Have separate config file for private and work projects
-## See logic in .gitconfig
-ln -s dev/projects/dotfiles/.gitconfig* ~
+## Create symlinks
+echo "Creating symlinks to config files..."
+cd
+DOTFILES=~/dev/projects/dotfiles
+ln -s $DOTFILES/zsh/.zshrc .
+ln -s $DOTFILES/git/.gitconfig .
+ln -s $DOTFILES/git/.gitignore_global .
+ln -s $DOTFILES/ssh/config .ssh
+
 
 # Python
 brew install pyenv
@@ -77,7 +95,6 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 #settings. If now, manually select font (e.g. Menslo) for each profile.
 sh -c "$(curl -fsSl https://raw.githubusercontent.com/powerline/fonts/master/install.sh)"
 ## Manually import iterm-profiles.json (iterm2/Profiles/Other actions)
-
 ## Install below prompt and customise
 ## todo: customise prompt
 # https://github.com/agkozak/agkozak-zsh-prompt
