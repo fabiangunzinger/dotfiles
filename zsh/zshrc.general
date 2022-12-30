@@ -13,7 +13,7 @@ alias rm='rm -I'
 alias ll='exa -l'
 alias la='exa -l -a'
 alias lg='ll | grep $1'
-alias lt="exa --tree -a --icons -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
+alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
 alias pwdc='pwd | pbcopy'
 
 # fzf
