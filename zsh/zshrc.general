@@ -10,6 +10,7 @@
 # misc.
 alias vi='nvim'
 alias rm='rm -I'
+alias rmr='rm -r'
 alias ll='exa -l'
 alias la='exa -l -a'
 alias lg='ll | grep $1'
