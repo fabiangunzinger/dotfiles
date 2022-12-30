@@ -1,5 +1,9 @@
 # dotfiles
 
+The files in this directory constantly evolve as I work towards improving my
+workflow and fully automate the process to set up a develoment machine.
+
+
 ## How I manage my dotfiles:
 
 - Original files live in ~/dev/projects/dotfiles repo.
@@ -25,7 +29,16 @@
 
 ## Next steps
 
+- [ ] Set up vim as Python IDE
+
+- [ ] Read more engineeringfordatascience posts and integrate what is useful
+
+- [ ] Nail Jupyter setup
+
 - [ ] Use fzf for vim and tmux
+
+- [ ] Look into Docker (useful
+  [tutorial](https://www.youtube.com/playlist?list=PLy7NrYWoggjzfAHlUusx2wuDwfCrmJYcs) 
 
 - [ ] Consider using tmux instead of iterm2 tabs (see
   [this](https://thoughtbot.com/upcase/tmux) tutorial to get started)
