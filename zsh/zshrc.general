@@ -249,3 +249,6 @@ fi
 # Adding poetry to path
 export PATH="$HOME/.local/bin:$PATH"
 
+
+# Prompt
+eval "$(starship init zsh)"
