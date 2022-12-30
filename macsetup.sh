@@ -50,6 +50,7 @@ ln -s $DOTFILES/zsh/.zshrc .
 ln -s $DOTFILES/git/.gitconfig .
 ln -s $DOTFILES/git/.gitignore_global .
 ln -s $DOTFILES/ssh/config .ssh
+ln -s $DOTFILES/iterm2/starship.toml ./.config
 
 # Python
 ## Install pyenv and dependencies
@@ -89,18 +90,38 @@ poetry config virtualenvs.create false
 # poetry completions bash > $(brew --prefix)/etc/bash_completion.d/poetry.bash-completion
 
 # Terminal
+
 ## Install iterm2
 brew install --cask iterm2
+
 ## Install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-## Install patched powerline fonts required for some omz themes
-sh -c "$(curl -fsSl https://raw.githubusercontent.com/powerline/fonts/master/install.sh)"
-## Manually select desired font in iTerm (currently 'Hack')
+
+## Install 'hack' nerd font using Homebrew
+brew tap homebrew/cask-fonts
+brew install --cask font-hack-nerd-font
+## Manually select desired font in iTerm (currently 'Hack Nerd Font')
 ## todo: select font automatically
+
 ## Manually import iterm2-profiles.json (iterm2/Profiles/Other actions)
 ## todo: automatically import iterm2-profiles.json
+
 ## Install starwhip prompt
 brew install starship
+
+# Install autocompletions extension
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+
+## Install fuzzy finder (FZF)
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+## Install zsh-z for directory jumping
+git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
+
+## Install bat - the better cat
+brew install bat
+
 
 # macOS applications
 brew install pandoc
