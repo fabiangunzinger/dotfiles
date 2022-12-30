@@ -19,6 +19,7 @@ alias ..='cd ..'
 alias ...='cd ../..'
 
 
+
 alias vi='nvim'
 
 # Oh My Zsh
