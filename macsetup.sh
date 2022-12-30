@@ -45,6 +45,7 @@ git clone git@github.com:fabiangunzinger/dotfiles.git
 echo "Creating symlinks to config files..."
 cd
 DOTFILES=~/dev/projects/dotfiles
+ln -s $DOTFILES/nvim/init.vim ./.config/nvim
 ln -s $DOTFILES/zsh/.zshrc .
 ln -s $DOTFILES/git/.gitconfig .
 ln -s $DOTFILES/git/.gitignore_global .
@@ -92,15 +93,14 @@ poetry config virtualenvs.create false
 brew install --cask iterm2
 ## Install Oh My Zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-## Install patched powerline fonts required for some omz themes (e.g. agnoster).
-#One of those fonts should be automatically selected when importing my iterm2
-#settings. If now, manually select font (e.g. Menslo) for each profile.
+## Install patched powerline fonts required for some omz themes
 sh -c "$(curl -fsSl https://raw.githubusercontent.com/powerline/fonts/master/install.sh)"
-## Manually import iterm-profiles.json (iterm2/Profiles/Other actions)
-## Install below prompt and customise
-## todo: customise prompt
-# https://github.com/agkozak/agkozak-zsh-prompt
-
+## Manually select desired font in iTerm (currently 'Hack')
+## todo: select font automatically
+## Manually import iterm2-profiles.json (iterm2/Profiles/Other actions)
+## todo: automatically import iterm2-profiles.json
+## Install starwhip prompt
+brew install starship
 
 # macOS applications
 brew install pandoc
