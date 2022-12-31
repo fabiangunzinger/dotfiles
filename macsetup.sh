@@ -127,11 +127,16 @@ git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 brew install bat
 
 ## Install tmux
+## reattach-to-user-namespace utility allows scrolling in tmux (see
+## here: https://thoughtbot.com/blog/tmux-copy-paste-on-os-x-a-better-future)
 brew install tmux
+brew install reattach-to-user-namespace
+
 
 ## Install battery
 brew tap Goles/battery
 brew install battery
+
 
 # macOS applications
 brew install pandoc
