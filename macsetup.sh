@@ -51,6 +51,7 @@ ln -s $DOTFILES/git/.gitconfig .
 ln -s $DOTFILES/git/.gitignore_global .
 ln -s $DOTFILES/ssh/config .ssh
 ln -s $DOTFILES/iterm2/starship.toml ./.config
+ln -s $DOTFILES/tmux/.tmux.conf .
 
 # Python
 ## Install pyenv and dependencies
@@ -116,12 +117,21 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
+## Install ripgrep
+brew install ripgrep
+
 ## Install zsh-z for directory jumping
 git clone https://github.com/agkozak/zsh-z $ZSH_CUSTOM/plugins/zsh-z
 
 ## Install bat - the better cat
 brew install bat
 
+## Install tmux
+brew install tmux
+
+## Install battery
+brew tap Goles/battery
+brew install battery
 
 # macOS applications
 brew install pandoc
