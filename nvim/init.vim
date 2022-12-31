@@ -3,11 +3,12 @@
 " plugins {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-
 " activate vim-plug
 call plug#begin()
 Plug 'airblade/vim-gitgutter'   " show git diff in sign column
 Plug 'alfredodeza/pytest.vim'   " pytest support
+Plug 'christoomey/vim-tmux-navigator'   " smooth tmux and vim navigation
+Plug 'christoomey/vim-tmux-runner'   " send code from vim to tmux processes
 Plug 'easymotion/vim-easymotion'   " speedy vim motions
 Plug 'ggVGc/vim-fuzzysearch'   " fuzzy search
     let g:fuzzysearch_prompt = '/'
@@ -40,7 +41,7 @@ Plug 'wincent/command-t', {'do': 'cd lua/wincent/commandt/lib && make'}  " fuzzy
     let g:CommandTPreferredImplementation = 'lua'
 Plug 'psliwka/vim-smoothie'   " smooth scrolling
 Plug 'jpalardy/vim-slime'   " repl interaction support
-    let g:slime_target = "neovim"
+    let g:slime_target = "tmux"
 Plug 'altercation/vim-colors-solarized'   " colorscheme
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
 
@@ -79,9 +80,6 @@ set updatetime=100                      " shorter update time (for vim-gutter)
 " text wrapping
 set wrap                            	" wrap long lines
 set linebreak                           " don't break word
-set nolist                              " list option breaks linebreak
-" set colorcolumn=79                      " color last column
-set textwidth=79                        " wrap text at specified column
 
 " splits
 set splitright                          " new vertical split on the right
@@ -105,20 +103,13 @@ highlight clear GitGutterAdd
 highlight clear GitGutterChange
 highlight clear GitGutterDelete
 
-" python interpreter
-" use dedicated virtual env as nvim intrpreter (:h python3_host_prog), since
-" -- when managing pyenv-virtualenv -- automatically detecting virtualenv
-" doesn't seem to work.
-if $USER=="fabian.gunzinger"
-	let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
-else
-	let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
-endif
 
 " remove vertical split column highlight
 " only fillchar vert default | is shows
 highlight VertSplit ctermbg=NONE
 
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
 " search {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -285,6 +276,13 @@ nmap s <Plug>(easymotion-overwin-f2)
 map <Leader>j <Plug>(easymotion-j)
 map <Leader>k <Plug>(easymotion-k)
 
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
+" Vim Tmux Runner
+nnoremap <leader>ip :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'ipython'}<cr>
+
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -315,6 +313,9 @@ endfunction
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set foldenable                          " enable folding
 " set foldmethod=indent                   " fold based on indent level
+" set foldmethod=indent                   " fold based on indent level
+" set foldmethod=indent                   " fold based on indent level
+" set foldmethod=indent                   " fold based on indent level
 set foldlevelstart=99                   " open file with all folds open
 
 " toggle fold under cursor
@@ -334,6 +335,27 @@ let g:UltiSnipsEditSplit = "vertical"
 nnoremap <leader>es :UltiSnipsEdit<cr>
 nnoremap <leader>esp :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/python.snippets<cr>
 nnoremap <leader>est :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/tex.snippets<cr>
+
+
+" python {{{1
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" python interpreter
+" use dedicated virtual env as nvim intrpreter (:h python3_host_prog), since
+" -- when managing pyenv-virtualenv -- automatically detecting virtualenv
+" doesn't seem to work.
+if $USER=="fabian.gunzinger"
+	let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
+else
+	let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+endif
+
+" Strip leading whitespace and empty lines and append extra line when sending
+" Python code to repl
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 1
+
 
 " latex {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

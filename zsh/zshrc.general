@@ -13,7 +13,7 @@ alias rm='rm -I'
 alias rmr='rm -r'
 alias ll='exa -l'
 alias la='exa -l -a'
-alias lg='ll | grep $1'
+alias lg='la | grep $1'
 alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
 alias pwdc='pwd | pbcopy'
 
@@ -21,12 +21,13 @@ alias pwdc='pwd | pbcopy'
 ## Show file preview using bat
 alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 ## Open selected file in nvim
-alias vif='vi $(fp)'
+alias fvi='vi $(fp)'
 
 ## Help zsh find fzf plugin
 export FZF_BASE="$HOME/.fzf"
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files -g "!.git/"'
+export FZF_CTRL_T_COMMAND=$FZF_DEFAULT_COMMAND
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
-
 
 # Oh My Zsh
 alias rom='omz reload'   # use this instead of source!
@@ -88,9 +89,9 @@ alias tfd='tf destroy'
 
 # tmux
 alias tmls='tmux ls'
-function tmsn() { tmux new -s $1; }
-function tmsa() { tmux attach-session -t $1; }
-function tmsk() { tmux kill-session -t $1; }
+function tmns() { tmux new-session -s $1; }
+function tmas() { tmux attach-session -t $1; }
+function tmks() { tmux kill-session -t $1; }
 
 # main directories
 alias dco='cd ~/.config'
@@ -253,6 +254,10 @@ fi
 # Adding poetry to path
 export PATH="$HOME/.local/bin:$PATH"
 
+# Adding $HOME/bin to front of path so I can override system executables
+# with my personal ones if needed. Generally, save all my personal scripts
+# in $HOME/bin
+export PATH="$HOME/bin:$PATH"
 
-# Prompt
+# Using starship prompt
 eval "$(starship init zsh)"
