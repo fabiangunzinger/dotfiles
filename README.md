@@ -79,24 +79,28 @@ Scrollback
 
 - [ ] Set up vim as Python IDE (following [this](https://www.youtube.com/watch?v=gfa2_6OeOkk) video)
 
-- [ ] Complete additional thoughtbot tutorials
+- [ ] Complete additional thoughtbot tutorials and also look at destroy all [code](https://www.destroyallsoftware.com/screencasts)
+
+- [ ] Adopt Chris Toomey dotfil [setup](https://github.com/christoomey/dotfiles)
 
 - [ ] Read more engineeringfordatascience posts and integrate what is useful
 
 - [ ] Nail Jupyter setup
-
-- [ ] Use fzf for vim and tmux
 
 - [ ] Look into Docker (useful
   [tutorial](https://www.youtube.com/playlist?list=PLy7NrYWoggjzfAHlUusx2wuDwfCrmJYcs) 
 
 - [ ] Check out other videos at [thoughtbot](https://thoughtbot.com/)
 
+
+
 ## Acknowledgements
 
 - [thoughtbot](https://thoughtbot.com/upcase) provides a series of useful
   courses on basic programming tools. Their
   [tmux](https://thoughtbot.com/upcase/tmux) course is phenomenal!
+
+- [Chris Toomey](https://github.com/christoomey) produces many of the amazing thoughtbot videos and has inspired me to bring my dotfiles to the next level.
 
 - [engineeringfordatascience.com](https://engineeringfordatascience.com/) has a
   few amazing posts on mac setup for data science.

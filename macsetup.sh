@@ -1,5 +1,8 @@
 # macbook setup
 # fabian gunzinger
+#
+# todo
+# - look into xcape to automatically configure modifier keys
 
 # Xcode
 echo "Installing Xcode..."

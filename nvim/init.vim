@@ -137,11 +137,11 @@ let g:netrw_winsize = 30
 
 " ~~~ new and experimental ~~~
 
-" change windows quickly
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
+" " change windows quickly
+" nnoremap <c-j> <c-w>j
+" nnoremap <c-k> <c-w>k
+" nnoremap <c-h> <c-w>h
+" nnoremap <c-l> <c-w>l
 
 " turn off highlighting
 noremap <nowait><leader><leader> :nohlsearch<cr>
@@ -281,8 +281,30 @@ nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
 " Vim Tmux Runner
-nnoremap <leader>ip :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'ipython'}<cr>
+" From https://github.com/christoomey/dotfiles/blob/master/vim/rcplugins/tmux-runner
+nnoremap <leader>v- :VtrOpenRunner { "orientation": "v", "percentage": 30 }<cr>
+nnoremap <leader>v\ :VtrOpenRunner { "orientation": "h", "percentage": 30 }<cr>
+nnoremap <leader>vk :VtrKillRunner<cr>
+nnoremap <leader>va :VtrAttachToPane<cr>
+nnoremap <leader>v0 :VtrAttachToPane 0<cr>:call system("tmux clock-mode -t 0 && sleep 0.1 && tmux send-keys -t 0 q")<cr>
+nnoremap <leader>v1 :VtrAttachToPane 1<cr>:call system("tmux clock-mode -t 1 && sleep 0.1 && tmux send-keys -t 1 q")<cr>
+nnoremap <leader>v2 :VtrAttachToPane 2<cr>:call system("tmux clock-mode -t 2 && sleep 0.1 && tmux send-keys -t 2 q")<cr>
+nnoremap <leader>v3 :VtrAttachToPane 3<cr>:call system("tmux clock-mode -t 3 && sleep 0.1 && tmux send-keys -t 3 q")<cr>
+nnoremap <leader>v4 :VtrAttachToPane 4<cr>:call system("tmux clock-mode -t 4 && sleep 0.1 && tmux send-keys -t 4 q")<cr>
+nnoremap <leader>v5 :VtrAttachToPane 5<cr>:call system("tmux clock-mode -t 5 && sleep 0.1 && tmux send-keys -t 5 q")<cr>
 
+nnoremap <leader>fr :VtrFocusRunner<cr>
+
+noremap <C-f> :VtrSendLinesToRunner<cr>
+" nnoremap <leader>sq :VtrSendKeysRaw q<cr>
+" nnoremap <leader>sd :VtrSendKeysRaw ^D<cr>
+nnoremap <leader>sl :VtrSendKeysRaw ^L<cr>
+nnoremap <leader>sc :VtrSendKeysRaw ^C<cr>
+nnoremap <leader>vs :VtrSendCommandToRunner<space>
+nnoremap <leader>s1 :VtrSendKeysRaw C-p C-m<cr>
+
+nnoremap <leader>vip :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'ipython'}<cr>
+nnoremap <leader>vp :VtrOpenRunner {'orientation': 'h', 'percentage': 50, 'cmd': 'python'}<cr>
 
 " sessions {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

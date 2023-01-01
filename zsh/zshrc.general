@@ -7,8 +7,11 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
-# misc.
+# nvim
 alias vi='nvim'
+alias vii='nvim +CommandT'
+
+# misc.
 alias rm='rm -I'
 alias rmr='rm -r'
 alias ll='exa -l'
@@ -19,9 +22,10 @@ alias pwdc='pwd | pbcopy'
 
 # fzf
 ## Show file preview using bat
-alias fp="fzf --preview 'bat --style=numbers --color=always --line-range :500 {}'"
+alias fp="fzf --multi --preview 'bat --style=numbers --color=always --line-range :500 {}'"
 ## Open selected file in nvim
 alias fvi='vi $(fp)'
+
 
 ## Help zsh find fzf plugin
 export FZF_BASE="$HOME/.fzf"
@@ -111,6 +115,7 @@ alias dev='dpr; cd mdb_eval'
 alias dml='dpr; cd mlbt'
 alias dmd='dpr; cd mdb'
 alias dth='cd ~/dev/projects/warwickthesis'
+alias dvs='cd /Users/fabian.gunzinger/.local/state/nvim/swap'
 
 # open files
 alias fzg='ddf; cd zsh; nvim zshrc.general'
@@ -261,3 +266,17 @@ export PATH="$HOME/bin:$PATH"
 
 # Using starship prompt
 eval "$(starship init zsh)"
+
+
+# Start tmux session on startup
+# Given that new shell session starts in home directory, this will
+# start a session in that directory
+_not_inside_tmux() { [[ -z "$TMUX" ]] }
+
+ensure_tmux_is_running() {
+  if _not_inside_tmux; then
+    tat
+  fi
+}
+
+ensure_tmux_is_running
