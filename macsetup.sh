@@ -137,6 +137,9 @@ brew install reattach-to-user-namespace
 brew tap Goles/battery
 brew install battery
 
+# Misc
+brew install htop
+
 
 # macOS applications
 brew install pandoc
