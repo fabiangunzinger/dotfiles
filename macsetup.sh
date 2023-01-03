@@ -140,8 +140,9 @@ brew install reattach-to-user-namespace
 brew tap Goles/battery
 brew install battery
 
-# Misc
+## Misc. terminal utilities
 brew install htop
+brew install rename
 
 
 # macOS applications
