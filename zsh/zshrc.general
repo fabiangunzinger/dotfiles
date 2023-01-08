@@ -7,6 +7,9 @@
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 
+# ssh
+function sshn() { ssh-keygen -t ed25519 -C $1; }
+
 # nvim
 alias vi='nvim'
 alias vii='nvim +CommandT'
