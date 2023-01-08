@@ -34,7 +34,9 @@ workflow and fully automate the process to set up a develoment machine.
       
     - [x] Use tmux to manage multiple terminal sessions - work through [this](https://thoughtbot.com/upcase/tmux) tutorial to get started. A truly awesome series of videos!
 
-    - [ ] Install useful vim plugins from [this](https://www.youtube.com/watch?v=gfa2_6OeOkk) video
+    - [x] Install useful vim plugins from [this](https://www.youtube.com/watch?v=gfa2_6OeOkk) video
+
+    - Look into autocomplete, isort, [markdown-preview](https://github.com/iamcco/markdown-preview.nvim) from above video
 
     - [ ] Improve fugivite workflow (check thoughtbox tutorials)
 
