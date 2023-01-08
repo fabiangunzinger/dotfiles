@@ -28,14 +28,21 @@ workflow and fully automate the process to set up a develoment machine.
 
 ## Next steps
 
-- [ ] Use tmux to manage multiple terminal sessions (work through
-  [this](https://thoughtbot.com/upcase/tmux) tutorial to get started)
+- [ ] Set up vim as Python IDE (following [this](https://www.youtube.com/watch?v=gfa1_6OeOkk) video)
 
-- [ ] Set up vim as Python IDE (following [this](https://www.youtube.com/watch?v=gfa2_6OeOkk) video)
+- [ ] Have a basic data science workflow setup (explore in Jupyter, write code in terminal vim in tmux)
+      
+    - [x] Use tmux to manage multiple terminal sessions - work through [this](https://thoughtbot.com/upcase/tmux) tutorial to get started. A truly awesome series of videos!
+
+    - [ ] Install useful vim plugins from [this](https://www.youtube.com/watch?v=gfa2_6OeOkk) video
+
+    - [ ] Improve fugivite workflow (check thoughtbox tutorials)
+
+    - [ ] 
 
 - [ ] Complete additional thoughtbot tutorials and also look at destroy all [code](https://www.destroyallsoftware.com/screencasts)
 
-- [ ] Adopt Chris Toomey dotfil [setup](https://github.com/christoomey/dotfiles)
+- [ ] Adopt Chris Toomey dotfil [setup](https://github.com/christoomey/dotfiles) (i.e. separate file for logical chunks like for each plugin (with all settings and mappings) and one main file that pulls all these files in.)
 
 - [ ] Read more engineeringfordatascience posts and integrate what is useful
 
@@ -46,6 +53,10 @@ workflow and fully automate the process to set up a develoment machine.
 
 - [ ] Check out other videos at [thoughtbot](https://thoughtbot.com/)
 
+
+## Ongoing pain-points
+
+- Blog posts with best practices and dotfiles in separate directories means I have to switch back and forth between them often, as I use them quite often together.
 
 
 ## Acknowledgements
@@ -63,4 +74,6 @@ workflow and fully automate the process to set up a develoment machine.
   Rosenthal](https://www.ethanrosenthal.com/2022/02/01/everything-gets-a-package/)
   has a useful post on his workflow.
 
+
+## Completed work
 
