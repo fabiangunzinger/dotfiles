@@ -223,6 +223,7 @@ map <silent><leader>ffb :edit ~/dev/projects/dotfiles/latex/fabib.bib<cr>
 map <silent><leader>fps :edit ~/dev/projects/dotfiles/latex/paper.sty<cr>
 map <silent><leader>fbr :edit ~/dev/projects/dotfiles/.bashrc<cr>
 map <silent><leader>fli :edit ~/dev/projects/blog/_posts/2021-02-08-linux.md<cr>
+map <silent><leader>fto :edit ~/my-notes/todo.md<cr>
 
 " run current file in python
 nnoremap <leader>rp :w<cr>:!python %<cr>
