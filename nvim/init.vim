@@ -24,6 +24,17 @@ Plug 'junegunn/fzf.vim'   " fuzzy search
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy search
 Plug 'machakann/vim-highlightedyank'   " highlight yanked region
 Plug 'mileszs/ack.vim'   " faster grep alternative
+
+Plug 'ncm2/ncm2'   " code completion
+Plug 'roxma/nvim-yarp'   " remote plugin framework required for ncm2
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+" Important :help Ncm2PopupOpen for more information
+set completeopt=noinsert,menuone,noselect
+Plug 'ncm2/ncm2-bufword'   " complete words in buffer
+Plug 'ncm2/ncm2-path'   " path completion
+Plug 'ncm2/ncm2-jedi'   " python completion
+
 Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
 Plug 'stefandtw/quickfix-reflector.vim'   " use quickfix for bulk change/replace
 Plug 'SirVer/ultisnips'   " snippets engine
@@ -44,11 +55,9 @@ Plug 'jpalardy/vim-slime'   " repl interaction support
     let g:slime_target = "tmux"
 Plug 'altercation/vim-colors-solarized'   " colorscheme
 Plug 'numirias/semshi', {'do': ':UpdateRemotePlugins'}   " syntax highlighting
-
 Plug 'psf/black', { 'branch': 'stable' }   " black python formatting
 Plug 'jeetsukumaran/vim-pythonsense'   " python text objects
 Plug 'Vimjas/vim-python-pep8-indent'   " pep8 style indentation
-
 Plug 'lervag/vimtex'   " latex support
 call plug#end()
 
@@ -379,6 +388,9 @@ let g:VtrStripLeadingWhitespace = 0
 let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 
+
+- [x] 31 Dec 2022 - Use tmux to manage multiple terminal sessions (work through
+  [this](https://thoughtbot.com/upcase/tmux) tutorial to get started). A truly awesome series of videos!
 
 " latex {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
