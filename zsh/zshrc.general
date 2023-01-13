@@ -10,6 +10,9 @@
 # ssh
 function sshn() { ssh-keygen -t ed25519 -C $1; }
 
+# pip
+alias pi='pip install'
+
 # nvim
 alias vi='nvim'
 alias vii='nvim +CommandT'
@@ -156,16 +159,14 @@ pn() { vi $(date +'%Y-%m-%d-')"$1"; }
 pe() { vi $(find . -name *$1*); }
 
 # jupyter kernels
-alias jkl='jupyter kernelspec list'
-function jkr { jupyter kernelspec remove $1; } 
-
-## Install ipykernel into base environment (normally used)
-## See data-workflow.md post for details
+## Install ipykernel into base environment (see data-workflow.md post for details)
 env_path=$HOME/.pyenv/versions/3.10.8/envs
 function iki { $env_path/"$1"/bin/python -m ipykernel install --prefix=$env_path/base --name "$1"; }
-
 ## Install ipykernel into its own project environment
 function ikio { python -m ipykernel install --name $1 --user; }
+## Manage kernels
+alias jkl='jupyter kernelspec list'
+function jkr { jupyter kernelspec remove $1; } 
 
 # pandoc
 function pdmp() { pandoc "$1" -o "${1/md/pdf}"; } 
