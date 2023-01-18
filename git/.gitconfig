@@ -1,5 +1,5 @@
 [includeIf "gitdir:~/dev/projects/"]
-    path = ~/dev/projects/dotfiles/git/.gitconfig-projects
+    path = ~/.gitconfig-projects
 
 [includeIf "gitdir:~/dev/jet/"]
-    path = ~/dev/projects/dotfiles/git/.gitconfig-jet
+    path = ~/.gitconfig-jet

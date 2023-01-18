@@ -9,7 +9,8 @@ Plug 'airblade/vim-gitgutter'   " show git diff in sign column
 Plug 'alfredodeza/pytest.vim'   " pytest support
 Plug 'christoomey/vim-tmux-navigator'   " smooth tmux and vim navigation
 Plug 'christoomey/vim-tmux-runner'   " send code from vim to tmux processes
-Plug 'easymotion/vim-easymotion'   " speedy vim motions
+Plug 'dense-analysis/ale'   " code linting. [dep]: pip install flake8
+" Plug 'fisadev/vim-isort'   " sort python imports
 Plug 'ggVGc/vim-fuzzysearch'   " fuzzy search
     let g:fuzzysearch_prompt = '/'
     let g:fuzzysearch_match_spaces = 1
@@ -25,15 +26,11 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }   " fuzzy search
 Plug 'machakann/vim-highlightedyank'   " highlight yanked region
 Plug 'mileszs/ack.vim'   " faster grep alternative
 
-Plug 'ncm2/ncm2'   " code completion
-Plug 'roxma/nvim-yarp'   " remote plugin framework required for ncm2
-" enable ncm2 for all buffers
-autocmd BufEnter * call ncm2#enable_for_buffer()
-" Important :help Ncm2PopupOpen for more information
-set completeopt=noinsert,menuone,noselect
-Plug 'ncm2/ncm2-bufword'   " complete words in buffer
-Plug 'ncm2/ncm2-path'   " path completion
-Plug 'ncm2/ncm2-jedi'   " python completion
+" Plug 'ncm2/ncm2'   " code completion
+" Plug 'roxma/nvim-yarp'   " remote plugin framework required for ncm2
+" Plug 'ncm2/ncm2-bufword'   " complete words in buffer
+" Plug 'ncm2/ncm2-path'   " path completion
+" Plug 'ncm2/ncm2-jedi'   " python completion
 
 Plug 'nelstrom/vim-visual-star-search'   " make * search for visual selection
 Plug 'stefandtw/quickfix-reflector.vim'   " use quickfix for bulk change/replace
@@ -377,7 +374,7 @@ nnoremap <leader>est :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/t
 " -- when managing pyenv-virtualenv -- automatically detecting virtualenv
 " doesn't seem to work.
 if $USER=="fabian.gunzinger"
-	let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python3'
+	let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python'
 else
 	let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
 endif
@@ -389,8 +386,12 @@ let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
 
 
-- [x] 31 Dec 2022 - Use tmux to manage multiple terminal sessions (work through
-  [this](https://thoughtbot.com/upcase/tmux) tutorial to get started). A truly awesome series of videos!
+" " ncm2
+" " enable ncm2 for all buffers
+" autocmd BufEnter * call ncm2#enable_for_buffer()
+" " Important :help Ncm2PopupOpen for more information
+" set completeopt=noinsert,menuone,noselect
+
 
 " latex {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
