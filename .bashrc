@@ -93,7 +93,7 @@ alias grp='gr text/paper/entropy.pdf'
 alias sb='source ~/.bashrc'
 alias la='ls -a'
 alias ll='ls -oh'
-alias lla='ls -aho'
+alias lsa='ls -aho'
 alias lg='lla | grep $1'
 alias cpwd='pwd | pbcopy'
 
