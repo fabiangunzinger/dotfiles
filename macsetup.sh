@@ -84,6 +84,10 @@ pip install jupyterlab
 # potry init
 # poetry add jupyterlab
 
+# Latex and xelatex so I can download as pdf from Jupyter
+# from here: https://gist.github.com/peterhurford/75957ba9335e755013b87254ec85fab1
+
+
 # Dependency management
 ## Currently trying both pip and poetry
 
