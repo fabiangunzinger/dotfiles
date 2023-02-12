@@ -1,7 +1,0 @@
-[user]
-    name = fabiangunzinger
-    email = fabian.gunzinger@justeattakeaway.com
-
-[core]
-    editor = nvim
-    sshCommand = "ssh -i ~/.ssh/jet_gh"

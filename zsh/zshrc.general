@@ -275,6 +275,9 @@ eval "$(starship init zsh)"
 # Start tmux session on startup
 # Given that new shell session starts in home directory, this will
 # start a session in that directory
+
+# This is disabled for now. Actually not that helpful. If I restart terminal, I can just connect to tmux by opening a running session or by using tat in current directory.
+
 _not_inside_tmux() { [[ -z "$TMUX" ]] }
 
 ensure_tmux_is_running() {
@@ -283,4 +286,8 @@ ensure_tmux_is_running() {
   fi
 }
 
-ensure_tmux_is_running
+# ensure_tmux_is_running
+
+
+# Add homebrew to path
+eval "$(/opt/homebrew/bin/brew shellenv)"

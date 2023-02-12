@@ -1,6 +1,0 @@
-[user]
-    name = fabiangunzinger
-    email = fa.gunzinger@gmail.com
-
-[core]
-    editor = nvim

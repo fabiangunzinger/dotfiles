@@ -1,5 +1,6 @@
-[includeIf "gitdir:~/dev/projects/"]
-    path = ~/.gitconfig-projects
+[user]
+    name = fabiangunzinger
+    email = fabian.gunzinger@justeattakeaway.com
 
-[includeIf "gitdir:~/dev/jet/"]
-    path = ~/.gitconfig-jet
+[core]
+    editor = nvim

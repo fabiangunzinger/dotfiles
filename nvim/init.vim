@@ -244,6 +244,7 @@ nnoremap <leader>gg :call GitLazyPush()<cr>
 " nnoremap <leader>gam :Git add --all \| Git commit --amend --no-edit<cr>
 
 " pytest
+" Remember that things like us and uf are toggable
 nnoremap <silent><leader>uff :Pytest file<cr>
 nnoremap <silent><leader>uc :Pytest class<cr>
 nnoremap <silent><leader>uf :Pytest function<cr>
@@ -252,7 +253,10 @@ nnoremap <silent><leader>un :Pytest next<cr>
 nnoremap <silent><leader>up :Pytest previous<cr>
 nnoremap <silent><leader>us :Pytest session<cr>
 nnoremap <silent><leader>ufa :Pytest fails<cr>
-"pytest
+nnoremap <silent><leader>uen :Pytest end<cr>
+nnoremap <silent><leader>uer :Pytest error<cr>
+
+" black formatting
 nnoremap <silent><leader>fo :Black<cr>
 
 " semshi
