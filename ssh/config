@@ -1,15 +1,19 @@
 # ssh config, fabian gunzinger
 
 # Personal GitHub account
-Host github.com
-    HostName github.com
-    IdentityFile ~/.ssh/personal_gh
+Host *
     AddKeysToAgent yes
 
-# JET GitHub account
-Host github.je-labs.com
-    HostName github.com
-    IdentityFile ~/.ssh/jet_gh
-    AddKeysToAgent yes
+# # Personal GitHub account
+# Host github
+#     HostName github.com
+#     IdentityFile ~/.ssh/github_personal
+#     AddKeysToAgent yes
+
+# # JET GitHub account
+# Host github.je-labs.com
+#     HostName github.com
+#     IdentityFile ~/.ssh/jet_gh
+#     AddKeysToAgent yes
 
 

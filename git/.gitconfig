@@ -1,6 +1,8 @@
-[user]
-    name = fabiangunzinger
-    email = fabian.gunzinger@justeattakeaway.com
+[includeIf "gitdir:~/dev/projects/"]
+    path = ~/dev/projects/dotfiles/git/gitconfig.personal
+
+[includeIf "gitdir:~/dev/jet/"]
+    path = ~/dev/projects/dotfiles/git/gitconfig.work
 
 [core]
     editor = nvim
