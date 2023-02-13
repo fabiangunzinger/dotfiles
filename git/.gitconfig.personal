@@ -3,4 +3,4 @@
     email = fa.gunzinger@gmail.com
 
 [core]
-    sshCommand = 'ssh -i ~/.ssh/github_personal
+    sshCommand = "ssh -i ~/.ssh/github_personal"

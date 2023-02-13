@@ -2,5 +2,5 @@
     name = fabiangunzinger
     email = fabian.gunzinger@justeattakeaway.com
 
-[includeIf "gitdir:~/dev/jet/"]
-    path = ~/dev/projects/dotfiles/git/gitconfig.work
+[core]
+    sshCommand = "ssh -i ~/.ssh/github_work"
