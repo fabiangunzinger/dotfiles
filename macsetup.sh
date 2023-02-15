@@ -94,7 +94,7 @@ pip install jupyterlab
 ## Poetry installation
 curl -sSL https://install.python-poetry.org | python3 -
 # Don't use poetry for virtualenv mgt
-poetry config virtualenvs.create false  
+# poetry config virtualenvs.create false  
 # poetry completions bash > $(brew --prefix)/etc/bash_completion.d/poetry.bash-completion
 
 # Terminal
@@ -147,6 +147,11 @@ brew install battery
 ## Misc. terminal utilities
 brew install htop
 brew install rename
+
+
+# Docker
+# Useful guide: https://www.cprime.com/resources/blog/docker-for-mac-with-homebrew-a-step-by-step-tutorial/ 
+brew install --cask docker
 
 
 # macOS applications
