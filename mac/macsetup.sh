@@ -13,11 +13,11 @@ echo "Installing homebrew..."
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # Neovim
+# Install `nvim` and `pynvim` (into env used for nvim) to enable use of Python plugins.
+# Python interpreter is set in init.vim.
 echo "Installing Neovim..."
 brew install nvim
-## Enable nvim to use python plugins
 pip3 install pynvim   
-## Python interpreter will be set automatically in init.vim
 
 # GitHub
 echo "Authenticate GitHub accounts..."
@@ -106,10 +106,10 @@ brew install --cask iterm2
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
 ## Install 'hack' nerd font using Homebrew
+## Manually select desired font in iTerm (currently 'Hack Nerd Font')
+## TODO: select font automatically in iTerm2
 brew tap homebrew/cask-fonts
 brew install --cask font-hack-nerd-font
-## Manually select desired font in iTerm (currently 'Hack Nerd Font')
-## todo: select font automatically
 
 ## Manually import iterm2-profiles.json (iterm2/Profiles/Other actions)
 ## todo: automatically import iterm2-profiles.json
@@ -147,6 +147,10 @@ brew install battery
 ## Misc. terminal utilities
 brew install htop
 brew install rename
+
+## exa
+## Using zsh plugin for handy aliases: https://github.com/MohamedElashri/exa-zsh
+brew install exa
 
 
 # Docker

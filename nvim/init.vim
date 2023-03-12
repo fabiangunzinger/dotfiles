@@ -377,11 +377,12 @@ nnoremap <leader>est :e /Users/fgu/.config/nvim/plugged/vim-snippets/UltiSnips/t
 " use dedicated virtual env as nvim intrpreter (:h python3_host_prog), since
 " -- when managing pyenv-virtualenv -- automatically detecting virtualenv
 " doesn't seem to work.
-if $USER=="fabian.gunzinger"
-	let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python'
-else
-	let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
-endif
+let g:python3_host_prog='/Users/fgu/.pyenv/versions/base/bin/python'
+" if $USER=="fabian.gunzinger"
+" 	let g:python3_host_prog='/Users/fabian.gunzinger/.pyenv/versions/3.10.8/bin/python'
+" else
+" 	let g:python3_host_prog='/Users/fgu/miniconda3/envs/nvim/bin/python'
+" endif
 
 " Strip leading whitespace and empty lines and append extra line when sending
 " Python code to repl
@@ -395,7 +396,6 @@ let g:VtrAppendNewline = 1
 " autocmd BufEnter * call ncm2#enable_for_buffer()
 " " Important :help Ncm2PopupOpen for more information
 " set completeopt=noinsert,menuone,noselect
-
 
 " latex {{{1
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

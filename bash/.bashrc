@@ -324,3 +324,5 @@ PS1+="\[${green}\]\W";          # basename of working directory
 PS1+="\[${branch_col}\]\$(get_git_branch)";
 PS1+="\[${reset}\] $ ";
 export PS1;
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

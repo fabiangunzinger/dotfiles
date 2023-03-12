@@ -18,10 +18,10 @@ alias vi='nvim'
 alias vii='nvim +CommandT'
 
 # misc.
-alias rm='rm -I'
-alias rmr='rm -r'
-alias ll='exa -l'
-alias la='exa -l -a'
+# alias rm='rm -I'
+# alias rmr='rm -r'
+# alias ll='exa -l'
+# alias la='exa -l -a'
 alias lg='la | grep $1'
 alias lt="exa --tree -a -I '.git|__pycache__|.mypy_cache|.ipynb_checkpoints|.DS_Store'"
 alias pwdc='pwd | pbcopy'
@@ -127,10 +127,6 @@ alias dvs='cd /Users/fabian.gunzinger/.local/state/nvim/swap'
 alias fzg='ddf; cd zsh; nvim zshrc.general'
 alias fz='vi ~/.zshrc'
 alias fzm='vi ~/.tmux.conf'
-alias fvr='vi ~/.config/nvim/init.vim'
-alias fre='dblp; vi 2021-09-11-regex.md'
-alias fcv='vi /Users/fgu/dev/projects/applications/cv/cvfgu.tex'
-
 # open vim in project
 alias vzs='ddf; cd zsh; vi'
 
@@ -211,6 +207,10 @@ alias gcnn='gc --dry-run'           # dry run of above
 alias gph='git push'                # move remote pointer to match local one 
 alias gphu='gph --set-upstream origin' # ..branch name of remote
 alias gphd='gph origin --delete'   # ..refs to delete (e.g. branchname)
+alias gf='git fetch'                # download new files from remote (no merge)
+alias gpl='git pull'                # download and merge new files from remote
+
+alias gb='git --no-pager branch -vv' # list branches
 alias gf='git fetch'                # download new files from remote (no merge)
 alias gpl='git pull'                # download and merge new files from remote
 
